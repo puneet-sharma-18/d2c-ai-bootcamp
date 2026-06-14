@@ -1,0 +1,7 @@
+handle,title,sku,price,inventory_qty,product_type,vendor,tags,units_sold_l28,units_sold_l90,conversion_rate_l28,avg_rating,review_count
+meetha-paan,Meetha Paan,TPL-MTH-001,179,224,Classic paan,The Paan Legacy,"paan,entry,tobacco-free,hero",512,1548,2.8%,4.6,118
+almond-delight,Almond Delight Paan,TPL-ALM-001,299,148,Premium paan,The Paan Legacy,"paan,premium,gifting,hero,almond",382,1144,3.2%,4.8,87
+masala-cranberry,Masala Cranberry Paan,TPL-MCR-001,289,96,Modern paan,The Paan Legacy,"paan,modern,cranberry",184,548,1.9%,4.3,42
+dry-fruit-meetha-paan,Dry Fruit Meetha Paan,TPL-DFM-001,259,124,Premium paan,The Paan Legacy,"paan,dry-fruit,festival,gifting",218,654,2.4%,4.6,58
+granola-goodness,Granola Goodness,TPL-GRN-001,239,168,Health-modern,The Paan Legacy,"health,granola,acquisition,curiosity",294,884,2.1%,4.5,64
+herbal-mukhwas,Herbal Mukhwas 200g,TPL-MKW-001,219,202,Mukhwas,The Paan Legacy,"mukhwas,hand-roasted,digestion",312,938,2.0%,4.4,51

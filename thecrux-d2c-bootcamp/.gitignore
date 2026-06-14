@@ -1,0 +1,36 @@
+# Student-generated files (kept local, never committed to the scaffold repo)
+/CLAUDE.md
+/CLAUDE-old.md
+/HOUSE.md
+/CLAUDE.draft.md
+
+# Student work directories
+/brand-brain/
+/my-work/
+
+# Archived scaffold drafts (kept local, not part of the public repo)
+/archive/
+
+# Secrets (founder's API keys, never commit)
+.env
+.env.local
+
+# Live ad data pulled by data-sync/meta_sync.py (founder's business data, never commit)
+/data-sync/raw/
+/data-sync/processed/
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Editor noise
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Node (in case any tooling lands here later)
+node_modules/

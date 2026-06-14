@@ -1,0 +1,85 @@
+date,campaign_id,campaign_name,angle,spend_inr,impressions,clicks,conversions
+2026-04-15,GOOG-001,Brand Search,brand-search,1080,2213,166,5
+2026-04-15,GOOG-002,Non-brand Paan Search,category-search,1020,1500,57,3
+2026-04-15,GOOG-003,Gifting Long-tail,gifting-search,360,552,16,0
+2026-04-16,GOOG-001,Brand Search,brand-search,1080,2213,166,5
+2026-04-16,GOOG-002,Non-brand Paan Search,category-search,1020,1500,57,3
+2026-04-16,GOOG-003,Gifting Long-tail,gifting-search,360,552,16,1
+2026-04-17,GOOG-001,Brand Search,brand-search,1080,2213,166,5
+2026-04-17,GOOG-002,Non-brand Paan Search,category-search,1020,1500,57,3
+2026-04-17,GOOG-003,Gifting Long-tail,gifting-search,360,552,16,1
+2026-04-18,GOOG-001,Brand Search,brand-search,972,2000,150,6
+2026-04-18,GOOG-002,Non-brand Paan Search,category-search,918,1342,51,3
+2026-04-18,GOOG-003,Gifting Long-tail,gifting-search,324,517,15,1
+2026-04-19,GOOG-001,Brand Search,brand-search,936,1920,144,5
+2026-04-19,GOOG-002,Non-brand Paan Search,category-search,884,1289,49,3
+2026-04-19,GOOG-003,Gifting Long-tail,gifting-search,312,483,14,1
+2026-04-20,GOOG-001,Brand Search,brand-search,1044,2147,161,5
+2026-04-20,GOOG-002,Non-brand Paan Search,category-search,986,1447,55,2
+2026-04-20,GOOG-003,Gifting Long-tail,gifting-search,348,552,16,1
+2026-04-21,GOOG-001,Brand Search,brand-search,1008,2067,155,5
+2026-04-21,GOOG-002,Non-brand Paan Search,category-search,952,1395,53,3
+2026-04-21,GOOG-003,Gifting Long-tail,gifting-search,336,517,15,1
+2026-04-22,GOOG-001,Brand Search,brand-search,1110,2280,171,6
+2026-04-22,GOOG-002,Non-brand Paan Search,category-search,1050,1526,58,3
+2026-04-22,GOOG-003,Gifting Long-tail,gifting-search,390,621,18,1
+2026-04-23,GOOG-001,Brand Search,brand-search,1110,2280,171,6
+2026-04-23,GOOG-002,Non-brand Paan Search,category-search,1050,1526,58,3
+2026-04-23,GOOG-003,Gifting Long-tail,gifting-search,390,621,18,1
+2026-04-24,GOOG-001,Brand Search,brand-search,1110,2280,171,6
+2026-04-24,GOOG-002,Non-brand Paan Search,category-search,1050,1526,58,3
+2026-04-24,GOOG-003,Gifting Long-tail,gifting-search,390,621,18,1
+2026-04-25,GOOG-001,Brand Search,brand-search,999,2053,154,4
+2026-04-25,GOOG-002,Non-brand Paan Search,category-search,945,1368,52,3
+2026-04-25,GOOG-003,Gifting Long-tail,gifting-search,351,552,16,1
+2026-04-26,GOOG-001,Brand Search,brand-search,962,1973,148,5
+2026-04-26,GOOG-002,Non-brand Paan Search,category-search,910,1342,51,3
+2026-04-26,GOOG-003,Gifting Long-tail,gifting-search,338,517,15,1
+2026-04-27,GOOG-001,Brand Search,brand-search,1073,2200,165,5
+2026-04-27,GOOG-002,Non-brand Paan Search,category-search,1015,1474,56,3
+2026-04-27,GOOG-003,Gifting Long-tail,gifting-search,377,586,17,1
+2026-04-28,GOOG-001,Brand Search,brand-search,1036,2120,159,5
+2026-04-28,GOOG-002,Non-brand Paan Search,category-search,980,1421,54,3
+2026-04-28,GOOG-003,Gifting Long-tail,gifting-search,364,586,17,1
+2026-04-29,GOOG-001,Brand Search,brand-search,1140,2333,175,6
+2026-04-29,GOOG-002,Non-brand Paan Search,category-search,1110,1632,62,3
+2026-04-29,GOOG-003,Gifting Long-tail,gifting-search,420,655,19,1
+2026-04-30,GOOG-001,Brand Search,brand-search,1140,2333,175,6
+2026-04-30,GOOG-002,Non-brand Paan Search,category-search,1110,1632,62,3
+2026-04-30,GOOG-003,Gifting Long-tail,gifting-search,420,655,19,1
+2026-05-01,GOOG-001,Brand Search,brand-search,1140,2333,175,6
+2026-05-01,GOOG-002,Non-brand Paan Search,category-search,1110,1632,62,3
+2026-05-01,GOOG-003,Gifting Long-tail,gifting-search,420,655,19,1
+2026-05-02,GOOG-001,Brand Search,brand-search,1026,2107,158,5
+2026-05-02,GOOG-002,Non-brand Paan Search,category-search,999,1474,56,4
+2026-05-02,GOOG-003,Gifting Long-tail,gifting-search,378,586,17,1
+2026-05-03,GOOG-001,Brand Search,brand-search,988,2027,152,4
+2026-05-03,GOOG-002,Non-brand Paan Search,category-search,962,1395,53,3
+2026-05-03,GOOG-003,Gifting Long-tail,gifting-search,364,586,17,1
+2026-05-04,GOOG-001,Brand Search,brand-search,1102,2267,170,6
+2026-05-04,GOOG-002,Non-brand Paan Search,category-search,1073,1579,60,3
+2026-05-04,GOOG-003,Gifting Long-tail,gifting-search,406,621,18,1
+2026-05-05,GOOG-001,Brand Search,brand-search,1064,2187,164,5
+2026-05-05,GOOG-002,Non-brand Paan Search,category-search,1036,1526,58,3
+2026-05-05,GOOG-003,Gifting Long-tail,gifting-search,392,621,18,1
+2026-05-06,GOOG-001,Brand Search,brand-search,1170,2400,180,6
+2026-05-06,GOOG-002,Non-brand Paan Search,category-search,1230,1789,68,5
+2026-05-06,GOOG-003,Gifting Long-tail,gifting-search,465,724,21,2
+2026-05-07,GOOG-001,Brand Search,brand-search,1170,2400,180,6
+2026-05-07,GOOG-002,Non-brand Paan Search,category-search,1230,1789,68,4
+2026-05-07,GOOG-003,Gifting Long-tail,gifting-search,465,724,21,2
+2026-05-08,GOOG-001,Brand Search,brand-search,1170,2400,180,6
+2026-05-08,GOOG-002,Non-brand Paan Search,category-search,1230,1789,68,4
+2026-05-08,GOOG-003,Gifting Long-tail,gifting-search,465,724,21,2
+2026-05-09,GOOG-001,Brand Search,brand-search,1053,2160,162,5
+2026-05-09,GOOG-002,Non-brand Paan Search,category-search,1107,1632,62,4
+2026-05-09,GOOG-003,Gifting Long-tail,gifting-search,419,655,19,1
+2026-05-10,GOOG-001,Brand Search,brand-search,1014,2080,156,4
+2026-05-10,GOOG-002,Non-brand Paan Search,category-search,1066,1553,59,5
+2026-05-10,GOOG-003,Gifting Long-tail,gifting-search,403,621,18,1
+2026-05-11,GOOG-001,Brand Search,brand-search,1131,2320,174,6
+2026-05-11,GOOG-002,Non-brand Paan Search,category-search,1189,1737,66,4
+2026-05-11,GOOG-003,Gifting Long-tail,gifting-search,449,690,20,1
+2026-05-12,GOOG-001,Brand Search,brand-search,1092,2240,168,5
+2026-05-12,GOOG-002,Non-brand Paan Search,category-search,1148,1684,64,4
+2026-05-12,GOOG-003,Gifting Long-tail,gifting-search,434,690,20,1

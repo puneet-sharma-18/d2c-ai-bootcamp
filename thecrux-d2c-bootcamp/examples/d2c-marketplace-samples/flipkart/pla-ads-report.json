@@ -1,0 +1,70 @@
+{
+  "_source": "Flipkart Ads (PLA) Performance Report",
+  "reportingRange": { "from": "2026-04-01", "to": "2026-04-30" },
+  "currency": "INR",
+  "campaigns": [
+    {
+      "campaignId": "FK_CAMP_18273645",
+      "campaignName": "Auruh_FaceWash_Apr",
+      "targetingType": "AUTOMATIC",
+      "fsn": "FSN8473829AURFW100",
+      "sku": "AUR-FW-100",
+      "impressions": 84273,
+      "clicks": 2104,
+      "ctr": 0.0250,
+      "cpc": 4.82,
+      "spend": 10141.28,
+      "directSales": 4392.00,
+      "indirectSales": 1647.00,
+      "totalSales": 6039.00,
+      "directUnits": 8,
+      "indirectUnits": 3,
+      "totalRoas": 0.60,
+      "_alert": "PLA campaign is below break-even ROAS. Flipkart's lower CPC vs Amazon (4.82 vs 8.42) doesn't help if conversion is half."
+    },
+    {
+      "campaignId": "FK_CAMP_18273646",
+      "campaignName": "Auruh_LipBalm_Apr",
+      "targetingType": "AUTOMATIC",
+      "fsn": "FSN8473829AURLB15",
+      "sku": "AUR-LB-15",
+      "impressions": 38274,
+      "clicks": 1182,
+      "ctr": 0.0309,
+      "cpc": 3.74,
+      "spend": 4420.68,
+      "directSales": 1995.00,
+      "indirectSales": 798.00,
+      "totalSales": 2793.00,
+      "directUnits": 5,
+      "indirectUnits": 2,
+      "totalRoas": 0.63,
+      "_alert": "After 28% Flipkart commission on lip balm, true post-fee ROAS is closer to 0.45. Not worth running."
+    },
+    {
+      "campaignId": "FK_CAMP_18273647",
+      "campaignName": "Auruh_HairOil_Apr",
+      "targetingType": "AUTOMATIC",
+      "fsn": "FSN8473829AURHO100",
+      "sku": "AUR-HO-100",
+      "impressions": 28194,
+      "clicks": 904,
+      "ctr": 0.0321,
+      "cpc": 5.18,
+      "spend": 4682.72,
+      "directSales": 349.00,
+      "indirectSales": 0.00,
+      "totalSales": 349.00,
+      "directUnits": 1,
+      "indirectUnits": 0,
+      "totalRoas": 0.07,
+      "_alert": "Same ad-bleed pattern as Amazon. AUR-HO-100 has a positioning problem that no marketplace ads can fix."
+    }
+  ],
+  "_summary": {
+    "totalSpend": 19244.68,
+    "totalSales": 9181.00,
+    "blendedRoas": 0.48,
+    "_finding": "Both Amazon and Flipkart ads are unprofitable on AUR-HO-100 with the same root cause (search term mismatch). Pattern repeats across platforms when the underlying product positioning is off."
+  }
+}

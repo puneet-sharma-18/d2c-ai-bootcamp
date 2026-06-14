@@ -1,0 +1,14 @@
+date,channel,customer_initial,sku_referenced,subject,body_summary
+2026-04-21,email,N,LL-NDL-200,Subscribe and save?,Customer asks if Little Lab offers a subscribe and save option. They run out every 6 weeks.
+2026-04-25,email,R,,Delivery stuck,Tier-2 pin code (Nashik). Order placed Mon, still not delivered next Mon. Mamaearth came in 3 days from same warehouse.
+2026-04-26,email,I,LL-BHW-250,Is this product working?,Doesnt lather at all. Customer worried product is defective. Asks if SLS-free means no foam.
+2026-04-28,whatsapp,F,LL-CCB-050,Followup positive,Cradle cap balm worked. Asks what to buy next for daily care.
+2026-04-29,whatsapp,Q,LL-CCB-050,Pre-purchase paediatrician question,My paediatrician said this is the one she uses for her own daughter. Asks if she can buy a bundle.
+2026-04-30,email,M,LL-NDL-200,Price feedback,Worth it after using but ₹549 felt high at the shelf. Suggests a smaller trial size.
+2026-05-01,email,S,,Delivery delay,Tracking shows stuck at hub for 4 days. Tier-2 pin code (Coimbatore).
+2026-05-03,whatsapp,L,LL-NDL-200,Pre-purchase price objection,₹549 is steep. Mother Sparsh is ₹529 for similar. Asks for a bundle discount.
+2026-05-04,email,U,LL-CCB-050,Out of stock alert,Customer wants email when 100ml variant is available. There is no 100ml variant.
+2026-05-06,email,V,LL-NDL-200,Bottle size question,Pre-purchase customer asks if 200ml is enough for 1 month of newborn use.
+2026-05-08,whatsapp,K,LL-BHW-250,Returns,Husband insists no foam means no clean. Wants to return.
+2026-05-09,whatsapp,K,LL-BHW-250,Returns followup,Same customer K. Will keep if we explain why SLS-free doesnt foam.
+2026-05-10,email,AA,,B2B inquiry,Paediatric clinic in Bandra asks about bulk purchase / trade pricing for 50 cradle cap balms.

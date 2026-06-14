@@ -1,0 +1,1384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D2C Workshop Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #6366F1;
+  --primary-hover: #4F46E5;
+  --neutral: #9C9C9C;
+  --bg: #FAFAFA;
+  --surface: #FFFFFF;
+  --text: #0A0A0A;
+  --text-2: #6B6B6B;
+  --border: #E8E8EC;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --display: "General Sans", system-ui, sans-serif;
+  --body: "DM Sans", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--primary); text-decoration: none; }
+a:hover { color: var(--primary-hover); text-decoration: underline; }
+code, pre, .mono { font-family: var(--mono); font-size: 13px; }
+pre {
+  background: #0A0A0A;
+  color: #E8E8EC;
+  padding: 16px 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.inline-code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: #F1F1F4;
+  color: #0A0A0A;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin: 0;
+}
+h1 { font-size: 60px; line-height: 1.05; letter-spacing: -0.04em; }
+h2 { font-size: 32px; line-height: 1.15; }
+h3 { font-size: 22px; line-height: 1.25; letter-spacing: -0.02em; }
+h4 { font-size: 17px; font-weight: 600; }
+p { margin: 0; }
+.muted { color: var(--text-2); }
+.tiny { font-size: 13px; color: var(--text-2); }
+
+/* Nav */
+nav {
+  position: sticky; top: 0; z-index: 50;
+  height: 56px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+nav .inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+nav .brand {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+}
+nav .brand .dot {
+  width: 8px; height: 8px; border-radius: 9999px;
+  background: var(--primary);
+  display: inline-block;
+}
+nav ul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; gap: 4px;
+}
+nav ul a {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+nav ul a:hover { background: #F1F1F4; text-decoration: none; }
+@media (max-width: 820px) {
+  nav ul { display: none; }
+}
+
+/* Container */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+section:last-of-type { border-bottom: none; }
+.section-head { margin-bottom: 40px; max-width: 720px; }
+.section-head .overline {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.section-head p { color: var(--text-2); font-size: 16px; margin-top: 12px; }
+
+/* Hero */
+#hero { padding: 80px 0 64px; border-bottom: 1px solid var(--border); }
+#hero .overline {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+#hero h1 { max-width: 880px; }
+#hero .lead {
+  max-width: 640px;
+  font-size: 18px;
+  color: var(--text-2);
+  margin-top: 20px;
+}
+.quick-links {
+  margin-top: 36px;
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+}
+.chip:hover { border-color: var(--primary); color: var(--primary); text-decoration: none; }
+.chip .num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-2);
+}
+
+/* Cards */
+.cards { display: grid; gap: 20px; }
+.cards-2 { grid-template-columns: repeat(2, 1fr); }
+.cards-3 { grid-template-columns: repeat(3, 1fr); }
+.cards-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 920px) { .cards-3, .cards-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .cards-2, .cards-3, .cards-4 { grid-template-columns: 1fr; } }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+  transition: transform 200ms, box-shadow 200ms, border-color 200ms;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  border-color: #D6D6DC;
+}
+.card .meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+.card .meta .pill {
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: #F1F1F4;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+.card .meta .pill.day-1 { background: #EEF2FF; color: var(--primary-hover); }
+.card .meta .pill.day-2 { background: #ECFDF5; color: var(--success); }
+.card .meta .pill.addon { background: #FEF3C7; color: #92400E; }
+.card h3 { margin-bottom: 8px; }
+.card .desc { color: var(--text-2); font-size: 14px; }
+.card .footer {
+  margin-top: 16px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 13px;
+}
+.card .footer .file {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-2);
+}
+.card .footer a {
+  font-weight: 500;
+}
+
+/* Arc */
+.arc {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+.arc-day {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+}
+.arc-day h3 {
+  display: flex; align-items: baseline; gap: 12px;
+  margin-bottom: 6px;
+}
+.arc-day h3 .tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.arc-day .blurb { color: var(--text-2); margin-bottom: 24px; max-width: 560px; }
+
+.flow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+@media (max-width: 920px) { .flow { grid-template-columns: 1fr; } }
+.flow .step {
+  position: relative;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #FAFAFA;
+}
+.flow .step .stage {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--primary);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.flow .step .title {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.flow .step .sub {
+  font-size: 12px;
+  color: var(--text-2);
+}
+.flow .step + .step::before {
+  content: "›";
+  position: absolute;
+  left: -10px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--neutral);
+  font-size: 16px;
+}
+@media (max-width: 920px) {
+  .flow .step + .step::before { display: none; }
+}
+
+/* Sessions list */
+.session-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 920px) { .session-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .session-grid { grid-template-columns: 1fr; } }
+.session-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex; flex-direction: column; gap: 10px;
+  transition: transform 200ms, box-shadow 200ms, border-color 200ms;
+  text-decoration: none;
+  color: inherit;
+}
+.session-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  border-color: #D6D6DC;
+  text-decoration: none;
+}
+.session-card .num {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-2);
+}
+.session-card h4 { font-size: 18px; letter-spacing: -0.02em; font-family: var(--display); font-weight: 600; }
+.session-card .outcome { color: var(--text-2); font-size: 14px; flex: 1; }
+.session-card .tag-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.session-card .day {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  background: #EEF2FF;
+  color: var(--primary-hover);
+  font-weight: 600;
+}
+.session-card .day.day-2 { background: #ECFDF5; color: var(--success); }
+.session-card .day.addon { background: #FEF3C7; color: #92400E; }
+.session-card .day.setup { background: #F1F1F4; color: var(--text-2); }
+.session-card .opens {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-2);
+}
+
+/* Teammate roster */
+.teammate-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 920px) { .teammate-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .teammate-grid { grid-template-columns: 1fr; } }
+.teammate {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.teammate .head {
+  display: flex; align-items: center; gap: 12px;
+}
+.teammate .avatar {
+  width: 36px; height: 36px;
+  border-radius: 9999px;
+  background: #EEF2FF;
+  color: var(--primary-hover);
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 12px;
+}
+.teammate h4 { font-family: var(--display); font-weight: 600; font-size: 18px; letter-spacing: -0.02em; }
+.teammate .role { font-size: 13px; color: var(--text-2); }
+.teammate .owns { font-size: 14px; color: var(--text); }
+.teammate .rows {
+  display: grid; gap: 6px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  margin-top: auto;
+}
+.teammate .row { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; }
+.teammate .row .k { color: var(--text-2); }
+.teammate .row .v { font-family: var(--mono); color: var(--text); text-align: right; }
+
+/* Catalog table */
+.catalog {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.catalog .row {
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr 1.4fr 1fr;
+  gap: 16px;
+  padding: 14px 18px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  align-items: center;
+}
+.catalog .row:first-child { border-top: none; }
+.catalog .row.head {
+  background: #FAFAFA;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-2);
+  font-weight: 500;
+}
+.catalog .row .name { font-weight: 500; }
+.catalog .row .path { font-family: var(--mono); font-size: 12px; color: var(--text-2); overflow-wrap: anywhere; }
+.catalog .row .where { color: var(--text-2); font-size: 13px; }
+.catalog .row .kind {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  background: #F1F1F4;
+  color: var(--text-2);
+  display: inline-block;
+  width: max-content;
+  font-weight: 500;
+}
+.catalog .row .kind.skill { background: #EEF2FF; color: var(--primary-hover); }
+.catalog .row .kind.agent { background: #ECFDF5; color: var(--success); }
+.catalog .row .kind.command { background: #FEF3C7; color: #92400E; }
+@media (max-width: 820px) {
+  .catalog .row { grid-template-columns: 1fr; gap: 4px; }
+  .catalog .row.head { display: none; }
+}
+
+/* Glossary */
+.glossary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media (max-width: 620px) { .glossary-grid { grid-template-columns: 1fr; } }
+.term {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+}
+.term h4 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.term .what {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--primary-hover);
+  background: #EEF2FF;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  display: inline-block;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+.term p { font-size: 14px; color: var(--text-2); margin-bottom: 8px; }
+.term .where { font-size: 13px; color: var(--text); }
+.term .where b { font-weight: 600; }
+
+/* Repo tour */
+.tree {
+  background: #0A0A0A;
+  color: #E8E8EC;
+  border-radius: 12px;
+  padding: 28px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-x: auto;
+}
+.tree .dim { color: #6B6B6B; }
+.tree .note { color: #9CA3AF; font-style: italic; }
+.tree .label { color: #C7D2FE; }
+.tree .file { color: #FDE68A; }
+
+/* Resources block */
+.res-table {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.res-table .row {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1.4fr;
+  gap: 16px;
+  padding: 14px 18px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+}
+.res-table .row:first-child { border-top: none; }
+.res-table .row.head {
+  background: #FAFAFA;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-2);
+  font-weight: 500;
+}
+.res-table .name { font-weight: 600; }
+.res-table .feeds { color: var(--text-2); font-size: 13px; }
+.res-table .note { color: var(--text-2); font-size: 13px; }
+@media (max-width: 820px) {
+  .res-table .row { grid-template-columns: 1fr; gap: 4px; }
+  .res-table .row.head { display: none; }
+}
+
+footer {
+  padding: 48px 0 80px;
+  font-size: 13px;
+  color: var(--text-2);
+  text-align: center;
+}
+footer a { color: var(--text-2); text-decoration: underline; }
+
+/* Anchor offset for sticky nav */
+section[id] { scroll-margin-top: 72px; }
+
+.callout {
+  background: #EEF2FF;
+  border: 1px solid #C7D2FE;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--text);
+}
+.callout b { font-weight: 600; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="#top" class="brand"><span class="dot"></span>D2C Workshop Reference</a>
+    <ul>
+      <li><a href="#arc">Arc</a></li>
+      <li><a href="#sessions">Sessions</a></li>
+      <li><a href="sessions.html">Flowcharts</a></li>
+      <li><a href="#teammates">Teammates</a></li>
+      <li><a href="#catalog">Skills</a></li>
+      <li><a href="#glossary">Glossary</a></li>
+      <li><a href="#repo">Repo</a></li>
+      <li><a href="#resources">Resources</a></li>
+    </ul>
+  </div>
+</nav>
+
+<a id="top"></a>
+
+<section id="hero">
+  <div class="container">
+    <div class="overline">theCrux · AI D2C Workshop</div>
+    <h1>What's where. Who does what. How it all connects.</h1>
+    <p class="lead">One weekend, ten AI teammates, one operating system for your D2C brand. This page is the map. Use it to find a session, a teammate, a skill or a file in three clicks.</p>
+    <div class="quick-links">
+      <a class="chip" href="#arc"><span class="num">01</span>The arc</a>
+      <a class="chip" href="#sessions"><span class="num">02</span>Sessions</a>
+      <a class="chip" href="sessions.html"><span class="num">02b</span>Per-session flowcharts</a>
+      <a class="chip" href="#teammates"><span class="num">03</span>Teammates</a>
+      <a class="chip" href="#catalog"><span class="num">04</span>Skills + agents</a>
+      <a class="chip" href="#glossary"><span class="num">05</span>Glossary</a>
+      <a class="chip" href="#repo"><span class="num">06</span>Repo tour</a>
+      <a class="chip" href="#resources"><span class="num">07</span>Resources</a>
+    </div>
+
+    <div class="callout">
+      <b>New here?</b> Open <a href="../student-handbook.md">student-handbook.md</a> first, then return here when you need to remember what a skill is, where a session file lives, or which teammate owns what.
+    </div>
+  </div>
+</section>
+
+<section id="arc">
+  <div class="container">
+    <div class="section-head">
+      <div class="overline">01 · The arc</div>
+      <h2>Two days. Nine primitives. Ten teammates.</h2>
+      <p>Day 1 installs four primitives. Each one unlocks a teammate. Day 2 braids five advanced concepts into the existing primitives and finishes with the Captain.</p>
+    </div>
+
+    <div class="arc">
+      <div class="arc-day">
+        <h3>Day 1 <span class="tag">Saturday · Intelligence + content</span></h3>
+        <p class="blurb">Profile, playbooks, plugs, parallel teammate. By Sunday morning you can answer four questions cleanly: What is CLAUDE.md? What is a skill? What is an MCP? What is a subagent?</p>
+        <div class="flow">
+          <div class="step">
+            <div class="stage">Primitive 01</div>
+            <div class="title">CLAUDE.md</div>
+            <div class="sub">A persistent brand profile every teammate reads first.</div>
+          </div>
+          <div class="step">
+            <div class="stage">Primitive 02</div>
+            <div class="title">Skills</div>
+            <div class="sub">Reusable playbooks Claude autoloads when relevant.</div>
+          </div>
+          <div class="step">
+            <div class="stage">Primitive 03</div>
+            <div class="title">MCPs</div>
+            <div class="sub">The plug that lets a skill read live Shopify, Drive, Gmail.</div>
+          </div>
+          <div class="step">
+            <div class="stage">Primitive 04</div>
+            <div class="title">Subagents</div>
+            <div class="sub">Specialised teammates with their own context for big jobs.</div>
+          </div>
+          <div class="step">
+            <div class="stage">Day 1 close</div>
+            <div class="title">Integration</div>
+            <div class="sub">Captain prompt run. One piece picked to ship Monday.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arc-day">
+        <h3>Day 2 <span class="tag">Sunday · Growth + operations</span></h3>
+        <p class="blurb">Five advanced concepts layered on the Day 1 primitives. Each one operationalises a layer of the brand. Ends with the 90-day operating roadmap and the standing schedule.</p>
+        <div class="flow">
+          <div class="step">
+            <div class="stage">Concept 05</div>
+            <div class="title">Parallel dispatch</div>
+            <div class="sub">Spawn 5 subagents at once. 50+ ad variations across 5 angles.</div>
+          </div>
+          <div class="step">
+            <div class="stage">Concept 06</div>
+            <div class="title">MCP-fed iteration</div>
+            <div class="sub">Read live data, diagnose, rewrite, push to draft.</div>
+          </div>
+          <div class="step">
+            <div class="stage">Concept 07</div>
+            <div class="title">Hooks + triggers</div>
+            <div class="sub">When X happens, do Y. SOPs and retention messages tied to events.</div>
+          </div>
+          <div class="step">
+            <div class="stage">Concept 08</div>
+            <div class="title">Scheduled wake-ups</div>
+            <div class="sub">Time-based hooks. Weekly Monday brief arrives on its own.</div>
+          </div>
+          <div class="step">
+            <div class="stage">Concept 09</div>
+            <div class="title">Captain pattern</div>
+            <div class="sub">A subagent that synthesises across all 10. 90-day roadmap.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sessions">
+  <div class="container">
+    <div class="section-head">
+      <div class="overline">02 · Sessions</div>
+      <h2>Every session, one file. Open one at a time.</h2>
+      <p>Six Day 1 sessions, five Day 2 sessions, two add-ons. Every prompt you need is inside the session file. Click a card to open it. Want to see <i>what happens inside</i> a session before opening it? Open the <a href="sessions.html">per-session flowcharts</a>.</p>
+    </div>
+
+    <h3 style="font-size:18px; margin-bottom:16px; color:var(--text-2); font-family:var(--display); letter-spacing:-0.01em;">Day 1 · Saturday</h3>
+    <div class="session-grid" style="margin-bottom:36px;">
+
+      <a class="session-card" href="../session-0-setup.md">
+        <div class="num">Session 00</div>
+        <h4>Setup</h4>
+        <p class="outcome">Claude Code running in your terminal. Repo cloned. Antigravity flashed. Ready for Session 1.</p>
+        <div class="tag-row">
+          <span class="day setup">Pre-flight</span>
+          <span class="opens">session-0-setup.md</span>
+        </div>
+      </a>
+
+      <a class="session-card" href="../session-1-brand-brain.md">
+        <div class="num">Session 01</div>
+        <h4>Brand Brain</h4>
+        <p class="outcome">CLAUDE.md filled in your voice. Voice test passed. The file every other teammate will read first.</p>
+        <div class="tag-row">
+          <span class="day">Day 1</span>
+          <span class="opens">session-1-brand-brain.md</span>
+        </div>
+      </a>
+
+      <a class="session-card" href="../session-2-skills.md">
+        <div class="num">Session 02</div>
+        <h4>Skills</h4>
+        <p class="outcome">Market Analyst and Voice of Customer skills installed. Two reports in <span class="mono">my-work/</span>.</p>
+        <div class="tag-row">
+          <span class="day">Day 1</span>
+          <span class="opens">session-2-skills.md</span>
+        </div>
+      </a>
+
+      <a class="session-card" href="../session-3-mcps.md">
+        <div class="num">Session 03</div>
+        <h4>MCPs</h4>
+        <p class="outcome">Shopify, Google Drive, Gmail connected. Voice of Customer re-run on live data.</p>
+        <div class="tag-row">
+          <span class="day">Day 1</span>
+          <span class="opens">session-3-mcps.md</span>
+        </div>
+      </a>
+
+      <a class="session-card" href="../session-4-content-lead.md">
+        <div class="num">Session 04</div>
+        <h4>Content Lead</h4>
+        <p class="outcome">30-day calendar, priority content pieces, marketplace listings. First subagent shipped.</p>
+        <div class="tag-row">
+          <span class="day">Day 1</span>
+          <span class="opens">session-4-content-lead.md</span>
+        </div>
+      </a>
+
+      <a class="session-card" href="../session-5-integration.md">
+        <div class="num">Session 05</div>
+        <h4>Day 1 Integration</h4>
+        <p class="outcome">Captain prompt run across the four Day 1 outputs. One piece picked to ship Monday.</p>
+        <div class="tag-row">
+          <span class="day">Day 1</span>
+          <span class="opens">session-5-integration.md</span>
+        </div>
+      </a>
+    </div>
+
+    <h3 style="font-size:18px; margin-bottom:16px; color:var(--text-2); font-family:var(--display); letter-spacing:-0.01em;">Day 2 · Sunday</h3>
+    <div class="session-grid" style="margin-bottom:36px;">
+      <a class="session-card" href="../session-6-performance-marketer.md">
+        <div class="num">Session 06</div>
+        <h4>Performance Marketer</h4>
+        <p class="outcome">10 ads, 6 Google headlines, 2 creative briefs (Default). 50+ ads across 5 angles (Power).</p>
+        <div class="tag-row">
+          <span class="day day-2">Day 2</span>
+          <span class="opens">session-6-performance-marketer.md</span>
+        </div>
+      </a>
+
+      <a class="session-card" href="../session-7-storefront-marketplace.md">
+        <div class="num">Session 07</div>
+        <h4>Storefront + Marketplace</h4>
+        <p class="outcome">2 PDPs rewritten, 5 CRO observations, 4 marketplace listings. Live Shopify data in the loop.</p>
+        <div class="tag-row">
+          <span class="day day-2">Day 2</span>
+          <span class="opens">session-7-storefront-marketplace.md</span>
+        </div>
+      </a>
+
+      <a class="session-card" href="../session-8-ops-retention.md">
+        <div class="num">Session 08</div>
+        <h4>Ops + Retention</h4>
+        <p class="outcome">2 SOPs, 1 vendor template, 5 WhatsApp messages, 3 emails, 2 customer segments.</p>
+        <div class="tag-row">
+          <span class="day day-2">Day 2</span>
+          <span class="opens">session-8-ops-retention.md</span>
+        </div>
+      </a>
+
+      <a class="session-card" href="../session-9-growth-analyst.md">
+        <div class="num">Session 09</div>
+        <h4>Growth Analyst</h4>
+        <p class="outcome">Your first weekly Monday brief on your real data. Scheduled wake-up wired (Power).</p>
+        <div class="tag-row">
+          <span class="day day-2">Day 2</span>
+          <span class="opens">session-9-growth-analyst.md</span>
+        </div>
+      </a>
+
+      <a class="session-card" href="../session-10-capstone.md">
+        <div class="num">Session 10</div>
+        <h4>Capstone · The Captain</h4>
+        <p class="outcome">90-day operating roadmap. Standing schedule recommended, or wired live on Max.</p>
+        <div class="tag-row">
+          <span class="day day-2">Day 2</span>
+          <span class="opens">session-10-capstone.md</span>
+        </div>
+      </a>
+    </div>
+
+    <h3 style="font-size:18px; margin-bottom:16px; color:var(--text-2); font-family:var(--display); letter-spacing:-0.01em;">Add-on sessions</h3>
+    <div class="session-grid">
+      <a class="session-card" href="../session-11-influencer-scout.md">
+        <div class="num">Session 11</div>
+        <h4>Influencer Scout</h4>
+        <p class="outcome">Shortlist of 5 creators (Default) or 10 plus a 4-week ladder and budget estimates (Power). Outreach and counter-offer scripts included.</p>
+        <div class="tag-row">
+          <span class="day addon">Add-on</span>
+          <span class="opens">session-11-influencer-scout.md</span>
+        </div>
+      </a>
+      <a class="session-card" href="../session-telegram.md">
+        <div class="num">Session 12</div>
+        <h4>Telegram Bot</h4>
+        <p class="outcome">Your skills on your phone. DM the bot, it routes to Claude with full CLAUDE.md context.</p>
+        <div class="tag-row">
+          <span class="day addon">Add-on</span>
+          <span class="opens">session-telegram.md</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="teammates">
+  <div class="container">
+    <div class="section-head">
+      <div class="overline">03 · The roster</div>
+      <h2>Ten teammates and one Captain.</h2>
+      <p>Each teammate owns a specific slice of the brand and reads CLAUDE.md before they start. Most are slash-command skills. Three are subagents that run in their own context for the bigger jobs.</p>
+    </div>
+
+    <div class="teammate-grid">
+
+      <div class="teammate">
+        <div class="head">
+          <div class="avatar">01</div>
+          <div>
+            <h4>Brand Brain</h4>
+            <div class="role">Your AI Chief of Staff</div>
+          </div>
+        </div>
+        <p class="owns">Holds brand DNA, voice rules, products, customers, compliance lines. Every other teammate reads this file first.</p>
+        <div class="rows">
+          <div class="row"><span class="k">Day</span><span class="v">Sat · Session 1</span></div>
+          <div class="row"><span class="k">Tool</span><span class="v">/interview-me · CLAUDE.md</span></div>
+        </div>
+      </div>
+
+      <div class="teammate">
+        <div class="head">
+          <div class="avatar">02</div>
+          <div>
+            <h4>Market Analyst</h4>
+            <div class="role">Competitive intel</div>
+          </div>
+        </div>
+        <p class="owns">Tracks 3 to 5 competitors. Pricing, positioning, content cadence. Flags what is working in the category.</p>
+        <div class="rows">
+          <div class="row"><span class="k">Day</span><span class="v">Sat · Session 2</span></div>
+          <div class="row"><span class="k">Tool</span><span class="v">/market-analyst</span></div>
+        </div>
+      </div>
+
+      <div class="teammate">
+        <div class="head">
+          <div class="avatar">03</div>
+          <div>
+            <h4>Voice of Customer</h4>
+            <div class="role">Themes + personas</div>
+          </div>
+        </div>
+        <p class="owns">Mines reviews, tickets, WhatsApp chats and CRM notes for themes, sentiment patterns and persona signals.</p>
+        <div class="rows">
+          <div class="row"><span class="k">Day</span><span class="v">Sat · Sessions 2 + 3</span></div>
+          <div class="row"><span class="k">Tool</span><span class="v">/voice-of-customer</span></div>
+        </div>
+      </div>
+
+      <div class="teammate">
+        <div class="head">
+          <div class="avatar">04</div>
+          <div>
+            <h4>Content Lead</h4>
+            <div class="role">First subagent</div>
+          </div>
+        </div>
+        <p class="owns">30-day calendar, content pieces, marketplace listings. Brand safety pass on every output.</p>
+        <div class="rows">
+          <div class="row"><span class="k">Day</span><span class="v">Sat · Session 4</span></div>
+          <div class="row"><span class="k">Tool</span><span class="v">content-lead subagent</span></div>
+        </div>
+      </div>
+
+      <div class="teammate">
+        <div class="head">
+          <div class="avatar">05</div>
+          <div>
+            <h4>Marketplace Editor</h4>
+            <div class="role">Amazon + Flipkart</div>
+          </div>
+        </div>
+        <p class="owns">Amazon A+ content blocks, Flipkart listings. Goes deeper than the Day 1 first pass with conversion data and VoC themes.</p>
+        <div class="rows">
+          <div class="row"><span class="k">Day</span><span class="v">Sun · Session 7</span></div>
+          <div class="row"><span class="k">Tool</span><span class="v">/marketplace-editor</span></div>
+        </div>
+      </div>
+
+      <div class="teammate">
+        <div class="head">
+          <div class="avatar">06</div>
+          <div>
+            <h4>Performance Marketer</h4>
+            <div class="role">Ads + creative briefs</div>
+          </div>
+        </div>
+        <p class="owns">Ad variations across 5 angles for Meta and Google. Creative briefs for designers or AI image tools.</p>
+        <div class="rows">
+          <div class="row"><span class="k">Day</span><span class="v">Sun · Session 6</span></div>
+          <div class="row"><span class="k">Tool</span><span class="v">performance-marketer subagent · /creative-brief</span></div>
+        </div>
+      </div>
+
+      <div class="teammate">
+        <div class="head">
+          <div class="avatar">07</div>
+          <div>
+            <h4>Storefront Specialist</h4>
+            <div class="role">PDPs + CRO</div>
+          </div>
+        </div>
+        <p class="owns">Shopify PDPs and landing pages. Reads live conversion data via the Shopify MCP. CRO observations attached.</p>
+        <div class="rows">
+          <div class="row"><span class="k">Day</span><span class="v">Sun · Session 7</span></div>
+          <div class="row"><span class="k">Tool</span><span class="v">/pdp-writer</span></div>
+        </div>
+      </div>
+
+      <div class="teammate">
+        <div class="head">
+          <div class="avatar">08</div>
+          <div>
+            <h4>Ops Manager</h4>
+            <div class="role">SOPs + vendor kit</div>
+          </div>
+        </div>
+        <p class="owns">SOPs, vendor templates, returns analysis. Trigger-based playbooks (RTO spike, NDR event, low stock).</p>
+        <div class="rows">
+          <div class="row"><span class="k">Day</span><span class="v">Sun · Session 8</span></div>
+          <div class="row"><span class="k">Tool</span><span class="v">/ops-manager</span></div>
+        </div>
+      </div>
+
+      <div class="teammate">
+        <div class="head">
+          <div class="avatar">09</div>
+          <div>
+            <h4>Retention Manager</h4>
+            <div class="role">WhatsApp + email</div>
+          </div>
+        </div>
+        <p class="owns">WhatsApp Business and email retention flows. Customer segments by recency, frequency, value.</p>
+        <div class="rows">
+          <div class="row"><span class="k">Day</span><span class="v">Sun · Session 8</span></div>
+          <div class="row"><span class="k">Tool</span><span class="v">/retention-manager</span></div>
+        </div>
+      </div>
+
+      <div class="teammate">
+        <div class="head">
+          <div class="avatar">10</div>
+          <div>
+            <h4>Growth Analyst</h4>
+            <div class="role">Monday brief</div>
+          </div>
+        </div>
+        <p class="owns">Weekly Monday brief. Unit economics. The one number that needs your attention this week.</p>
+        <div class="rows">
+          <div class="row"><span class="k">Day</span><span class="v">Sun · Session 9</span></div>
+          <div class="row"><span class="k">Tool</span><span class="v">/growth-analyst · scheduled wake-up</span></div>
+        </div>
+      </div>
+
+      <div class="teammate" style="grid-column: span 1; background: linear-gradient(180deg, #FAFAFA, #FFFFFF); border-color: var(--primary);">
+        <div class="head">
+          <div class="avatar" style="background: var(--primary); color: white;">CC</div>
+          <div>
+            <h4>The Captain</h4>
+            <div class="role">Cross-teammate orchestrator</div>
+          </div>
+        </div>
+        <p class="owns">Reads index files from every teammate. Produces a cross-cutting weekly recommendation and the 90-day roadmap.</p>
+        <div class="rows">
+          <div class="row"><span class="k">Day</span><span class="v">Sun · Session 10</span></div>
+          <div class="row"><span class="k">Tool</span><span class="v">captain subagent</span></div>
+        </div>
+      </div>
+
+      <div class="teammate" style="background: #FFFBEB; border-color: #FCD34D;">
+        <div class="head">
+          <div class="avatar" style="background:#FEF3C7; color:#92400E;">11</div>
+          <div>
+            <h4>Influencer Scout</h4>
+            <div class="role">Add-on · Modash + outreach</div>
+          </div>
+        </div>
+        <p class="owns">Shortlist of creators from a Modash-shape pool. Outreach scripts and counter-offer playbook.</p>
+        <div class="rows">
+          <div class="row"><span class="k">Day</span><span class="v">Add-on · Session 11</span></div>
+          <div class="row"><span class="k">Tool</span><span class="v">/influencer-scout</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="catalog">
+  <div class="container">
+    <div class="section-head">
+      <div class="overline">04 · Catalog</div>
+      <h2>Every skill, agent and command. With its path.</h2>
+      <p>Three primitive types live under <span class="inline-code">.claude/</span>. Skills are reusable playbooks, agents are subagents that run in their own context, and commands are slash commands invoked by name.</p>
+    </div>
+
+    <div class="catalog">
+      <div class="row head">
+        <div>Name</div><div>Kind · Owner</div><div>Path</div><div>Session</div>
+      </div>
+
+      <div class="row">
+        <div class="name">interview-me</div>
+        <div><span class="kind command">Command</span> Brand Brain</div>
+        <div class="path">.claude/commands/interview-me.md</div>
+        <div class="where">Session 1</div>
+      </div>
+      <div class="row">
+        <div class="name">market-analyst</div>
+        <div><span class="kind skill">Skill</span> Market Analyst</div>
+        <div class="path">.claude/skills/market-analyst/</div>
+        <div class="where">Session 2</div>
+      </div>
+      <div class="row">
+        <div class="name">voice-of-customer</div>
+        <div><span class="kind skill">Skill</span> Voice of Customer</div>
+        <div class="path">.claude/skills/voice-of-customer/</div>
+        <div class="where">Sessions 2 + 3</div>
+      </div>
+      <div class="row">
+        <div class="name">write-in-brand-voice</div>
+        <div><span class="kind skill">Skill</span> Brand-voice utility</div>
+        <div class="path">.claude/skills/write-in-brand-voice/</div>
+        <div class="where">Anytime · used across sessions</div>
+      </div>
+      <div class="row">
+        <div class="name">content-lead</div>
+        <div><span class="kind agent">Subagent</span> Content Lead</div>
+        <div class="path">.claude/agents/content-lead.md</div>
+        <div class="where">Session 4</div>
+      </div>
+      <div class="row">
+        <div class="name">creative-brief</div>
+        <div><span class="kind skill">Skill</span> Performance Marketer helper</div>
+        <div class="path">.claude/skills/creative-brief/</div>
+        <div class="where">Session 6</div>
+      </div>
+      <div class="row">
+        <div class="name">performance-marketer</div>
+        <div><span class="kind agent">Subagent</span> Performance Marketer</div>
+        <div class="path">.claude/agents/performance-marketer.md</div>
+        <div class="where">Session 6</div>
+      </div>
+      <div class="row">
+        <div class="name">fal-image-gen</div>
+        <div><span class="kind skill">Skill</span> Creative output</div>
+        <div class="path">.claude/skills/fal-image-gen/</div>
+        <div class="where">Session 6 · creative briefs</div>
+      </div>
+      <div class="row">
+        <div class="name">pdp-writer</div>
+        <div><span class="kind skill">Skill</span> Storefront Specialist</div>
+        <div class="path">.claude/skills/pdp-writer/</div>
+        <div class="where">Session 7</div>
+      </div>
+      <div class="row">
+        <div class="name">marketplace-editor</div>
+        <div><span class="kind skill">Skill</span> Marketplace Editor</div>
+        <div class="path">.claude/skills/marketplace-editor/</div>
+        <div class="where">Session 7</div>
+      </div>
+      <div class="row">
+        <div class="name">ops-manager</div>
+        <div><span class="kind skill">Skill</span> Ops Manager</div>
+        <div class="path">.claude/skills/ops-manager/</div>
+        <div class="where">Session 8</div>
+      </div>
+      <div class="row">
+        <div class="name">retention-manager</div>
+        <div><span class="kind skill">Skill</span> Retention Manager</div>
+        <div class="path">.claude/skills/retention-manager/</div>
+        <div class="where">Session 8</div>
+      </div>
+      <div class="row">
+        <div class="name">growth-analyst</div>
+        <div><span class="kind skill">Skill</span> Growth Analyst</div>
+        <div class="path">.claude/skills/growth-analyst/</div>
+        <div class="where">Session 9</div>
+      </div>
+      <div class="row">
+        <div class="name">captain</div>
+        <div><span class="kind agent">Subagent</span> The Captain</div>
+        <div class="path">.claude/agents/captain.md</div>
+        <div class="where">Session 10</div>
+      </div>
+      <div class="row">
+        <div class="name">influencer-scout</div>
+        <div><span class="kind skill">Skill</span> Add-on · Influencer Scout</div>
+        <div class="path">.claude/skills/influencer-scout/</div>
+        <div class="where">Session 11</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>Two scopes on every skill and subagent.</b> Pick at the start of the session. <span class="inline-code">DEFAULT</span> is sized for Pro plan and the workshop slot. <span class="inline-code">POWER</span> is for Max plan or take-home. Same teaching beat either way.
+    </div>
+  </div>
+</section>
+
+<section id="glossary">
+  <div class="container">
+    <div class="section-head">
+      <div class="overline">05 · Glossary</div>
+      <h2>Plain words for the nine moving parts.</h2>
+      <p>If a teammate mentions one of these and you blank for a second, this is the page to scan.</p>
+    </div>
+
+    <div class="glossary-grid">
+      <div class="term">
+        <span class="what">Primitive · Day 1</span>
+        <h4>CLAUDE.md</h4>
+        <p>A markdown file at the root of your repo. It holds your brand profile: voice rules, products, customers, compliance lines, banned words. Claude reads it on every session. Every teammate respects it.</p>
+        <div class="where"><b>Lives at</b> <span class="inline-code">CLAUDE.md</span></div>
+      </div>
+
+      <div class="term">
+        <span class="what">Primitive · Day 1</span>
+        <h4>Skill</h4>
+        <p>A folder with a SKILL.md inside. Claude autoloads it when the trigger phrase or task fits. Think of it as a job description plus a checklist a teammate runs every time they work.</p>
+        <div class="where"><b>Lives at</b> <span class="inline-code">.claude/skills/&lt;name&gt;/SKILL.md</span></div>
+      </div>
+
+      <div class="term">
+        <span class="what">Primitive · Day 1</span>
+        <h4>Slash command</h4>
+        <p>A short text command you type to trigger an action (for example <span class="inline-code">/interview-me</span>). Defined as a single markdown file. The Brand Brain uses one to interview you and fill CLAUDE.md.</p>
+        <div class="where"><b>Lives at</b> <span class="inline-code">.claude/commands/&lt;name&gt;.md</span></div>
+      </div>
+
+      <div class="term">
+        <span class="what">Primitive · Day 1</span>
+        <h4>MCP</h4>
+        <p>Model Context Protocol. The plug that lets a teammate read live data from Shopify, Google Drive, Gmail and others. Wired in Session 3. Once live, the same skill reads from real systems instead of pasted files.</p>
+        <div class="where"><b>See</b> <a href="#resources">Resources</a> for the full Tier 1 to Tier 4 MCP list</div>
+      </div>
+
+      <div class="term">
+        <span class="what">Primitive · Day 1</span>
+        <h4>Subagent</h4>
+        <p>A specialised teammate that runs in its own context window for bigger jobs. The Content Lead and Performance Marketer are subagents because they produce 30+ outputs in one run. The Captain is one too.</p>
+        <div class="where"><b>Lives at</b> <span class="inline-code">.claude/agents/&lt;name&gt;.md</span></div>
+      </div>
+
+      <div class="term">
+        <span class="what">Concept · Day 2</span>
+        <h4>Parallel dispatch</h4>
+        <p>Your main session (the orchestrator) spawns several subagents in parallel. Used by Performance Marketer to produce 50+ ad variations across 5 angles in a single run instead of running them one by one.</p>
+        <div class="where"><b>See</b> Session 6</div>
+      </div>
+
+      <div class="term">
+        <span class="what">Concept · Day 2</span>
+        <h4>MCP-fed iteration</h4>
+        <p>A loop where a skill reads live data via an MCP, diagnoses what is off, rewrites, and pushes the new version back as a draft. Storefront Specialist uses this on Shopify PDPs.</p>
+        <div class="where"><b>See</b> Session 7</div>
+      </div>
+
+      <div class="term">
+        <span class="what">Concept · Day 2</span>
+        <h4>Hooks + triggers</h4>
+        <p>When event X happens, run action Y. An RTO spike triggers the Ops Manager to draft a vendor escalation. A new review triggers Voice of Customer to refresh themes.</p>
+        <div class="where"><b>See</b> Session 8</div>
+      </div>
+
+      <div class="term">
+        <span class="what">Concept · Day 2</span>
+        <h4>Scheduled wake-up</h4>
+        <p>A time-based hook. Every Monday at 09:00 IST the Growth Analyst runs the weekly brief and drops it in <span class="inline-code">my-work/growth-analyst/</span>. You wake up to the file.</p>
+        <div class="where"><b>See</b> Session 9</div>
+      </div>
+
+      <div class="term">
+        <span class="what">Concept · Day 2</span>
+        <h4>Captain pattern</h4>
+        <p>One subagent reads the index file from every teammate (not the raw outputs) and produces a cross-cutting recommendation plus the 90-day roadmap. Token-cheap because indexes are ~500 tokens each.</p>
+        <div class="where"><b>See</b> Session 10</div>
+      </div>
+
+      <div class="term">
+        <span class="what">Convention</span>
+        <h4>Index file</h4>
+        <p>Every Day 2 teammate produces a short index of their work (~500 tokens) on top of the raw output. The Captain only reads indexes. This is what keeps the 90-day roadmap affordable on Pro plan.</p>
+        <div class="where"><b>Lives at</b> <span class="inline-code">my-work/&lt;teammate&gt;/INDEX.md</span></div>
+      </div>
+
+      <div class="term">
+        <span class="what">Convention</span>
+        <h4>Default vs Power scope</h4>
+        <p>Every skill asks the founder to pick scope at the start. DEFAULT fits the workshop slot on Pro plan. POWER is for Max plan or take-home work and produces a wider deliverable.</p>
+        <div class="where"><b>Picked at</b> the start of every skill or subagent run</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="repo">
+  <div class="container">
+    <div class="section-head">
+      <div class="overline">06 · Repo tour</div>
+      <h2>Where every folder lives. What it is for.</h2>
+      <p>One folder per role. Your work lands in <span class="inline-code">my-work/</span>. The two example brands live in <span class="inline-code">examples/</span> and are safe to copy from.</p>
+    </div>
+
+<pre class="tree">thecrux-d2c-bootcamp/
+├── <span class="label">CLAUDE.md</span>                             <span class="note"># Your brand profile. Every teammate reads this first.</span>
+├── <span class="label">CLAUDE.template.md</span>                    <span class="note"># Empty template Session 1 fills.</span>
+├── <span class="label">student-handbook.md</span>                   <span class="note"># Master map for founders. Start here on Saturday.</span>
+├── <span class="label">session-0-setup.md</span>                    <span class="note"># Setup. Claude Code running, repo cloned.</span>
+├── <span class="label">session-1-brand-brain.md</span>              <span class="note"># Day 1 · CLAUDE.md filled in your voice.</span>
+├── <span class="label">session-2-skills.md</span>                   <span class="note"># Day 1 · Market Analyst + Voice of Customer.</span>
+├── <span class="label">session-3-mcps.md</span>                     <span class="note"># Day 1 · Shopify + Drive + Gmail wired.</span>
+├── <span class="label">session-4-content-lead.md</span>             <span class="note"># Day 1 · First subagent. 30-day calendar.</span>
+├── <span class="label">session-5-integration.md</span>              <span class="note"># Day 1 · Captain prompt across Day 1 outputs.</span>
+├── <span class="label">session-6-performance-marketer.md</span>     <span class="note"># Day 2 · 50+ ads across 5 angles.</span>
+├── <span class="label">session-7-storefront-marketplace.md</span>   <span class="note"># Day 2 · PDPs + marketplace.</span>
+├── <span class="label">session-8-ops-retention.md</span>            <span class="note"># Day 2 · Hooks + triggers.</span>
+├── <span class="label">session-9-growth-analyst.md</span>           <span class="note"># Day 2 · Monday brief on a scheduled wake-up.</span>
+├── <span class="label">session-10-capstone.md</span>                <span class="note"># Day 2 · The Captain. 90-day roadmap.</span>
+├── <span class="label">session-11-influencer-scout.md</span>        <span class="note"># Add-on · Creator shortlist + outreach.</span>
+├── <span class="label">session-telegram.md</span>                   <span class="note"># Add-on · Skills on your phone.</span>
+├── <span class="label">resources.md</span>                          <span class="note"># MCPs, skills and tools to add post-workshop.</span>
+├── <span class="label">design.md</span>                             <span class="note"># Design system reference (Genesis).</span>
+│
+├── <span class="label">.claude/</span>
+│   ├── commands/
+│   │   └── <span class="file">interview-me.md</span>                <span class="note"># Slash command for Session 1.</span>
+│   ├── skills/                              <span class="note"># Every reusable playbook.</span>
+│   │   ├── <span class="file">market-analyst/</span>
+│   │   ├── <span class="file">voice-of-customer/</span>
+│   │   ├── <span class="file">write-in-brand-voice/</span>
+│   │   ├── <span class="file">creative-brief/</span>
+│   │   ├── <span class="file">fal-image-gen/</span>
+│   │   ├── <span class="file">pdp-writer/</span>
+│   │   ├── <span class="file">marketplace-editor/</span>
+│   │   ├── <span class="file">ops-manager/</span>
+│   │   ├── <span class="file">retention-manager/</span>
+│   │   ├── <span class="file">growth-analyst/</span>
+│   │   └── <span class="file">influencer-scout/</span>
+│   └── agents/                              <span class="note"># Subagents that run in their own context.</span>
+│       ├── <span class="file">content-lead.md</span>
+│       ├── <span class="file">performance-marketer.md</span>
+│       └── <span class="file">captain.md</span>
+│
+├── <span class="label">brand-brain/</span>                          <span class="note"># YOUR pre-work inputs live here.</span>
+│                                            <span class="note"># reviews, competitor notes, voice DNA, CSVs, etc.</span>
+│
+├── <span class="label">my-work/</span>                              <span class="note"># Outputs from every teammate. One folder per teammate.</span>
+│   ├── market-analyst/
+│   ├── voice-of-customer/
+│   ├── content-lead/
+│   ├── performance-marketer/
+│   ├── pdp-writer/
+│   ├── marketplace-editor/
+│   ├── ops-manager/
+│   ├── retention-manager/
+│   ├── growth-analyst/
+│   └── captain/
+│
+├── <span class="label">examples/</span>                             <span class="note"># Two worked brands across all 10 teammates.</span>
+│   ├── <span class="file">little-lab/</span>                        <span class="note"># Fictional baby skincare. CDSCO, Amazon-heavy.</span>
+│   └── <span class="file">the-paan-legacy/</span>                   <span class="note"># Tobacco-free paan. FSSAI, Zomato/Swiggy-first.</span>
+│
+├── <span class="label">references/</span>                           <span class="note"># Deep-dive walkthroughs per module.</span>
+│   ├── module-0-setup/                      <span class="note"># Troubleshooting.</span>
+│   ├── module-1-brand-brain/                <span class="note"># Little Lab example fill.</span>
+│   ├── module-3-mcps/                       <span class="note"># Shopify, Drive, Gmail setup walkthroughs.</span>
+│   ├── module-4-agents/                     <span class="note"># Content types, brand safety checklist.</span>
+│   ├── module-5-integration/                <span class="note"># Day 1 Captain prompt.</span>
+│   ├── module-6-performance-marketer/       <span class="note"># Ad angle parallelism, templates.</span>
+│   ├── module-7-storefront-marketplace/     <span class="note"># CRO iteration loop.</span>
+│   ├── module-8-ops-retention/              <span class="note"># Hooks + triggers patterns.</span>
+│   ├── module-9-growth-analyst/             <span class="note"># Wake-up + Monday brief spec.</span>
+│   ├── module-10-capstone/                  <span class="note"># Captain prompt, 90-day roadmap, schedule.</span>
+│   ├── module-11-influencer-scout/          <span class="note"># Modash shape, sample pool, rate card.</span>
+│   └── resources/                           <span class="note"># Long-form deep dives (AI creative stack, etc).</span>
+│
+├── <span class="label">archive/</span>                              <span class="note"># Old material. Safe to ignore.</span>
+└── <span class="label">site/</span>
+    └── <span class="file">index.html</span>                         <span class="note"># This page.</span>
+</pre>
+
+    <div class="callout">
+      <b>Sessions vs modules.</b> Same content, two audiences. The <span class="inline-code">session-N-*.md</span> files at the root are written to you, the founder. The <span class="inline-code">references/module-N-*/</span> folders are instructor deep-dives and canonical prompts. Both are safe to read. You only need the session files.
+    </div>
+  </div>
+</section>
+
+<section id="resources">
+  <div class="container">
+    <div class="section-head">
+      <div class="overline">07 · Resources</div>
+      <h2>What to add after the workshop.</h2>
+      <p>The workshop installs only what each session needs. After Sunday, this is the short list focused on the India D2C operating stack. Full detail in <a href="../resources.md">resources.md</a>.</p>
+    </div>
+
+    <h3 style="font-size:18px; margin-bottom:16px; color:var(--text-2); font-family:var(--display); letter-spacing:-0.01em;">Tier 1 · wired during the workshop</h3>
+    <div class="res-table" style="margin-bottom:28px;">
+      <div class="row head"><div>MCP</div><div>Feeds</div><div>Why</div></div>
+      <div class="row">
+        <div class="name">Shopify</div>
+        <div class="feeds">Growth Analyst, Storefront Specialist, Retention Manager, Voice of Customer</div>
+        <div class="note">Orders, products, customers, inventory, reviews (if Judge.me or Loox installed). The data spine of your D2C side.</div>
+      </div>
+      <div class="row">
+        <div class="name">Google Drive</div>
+        <div class="feeds">Brand Brain, Content Lead, Performance Marketer</div>
+        <div class="note">Brand assets, generated content, the brand-brain folder, creative drop folders for design agencies.</div>
+      </div>
+      <div class="row">
+        <div class="name">Gmail</div>
+        <div class="feeds">Ops Manager, Voice of Customer</div>
+        <div class="note">Vendor threads, customer support escalations, 3PL communication. Pull tickets into VoC, draft replies in Ops.</div>
+      </div>
+    </div>
+
+    <h3 style="font-size:18px; margin-bottom:16px; color:var(--text-2); font-family:var(--display); letter-spacing:-0.01em;">Tier 2 · India D2C operating stack (add as needed)</h3>
+    <div class="res-table" style="margin-bottom:28px;">
+      <div class="row head"><div>Tool</div><div>Feeds</div><div>What it covers</div></div>
+      <div class="row"><div class="name">Zoho Books</div><div class="feeds">Growth Analyst, Ops Manager</div><div class="note">Indian accounting default. COGS, channel revenue, returns, GST. Official MCP.</div></div>
+      <div class="row"><div class="name">WATI / AiSensy / Interakt</div><div class="feeds">Retention Manager, Voice of Customer, Ops Manager</div><div class="note">WhatsApp Business API. The #1 retention channel for India D2C. Webhook-to-file pattern (no MCP yet).</div></div>
+      <div class="row"><div class="name">Razorpay</div><div class="feeds">Growth Analyst, Ops Manager</div><div class="note">Settlements, refunds, disputes, COD remittance. Public API, community MCP available.</div></div>
+      <div class="row"><div class="name">Shiprocket</div><div class="feeds">Ops Manager, Growth Analyst</div><div class="note">3PL aggregator. RTO rates, NDR, zone-wise cost. Webhook-to-file.</div></div>
+      <div class="row"><div class="name">Klaviyo</div><div class="feeds">Retention Manager, Performance Marketer</div><div class="note">Email + SMS retention. Flow performance, segments, predictive LTV.</div></div>
+      <div class="row"><div class="name">Judge.me / Loox / Stamped</div><div class="feeds">Voice of Customer, Storefront Specialist</div><div class="note">Reviews and UGC. Often surfaces through Shopify MCP already.</div></div>
+    </div>
+
+    <h3 style="font-size:18px; margin-bottom:16px; color:var(--text-2); font-family:var(--display); letter-spacing:-0.01em;">Tier 3 · marketplaces (CSV pattern)</h3>
+    <div class="res-table" style="margin-bottom:28px;">
+      <div class="row head"><div>Marketplace</div><div>Feeds</div><div>Pattern</div></div>
+      <div class="row"><div class="name">Amazon Seller Central (India)</div><div class="feeds">Marketplace Editor, Growth Analyst</div><div class="note">Weekly CSV from Seller Central into <span class="inline-code">brand-brain/marketplace-revenue.csv</span>.</div></div>
+      <div class="row"><div class="name">Flipkart Seller Hub</div><div class="feeds">Marketplace Editor, Growth Analyst</div><div class="note">Same CSV pattern. API exists, no official MCP.</div></div>
+      <div class="row"><div class="name">Meesho Supplier</div><div class="feeds">Marketplace Editor, Growth Analyst</div><div class="note">Same CSV pattern.</div></div>
+      <div class="row"><div class="name">Quick commerce (Blinkit, Zepto, Instamart)</div><div class="feeds">Marketplace Editor, Growth Analyst</div><div class="note">Manual CSV from the brand portal. No API for most brands.</div></div>
+    </div>
+
+    <h3 style="font-size:18px; margin-bottom:16px; color:var(--text-2); font-family:var(--display); letter-spacing:-0.01em;">What to skip</h3>
+    <div class="res-table">
+      <div class="row head"><div>Tool</div><div>Status</div><div>Why skip</div></div>
+      <div class="row"><div class="name">Meta Ads, Google Ads MCP</div><div class="feeds">Skip for now</div><div class="note">OAuth fragile, scope broad. Performance Marketer reads <span class="inline-code">brand-brain/meta-ads-90d.csv</span> just fine.</div></div>
+      <div class="row"><div class="name">Instagram, X, LinkedIn social MCPs</div><div class="feeds">Skip</div><div class="note">Engagement is a vanity number for D2C. Treat social as a publishing surface, not a data source.</div></div>
+      <div class="row"><div class="name">Generic database MCPs</div><div class="feeds">Skip</div><div class="note">You do not have a database. Direct integrations beat SQL connectors at this stage.</div></div>
+      <div class="row"><div class="name">Tally</div><div class="feeds">CSV only</div><div class="note">No MCP. Treat like a marketplace. Weekly export into brand-brain.</div></div>
+    </div>
+
+    <div class="callout" style="margin-top:32px;">
+      <b>The full list lives in <a href="../resources.md">resources.md</a>.</b> It covers Tier 4 conditional adds (Canva, Figma, Fal.ai, Tavily, Google Calendar) and the webhook-to-file pattern for vendors that expose webhooks but have no MCP.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    Reference site for theCrux AI D2C workshop. Built from <a href="../student-handbook.md">student-handbook.md</a> and the per-session files at the repo root. If a fact here drifts from the source, the markdown wins.
+  </div>
+</footer>
+
+</body>
+</html>

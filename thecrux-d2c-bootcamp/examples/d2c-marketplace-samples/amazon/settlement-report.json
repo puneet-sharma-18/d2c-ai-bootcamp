@@ -1,0 +1,235 @@
+{
+  "reportType": "GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE",
+  "settlementId": "18374629501",
+  "settlementStartDate": "2026-04-15T00:00:00Z",
+  "settlementEndDate": "2026-04-29T23:59:59Z",
+  "depositDate": "2026-05-01T00:00:00Z",
+  "totalAmount": "98432.18",
+  "currency": "INR",
+  "transactions": [
+    {
+      "settlementId": "18374629501",
+      "transactionType": "Order",
+      "orderId": "404-2837461-9384726",
+      "merchantOrderId": "",
+      "adjustmentId": "",
+      "shipmentId": "FBA1928374650",
+      "marketplaceName": "amazon.in",
+      "amountType": "ItemPrice",
+      "amountDescription": "Principal",
+      "amount": "599.00",
+      "fulfillmentId": "AFN",
+      "postedDate": "2026-04-04T11:02:09Z",
+      "sku": "AUR-FW-100",
+      "quantityPurchased": 1,
+      "promotionId": ""
+    },
+    {
+      "settlementId": "18374629501",
+      "transactionType": "Order",
+      "orderId": "404-2837461-9384726",
+      "amountType": "ItemFees",
+      "amountDescription": "Commission",
+      "amount": "-89.85",
+      "sku": "AUR-FW-100",
+      "_note": "15% category commission for beauty"
+    },
+    {
+      "settlementId": "18374629501",
+      "transactionType": "Order",
+      "orderId": "404-2837461-9384726",
+      "amountType": "ItemFees",
+      "amountDescription": "FBAPerUnitFulfillmentFee",
+      "amount": "-42.00",
+      "sku": "AUR-FW-100"
+    },
+    {
+      "settlementId": "18374629501",
+      "transactionType": "Order",
+      "orderId": "404-2837461-9384726",
+      "amountType": "ItemFees",
+      "amountDescription": "FixedClosingFee",
+      "amount": "-15.00",
+      "sku": "AUR-FW-100"
+    },
+    {
+      "settlementId": "18374629501",
+      "transactionType": "Order",
+      "orderId": "404-7384921-2837465",
+      "amountType": "ItemPrice",
+      "amountDescription": "Principal",
+      "amount": "599.00",
+      "sku": "AUR-FW-100",
+      "quantityPurchased": 1
+    },
+    {
+      "settlementId": "18374629501",
+      "transactionType": "Order",
+      "orderId": "404-7384921-2837465",
+      "amountType": "ItemFees",
+      "amountDescription": "Commission",
+      "amount": "-89.85",
+      "sku": "AUR-FW-100"
+    },
+    {
+      "settlementId": "18374629501",
+      "transactionType": "Order",
+      "orderId": "404-7384921-2837465",
+      "amountType": "ItemFees",
+      "amountDescription": "FBAPerUnitFulfillmentFee",
+      "amount": "-42.00",
+      "sku": "AUR-FW-100"
+    },
+    {
+      "settlementId": "18374629501",
+      "transactionType": "Order",
+      "orderId": "404-3849271-8273645",
+      "amountType": "ItemPrice",
+      "amountDescription": "Principal",
+      "amount": "449.00",
+      "sku": "AUR-LB-15",
+      "quantityPurchased": 1
+    },
+    {
+      "settlementId": "18374629501",
+      "transactionType": "Order",
+      "orderId": "404-3849271-8273645",
+      "amountType": "ItemFees",
+      "amountDescription": "Commission",
+      "amount": "-67.35",
+      "sku": "AUR-LB-15",
+      "_note": "15% beauty commission"
+    },
+    {
+      "settlementId": "18374629501",
+      "transactionType": "Order",
+      "orderId": "404-3849271-8273645",
+      "amountType": "ItemFees",
+      "amountDescription": "FBAPerUnitFulfillmentFee",
+      "amount": "-38.00",
+      "sku": "AUR-LB-15"
+    },
+    {
+      "settlementId": "18374629501",
+      "transactionType": "Order",
+      "orderId": "404-5647382-9182736",
+      "amountType": "ItemPrice",
+      "amountDescription": "Principal",
+      "amount": "549.00",
+      "sku": "AUR-BL-200",
+      "quantityPurchased": 1
+    },
+    {
+      "settlementId": "18374629501",
+      "transactionType": "Order",
+      "orderId": "404-5647382-9182736",
+      "amountType": "ItemFees",
+      "amountDescription": "Commission",
+      "amount": "-82.35",
+      "sku": "AUR-BL-200"
+    },
+    {
+      "settlementId": "18374629501",
+      "transactionType": "Order",
+      "orderId": "404-5647382-9182736",
+      "amountType": "ItemFees",
+      "amountDescription": "FBAPerUnitFulfillmentFee",
+      "amount": "-58.00",
+      "sku": "AUR-BL-200",
+      "_note": "Higher FBA fee due to bottle weight (200ml)"
+    },
+    {
+      "settlementId": "18374629501",
+      "transactionType": "Refund",
+      "orderId": "404-5647382-9182736",
+      "amountType": "ItemPrice",
+      "amountDescription": "Principal",
+      "amount": "-549.00",
+      "sku": "AUR-BL-200",
+      "_note": "Customer return: leaked in transit. See returns-report.json"
+    },
+    {
+      "settlementId": "18374629501",
+      "transactionType": "Refund",
+      "orderId": "404-5647382-9182736",
+      "amountType": "ItemFees",
+      "amountDescription": "RefundCommission",
+      "amount": "16.47",
+      "sku": "AUR-BL-200",
+      "_note": "Amazon retains 20% of original commission as refund processing fee"
+    },
+    {
+      "settlementId": "18374629501",
+      "transactionType": "ServiceFee",
+      "orderId": "",
+      "amountType": "ServiceFees",
+      "amountDescription": "FBAStorageFee",
+      "amount": "-1247.50",
+      "sku": "ALL_SKUS",
+      "_note": "Monthly FBA storage. Disproportionate share from AUR-HO-100 (521 units overstocked)."
+    },
+    {
+      "settlementId": "18374629501",
+      "transactionType": "ServiceFee",
+      "amountType": "ServiceFees",
+      "amountDescription": "AdvertisingChargeback",
+      "amount": "-47166.55",
+      "_note": "Sponsored Products spend for the period. See ads-search-terms.json."
+    }
+  ],
+  "_per_sku_unit_economics_summary": {
+    "AUR-FW-100": {
+      "ordered_units": 12,
+      "gross_revenue_inr": 7187.00,
+      "commission_inr": -1078.20,
+      "fba_fees_inr": -504.00,
+      "closing_fees_inr": -180.00,
+      "net_after_marketplace_fees_inr": 5424.80,
+      "marketplace_take_rate": 0.245
+    },
+    "AUR-SS-50": {
+      "ordered_units": 2,
+      "gross_revenue_inr": 1498.00,
+      "commission_inr": -224.70,
+      "fba_fees_inr": -88.00,
+      "closing_fees_inr": -30.00,
+      "net_after_marketplace_fees_inr": 1155.30,
+      "marketplace_take_rate": 0.229,
+      "ads_attribution_inr": -22738.36,
+      "_alert": "After ad spend, AUR-SS-50 is deeply unprofitable on Amazon this period."
+    },
+    "AUR-LB-15": {
+      "ordered_units": 4,
+      "gross_revenue_inr": 1796.00,
+      "commission_inr": -269.40,
+      "fba_fees_inr": -152.00,
+      "closing_fees_inr": -60.00,
+      "net_after_marketplace_fees_inr": 1314.60,
+      "marketplace_take_rate": 0.268
+    },
+    "AUR-BL-200": {
+      "ordered_units": 4,
+      "returns": 1,
+      "gross_revenue_inr": 2196.00,
+      "refunds_inr": -549.00,
+      "commission_inr": -329.40,
+      "fba_fees_inr": -232.00,
+      "closing_fees_inr": -60.00,
+      "refund_commission_retained_inr": -16.47,
+      "net_after_marketplace_fees_inr": 1009.13,
+      "effective_take_rate_after_returns": 0.540,
+      "_alert": "Return rate is destroying margin. 25% of orders this period returned."
+    },
+    "AUR-HO-100": {
+      "ordered_units": 1,
+      "gross_revenue_inr": 399.00,
+      "commission_inr": -59.85,
+      "fba_fees_inr": -42.00,
+      "closing_fees_inr": -15.00,
+      "net_after_marketplace_fees_inr": 282.15,
+      "ads_attribution_inr": -14423.85,
+      "storage_attribution_inr": -890.00,
+      "_alert": "Catastrophic. Carrying ~17 months of inventory at 1 unit/month velocity, plus ad bleed."
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "ai-team-bot",
+  "version": "1.0.0",
+  "description": "Minimal Telegram bot that forwards every message to claude -p; skills handle routing.",
+  "main": "ai_team_bot.js",
+  "scripts": {
+    "start": "node ai_team_bot.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "telegraf": "^4.16.3"
+  }
+}

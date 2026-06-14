@@ -1,0 +1,78 @@
+{
+  "reportType": "GET_FBA_FULFILLMENT_CUSTOMER_RETURNS_DATA",
+  "reportingRange": { "startDate": "2026-04-01", "endDate": "2026-04-30" },
+  "returns": [
+    {
+      "returnDate": "2026-04-12T14:22:18Z",
+      "orderId": "404-5647382-9182736",
+      "sku": "AUR-BL-200",
+      "asin": "B0CH4TQR15",
+      "fnSku": "X001H4TQR1",
+      "productName": "Auruh Body Lotion 200ml",
+      "quantity": 1,
+      "fulfillmentCenterId": "DEL5",
+      "detailedDisposition": "CUSTOMER_DAMAGED",
+      "reason": "DAMAGED_IN_TRANSIT",
+      "customerComments": "Bottle had leaked, half the lotion was missing. Outer box was wet."
+    },
+    {
+      "returnDate": "2026-04-18T09:48:33Z",
+      "orderId": "404-1827364-5938472",
+      "sku": "AUR-BL-200",
+      "asin": "B0CH4TQR15",
+      "fnSku": "X001H4TQR1",
+      "productName": "Auruh Body Lotion 200ml",
+      "quantity": 1,
+      "fulfillmentCenterId": "BOM7",
+      "detailedDisposition": "CUSTOMER_DAMAGED",
+      "reason": "DEFECTIVE",
+      "customerComments": "Pump was broken on arrival. Could not use product."
+    },
+    {
+      "returnDate": "2026-04-26T16:33:22Z",
+      "orderId": "404-7382910-1593048",
+      "sku": "AUR-BL-200",
+      "asin": "B0CH4TQR15",
+      "fnSku": "X001H4TQR1",
+      "productName": "Auruh Body Lotion 200ml",
+      "quantity": 1,
+      "fulfillmentCenterId": "BLR4",
+      "detailedDisposition": "CUSTOMER_DAMAGED",
+      "reason": "DAMAGED_IN_TRANSIT",
+      "customerComments": "Leaked completely. Refund please."
+    },
+    {
+      "returnDate": "2026-04-22T11:15:08Z",
+      "orderId": "404-8273645-3948271",
+      "sku": "AUR-LB-15",
+      "asin": "B0CH4TNP04",
+      "fnSku": "X001H4TNP0",
+      "productName": "Auruh Tinted Lip Balm 3-pack",
+      "quantity": 1,
+      "fulfillmentCenterId": "BOM7",
+      "detailedDisposition": "SELLABLE",
+      "reason": "NOT_AS_DESCRIBED",
+      "customerComments": "Shade was darker than the photo. Not what I expected."
+    },
+    {
+      "returnDate": "2026-04-29T13:42:55Z",
+      "orderId": "404-9504132-3715260",
+      "sku": "AUR-FW-100",
+      "asin": "B0CH4TKZ81",
+      "fnSku": "X001H4TKZ8",
+      "productName": "Auruh Vitamin C Face Wash 100ml",
+      "quantity": 1,
+      "fulfillmentCenterId": "BLR4",
+      "detailedDisposition": "SELLABLE",
+      "reason": "UNWANTED_ITEM",
+      "customerComments": "Changed my mind."
+    }
+  ],
+  "_summary_by_sku": {
+    "AUR-BL-200": { "units_sold": 4, "units_returned": 3, "return_rate": 0.75, "primary_reason": "DAMAGED_IN_TRANSIT / packaging failure", "_alert": "Packaging crisis. The product is fine. The packaging is failing. Switch to bubble-wrap inserts or bottle redesign before scaling ads on this SKU." },
+    "AUR-LB-15": { "units_sold": 4, "units_returned": 1, "return_rate": 0.25, "primary_reason": "NOT_AS_DESCRIBED", "_note": "Listing photo color accuracy issue. Reshoot with daylight color reference." },
+    "AUR-FW-100": { "units_sold": 12, "units_returned": 1, "return_rate": 0.083, "primary_reason": "UNWANTED_ITEM", "_note": "Healthy. Generic buyer remorse, not a product or listing issue." },
+    "AUR-SS-50": { "units_sold": 2, "units_returned": 0, "return_rate": 0.0 },
+    "AUR-HO-100": { "units_sold": 1, "units_returned": 0, "return_rate": 0.0 }
+  }
+}

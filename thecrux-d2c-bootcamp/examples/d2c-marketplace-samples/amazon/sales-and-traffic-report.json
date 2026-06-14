@@ -1,0 +1,126 @@
+{
+  "reportSpecification": {
+    "reportType": "GET_SALES_AND_TRAFFIC_REPORT",
+    "dataStartTime": "2026-04-01T00:00:00Z",
+    "dataEndTime": "2026-04-30T23:59:59Z",
+    "marketplaceIds": ["A21TJRUUN4KGV"]
+  },
+  "salesAndTrafficByAsin": [
+    {
+      "parentAsin": "B0CH4TKZ81",
+      "childAsin": "B0CH4TKZ81",
+      "sku": "AUR-FW-100",
+      "sales": {
+        "orderedProductSales": { "amount": 7187.00, "currencyCode": "INR" },
+        "unitsOrdered": 12,
+        "totalOrderItems": 11,
+        "averageSalesPerOrderItem": { "amount": 653.36, "currencyCode": "INR" },
+        "averageSellingPrice": { "amount": 599.00, "currencyCode": "INR" }
+      },
+      "traffic": {
+        "browserSessions": 482,
+        "mobileAppSessions": 1247,
+        "sessions": 1729,
+        "browserPageViews": 612,
+        "mobileAppPageViews": 1583,
+        "pageViews": 2195,
+        "buyBoxPercentage": 100.0,
+        "unitSessionPercentage": 0.69,
+        "sessionPercentage": 14.2
+      }
+    },
+    {
+      "parentAsin": "B0CH4TLM92",
+      "childAsin": "B0CH4TLM92",
+      "sku": "AUR-SS-50",
+      "sales": {
+        "orderedProductSales": { "amount": 1498.00, "currencyCode": "INR" },
+        "unitsOrdered": 2,
+        "totalOrderItems": 2,
+        "averageSalesPerOrderItem": { "amount": 749.00, "currencyCode": "INR" },
+        "averageSellingPrice": { "amount": 749.00, "currencyCode": "INR" }
+      },
+      "traffic": {
+        "browserSessions": 2104,
+        "mobileAppSessions": 5836,
+        "sessions": 7940,
+        "browserPageViews": 2487,
+        "mobileAppPageViews": 6829,
+        "pageViews": 9316,
+        "buyBoxPercentage": 100.0,
+        "unitSessionPercentage": 0.025,
+        "sessionPercentage": 65.3
+      }
+    },
+    {
+      "parentAsin": "B0CH4TNP04",
+      "childAsin": "B0CH4TNP04",
+      "sku": "AUR-LB-15",
+      "sales": {
+        "orderedProductSales": { "amount": 1796.00, "currencyCode": "INR" },
+        "unitsOrdered": 4,
+        "totalOrderItems": 3,
+        "averageSalesPerOrderItem": { "amount": 598.67, "currencyCode": "INR" },
+        "averageSellingPrice": { "amount": 449.00, "currencyCode": "INR" }
+      },
+      "traffic": {
+        "browserSessions": 318,
+        "mobileAppSessions": 904,
+        "sessions": 1222,
+        "browserPageViews": 402,
+        "mobileAppPageViews": 1156,
+        "pageViews": 1558,
+        "buyBoxPercentage": 100.0,
+        "unitSessionPercentage": 0.327,
+        "sessionPercentage": 10.0
+      }
+    },
+    {
+      "parentAsin": "B0CH4TQR15",
+      "childAsin": "B0CH4TQR15",
+      "sku": "AUR-BL-200",
+      "sales": {
+        "orderedProductSales": { "amount": 2196.00, "currencyCode": "INR" },
+        "unitsOrdered": 4,
+        "totalOrderItems": 4,
+        "averageSalesPerOrderItem": { "amount": 549.00, "currencyCode": "INR" },
+        "averageSellingPrice": { "amount": 549.00, "currencyCode": "INR" }
+      },
+      "traffic": {
+        "browserSessions": 287,
+        "mobileAppSessions": 723,
+        "sessions": 1010,
+        "browserPageViews": 359,
+        "mobileAppPageViews": 891,
+        "pageViews": 1250,
+        "buyBoxPercentage": 100.0,
+        "unitSessionPercentage": 0.396,
+        "sessionPercentage": 8.3
+      }
+    },
+    {
+      "parentAsin": "B0CH4TST26",
+      "childAsin": "B0CH4TST26",
+      "sku": "AUR-HO-100",
+      "sales": {
+        "orderedProductSales": { "amount": 399.00, "currencyCode": "INR" },
+        "unitsOrdered": 1,
+        "totalOrderItems": 1,
+        "averageSalesPerOrderItem": { "amount": 399.00, "currencyCode": "INR" },
+        "averageSellingPrice": { "amount": 399.00, "currencyCode": "INR" }
+      },
+      "traffic": {
+        "browserSessions": 89,
+        "mobileAppSessions": 165,
+        "sessions": 254,
+        "browserPageViews": 112,
+        "mobileAppPageViews": 198,
+        "pageViews": 310,
+        "buyBoxPercentage": 100.0,
+        "unitSessionPercentage": 0.394,
+        "sessionPercentage": 2.1
+      }
+    }
+  ],
+  "_teaching_notes": "AUR-SS-50 has 4.6x the sessions of AUR-FW-100 but a 28x lower conversion rate (0.025% vs 0.69%). Traffic is not the problem; the listing is. Lead attendees to investigate: title, A+ content, review count, price positioning, image quality. AUR-HO-100 has the opposite issue: decent conversion (0.39%) but almost no traffic. That is an ads/SEO problem."
+}

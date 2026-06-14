@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Growth Dashboard, The Paan Legacy</title>
+<!-- Fonts loaded per design.md: General Sans (display) from Fontshare, DM Sans and JetBrains Mono from Google Fonts. -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  /* All color, type, spacing, radius, shadow tokens below come from design.md (repo root).
+     No invented hex codes. Where design.md leaves a detail open (e.g. chart axis color,
+     table hover, sample-data banner) we pick a default that fits the system and call it
+     out in a code comment. */
+  :root {
+    --c-primary: #6366F1;
+    --c-primary-hover: #4F46E5;
+    --c-secondary: #20970B;
+    --c-neutral: #9C9C9C;
+    --c-bg: #FAFAFA;
+    --c-surface: #FFFFFF;
+    --c-text: #0A0A0A;
+    --c-text-secondary: #6B6B6B;
+    --c-border: #E8E8EC;
+    --c-success: #10B981;
+    --c-warning: #F59E0B;
+    --c-error: #EF4444;
+
+    --font-display: 'General Sans', system-ui, -apple-system, sans-serif;
+    --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    /* Spacing scale: 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96 */
+    --r-chip: 4px;
+    --r-button: 6px;
+    --r-panel: 8px;
+    --r-card: 12px;
+    --r-pill: 9999px;
+
+    --shadow-hover: 0 8px 30px rgba(0,0,0,0.08);
+    --ring-focus: 0 0 0 3px rgba(99,102,241,0.12);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--c-bg);
+    color: var(--c-text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+  /* Top nav: sticky, 56px, backdrop-blur (design.md). */
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    height: 56px;
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid var(--c-border);
+  }
+  .nav .container { height: 56px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-brand { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.03em; font-size: 18px; }
+  .nav-brand .dot { display: inline-block; width: 8px; height: 8px; border-radius: var(--r-pill); background: var(--c-primary); margin-right: 8px; vertical-align: middle; }
+  .nav-meta { color: var(--c-text-secondary); font-size: 13px; }
+  .nav-meta code { font-family: var(--font-mono); font-size: 12px; color: var(--c-text-secondary); }
+
+  /* Section spacing: 32 mobile, 48 tablet, 64 desktop. */
+  section { padding: 32px 0; }
+  @media (min-width: 768px) { section { padding: 48px 0; } }
+  @media (min-width: 1100px) { section { padding: 64px 0; } }
+
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.03em; margin: 0; }
+  h1 { font-size: 60px; line-height: 1.04; }
+  h2 { font-size: 32px; line-height: 1.15; }
+  h3 { font-size: 24px; line-height: 1.2; }
+  .overline { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--c-text-secondary); font-weight: 500; }
+  .small { font-size: 13px; color: var(--c-text-secondary); }
+  .mono { font-family: var(--font-mono); }
+
+  /* Sample-data banner. Warning palette per design.md (#F59E0B). Soft tint for a notice band, full color reserved for chip. */
+  .sample-banner {
+    border: 1px solid var(--c-warning);
+    background: #FFF8EC; /* warm tint of #F59E0B; design.md does not name this, kept light to stay on-surface. */
+    border-radius: var(--r-card);
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .sample-banner .chip { display: inline-block; background: var(--c-warning); color: #FFFFFF; padding: 4px 12px; border-radius: var(--r-pill); font-size: 12px; font-weight: 500; margin-bottom: 12px; }
+  .sample-banner h3 { font-size: 20px; margin-bottom: 8px; }
+  .sample-banner ul { margin: 8px 0 0 20px; padding: 0; }
+  .sample-banner li { margin: 4px 0; color: var(--c-text); }
+  .sample-banner .replace-with { margin-top: 12px; }
+  .sample-banner .replace-with .overline { display: block; margin-bottom: 6px; }
+
+  /* Hero. */
+  .hero h1 { max-width: 14ch; }
+  .hero .as-of { margin-top: 16px; }
+  .hero .headline { font-size: 20px; line-height: 1.5; max-width: 70ch; color: var(--c-text-secondary); margin-top: 24px; }
+
+  /* Cards: white surface, 1px border, 12px radius. Flat at rest, lifts on hover. */
+  .card {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-card);
+    transition: transform 200ms, box-shadow 200ms;
+  }
+  .card.elevated { padding: 32px; }
+  .card.elevated:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+
+  /* Alarm card: emphasised block per design.md "most important block" convention.
+     Indigo left rail signals the focus item. */
+  .alarm {
+    position: relative;
+    padding: 32px 32px 32px 40px;
+  }
+  .alarm::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: var(--c-primary); border-top-left-radius: var(--r-card); border-bottom-left-radius: var(--r-card);
+  }
+  .alarm .overline { color: var(--c-primary); }
+  .alarm h2 { margin-top: 8px; }
+  .alarm-move { font-family: var(--font-mono); font-size: 15px; color: var(--c-text); margin-top: 16px; }
+  .alarm-move .down { color: var(--c-success); }
+  .alarm-move .up { color: var(--c-error); }
+  .alarm-driver { margin-top: 20px; max-width: 80ch; color: var(--c-text); }
+  .alarm-action { margin-top: 24px; padding: 20px; background: var(--c-bg); border-radius: var(--r-panel); border: 1px solid var(--c-border); }
+  .alarm-action .overline { color: var(--c-text-secondary); }
+  .alarm-action p { margin: 6px 0 0 0; }
+
+  /* KPI strip. 6 tiles on Stage B/C. */
+  .kpi-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  @media (min-width: 700px) { .kpi-strip { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1024px) { .kpi-strip { grid-template-columns: repeat(6, 1fr); gap: 20px; } }
+  .kpi { padding: 20px; }
+  .kpi .label { font-size: 13px; color: var(--c-text-secondary); font-weight: 500; }
+  .kpi .value { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.03em; margin-top: 8px; line-height: 1.1; }
+  .kpi .delta { font-family: var(--font-mono); font-size: 12px; margin-top: 8px; color: var(--c-text-secondary); }
+  .kpi .delta.up-good { color: var(--c-success); }
+  .kpi .delta.up-bad { color: var(--c-error); }
+  .kpi .delta.down-good { color: var(--c-success); }
+  .kpi .delta.down-bad { color: var(--c-error); }
+
+  /* Charts row. */
+  .chart-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  @media (min-width: 1024px) { .chart-grid { grid-template-columns: 3fr 2fr; } }
+  .chart-card { padding: 28px; }
+  .chart-card h3 { font-size: 20px; }
+  .chart-card .small { margin-top: 4px; }
+  .chart-holder { position: relative; height: 280px; margin-top: 20px; }
+
+  /* Per-channel table. */
+  table.channel { width: 100%; border-collapse: collapse; }
+  table.channel th, table.channel td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--c-border); font-size: 14px; }
+  table.channel th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-text-secondary); font-weight: 500; }
+  table.channel td.num { font-family: var(--font-mono); text-align: right; }
+  table.channel th.num { text-align: right; }
+  table.channel tbody tr { transition: background 120ms; }
+  /* Hover treatment: design.md says list rows get a subtle background change on hover.
+     We use the page background tint for the same purpose on table rows. */
+  table.channel tbody tr:hover { background: var(--c-bg); }
+  table.channel th { cursor: pointer; user-select: none; }
+  table.channel th .arrow { color: var(--c-neutral); margin-left: 4px; font-size: 10px; }
+  table.channel th.sorted .arrow { color: var(--c-primary); }
+  .muted { color: var(--c-neutral); font-style: normal; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: var(--r-pill); font-size: 11px; font-weight: 500; }
+  .badge.not-connected { background: #F3F3F5; color: var(--c-neutral); }
+  .badge.note { background: #F3F3F5; color: var(--c-text-secondary); }
+
+  /* Citations. */
+  .citations { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 800px) { .citations { grid-template-columns: 1fr 1fr; } }
+  .citation { padding: 20px; }
+  .citation .role { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-text-secondary); font-weight: 500; }
+  .citation .insight { margin-top: 8px; color: var(--c-text); }
+  .citation a { color: var(--c-primary); text-decoration: none; font-family: var(--font-mono); font-size: 12px; }
+  .citation a:hover { color: var(--c-primary-hover); text-decoration: underline; }
+  .citation a:focus { outline: none; box-shadow: var(--ring-focus); border-radius: var(--r-button); }
+
+  /* Gaps. */
+  .gap-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 16px; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--c-border); }
+  .gap-row:last-child { border-bottom: 0; }
+  .gap-row .metric { font-weight: 500; }
+  .gap-row .num { font-family: var(--font-mono); font-size: 13px; }
+  .gap-row .flag { text-align: right; }
+
+  /* Missing chips row. */
+  .missing-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .missing-row .chip-mcp { background: #F3F3F5; color: var(--c-text-secondary); padding: 6px 12px; border-radius: var(--r-pill); font-size: 12px; font-family: var(--font-mono); }
+
+  /* Empty state. */
+  .empty { padding: 64px 32px; text-align: center; background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--r-card); }
+
+  footer { padding: 32px 0 64px 0; color: var(--c-text-secondary); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="nav-brand"><span class="dot"></span> Growth Dashboard</div>
+    <div class="nav-meta">Brand: <span id="nav-brand-name" class="mono">…</span> · As of <span id="nav-as-of" class="mono">…</span></div>
+  </div>
+</nav>
+
+<div class="container">
+  <main id="app"></main>
+</div>
+
+<footer>
+  <div class="container">
+    Generated by the Growth Analyst skill. Refresh data with /growth-analyst.
+  </div>
+</footer>
+
+<script>
+// All numbers come from ./data/numbers.json. No inline data values in markup.
+const $ = (sel, root=document) => root.querySelector(sel);
+const fmtINR = (n) => {
+  if (n === null || n === undefined) return '<span class="muted">not tracked</span>';
+  if (typeof n !== 'number') return n;
+  // Indian comma grouping, no decimals.
+  const x = Math.round(n).toString();
+  let last3 = x.slice(-3), rest = x.slice(0, -3);
+  if (rest) rest = rest.replace(/\B(?=(\d{2})+(?!\d))/g, ',');
+  return '₹' + (rest ? rest + ',' + last3 : last3);
+};
+const fmtNum = (n) => {
+  if (n === null || n === undefined) return '<span class="muted">not tracked</span>';
+  const x = Math.round(n).toString();
+  let last3 = x.slice(-3), rest = x.slice(0, -3);
+  if (rest) rest = rest.replace(/\B(?=(\d{2})+(?!\d))/g, ',');
+  return rest ? rest + ',' + last3 : last3;
+};
+const fmtPct = (n, digits=1) => {
+  if (n === null || n === undefined) return '<span class="muted">not tracked</span>';
+  return (n * 100).toFixed(digits) + '%';
+};
+const fmtX = (n, digits=1) => {
+  if (n === null || n === undefined) return '<span class="muted">not tracked</span>';
+  return n.toFixed(digits) + 'x';
+};
+const fmtDate = (iso) => {
+  if (!iso) return '';
+  const d = new Date(iso);
+  if (isNaN(d)) return iso;
+  return d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+};
+const absolutise = (relPath) => {
+  // Repo-relative path becomes a file:// link the browser can open locally.
+  // Reads window.location to find the repo root: dashboard.html sits at
+  // examples/<brand>/my-work/growth-analyst/dashboard.html. The repo root is
+  // four levels up. If the file is served from /Users/..., we strip http(s)
+  // and let the user know to open the file directly.
+  if (!relPath) return '#';
+  if (relPath.startsWith('http') || relPath.startsWith('file://')) return relPath;
+  const here = window.location.href.replace(/[^/]*$/, ''); // dashboard.html dir
+  // four levels up from my-work/growth-analyst/ to reach repo root
+  const repoRoot = here.split('/').slice(0, -4).join('/') + '/';
+  return repoRoot + relPath;
+};
+
+function renderEmpty(msg) {
+  $('#app').innerHTML = `<section><div class="empty"><h3>No data yet</h3><p class="small">${msg}</p></div></section>`;
+}
+
+function deltaTile(current, prior, kind) {
+  // kind in: 'higher_is_better', 'lower_is_better'
+  if (prior === null || prior === undefined || prior === 0) return { text: '', cls: '' };
+  const delta = (current - prior) / prior;
+  const sign = delta > 0 ? '+' : '';
+  const pct = (delta * 100).toFixed(1) + '%';
+  let cls = 'delta';
+  if (delta > 0) cls += kind === 'higher_is_better' ? ' up-good' : ' up-bad';
+  if (delta < 0) cls += kind === 'higher_is_better' ? ' down-bad' : ' down-good';
+  return { text: `${sign}${pct} WoW`, cls };
+}
+
+function render(data) {
+  $('#nav-brand-name').textContent = data.brand || '';
+  $('#nav-as-of').textContent = fmtDate(data.as_of);
+
+  const sampleBanner = data.running_on_sample_data ? `
+    <div class="sample-banner">
+      <span class="chip">Running on sample data</span>
+      <h3>This dashboard is built from sample data.</h3>
+      <span class="overline">Why</span>
+      <ul>
+        ${(data.sample_data_reasons || []).map(r => `<li>${r}</li>`).join('')}
+      </ul>
+      <div class="replace-with">
+        <span class="overline">Replace it with your own by</span>
+        <ul>
+          ${(data.sample_data_replace_with || []).map(r => `<li>${r}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+  ` : '';
+
+  const hero = `
+    <section class="hero">
+      ${sampleBanner}
+      <span class="overline">Weekly brief</span>
+      <h1>${data.brand}</h1>
+      <div class="as-of small">As of ${fmtDate(data.as_of)} · Stage ${data.stage}</div>
+      <p class="headline">${(data.live && data.alarm) ? "A solid revenue week with the metric to watch on the operations side. Summer pin-code complaint rate climbed 3.2 percentage points week on week, concentrated on Almond Delight and Dry Fruit Meetha Paan to Delhi, Hyderabad and Lucknow. Ops SOP-01 needs to be live by EOD Tuesday." : ""}</p>
+    </section>
+  `;
+
+  // Alarm.
+  const a = data.alarm;
+  const alarmBlock = a ? `
+    <section>
+      <div class="card alarm">
+        <span class="overline">The one number this week</span>
+        <h2>${a.metric_label || a.metric}</h2>
+        <div class="alarm-move">
+          ${a.direction === 'up' ? '<span class="up">▲</span>' : '<span class="down">▼</span>'}
+          ${a.prior_week !== undefined ? fmtPct(a.prior_week) : ''} → <strong>${a.this_week !== undefined ? fmtPct(a.this_week) : ''}</strong>
+          ${a.delta_pp !== undefined ? ` (${a.delta_pp > 0 ? '+' : ''}${(a.delta_pp * 100).toFixed(1)} pp)` : ''}
+        </div>
+        <p class="alarm-driver">${a.driver || ''}</p>
+        <div class="alarm-action">
+          <span class="overline">Recommended action this week</span>
+          <p>${a.recommended_action || ''}</p>
+        </div>
+      </div>
+    </section>
+  ` : `
+    <section>
+      <div class="card elevated">
+        <span class="overline">The one number this week</span>
+        <h2>Steady week</h2>
+        <p class="small">No metric crossed an alarm threshold this week.</p>
+      </div>
+    </section>
+  `;
+
+  // KPI strip (Stage B / C, 6 tiles).
+  const live = data.live || {};
+  const prior = (live.prior_week) || {};
+  const k = (label, cur, pr, kind, fmt) => {
+    const d = deltaTile(cur, pr, kind);
+    return `
+      <div class="card kpi">
+        <div class="label">${label}</div>
+        <div class="value">${fmt(cur)}</div>
+        <div class="${d.cls}">${d.text}${pr !== undefined && pr !== null ? ' · prior ' + (typeof pr === 'number' ? fmt(pr).replace(/<[^>]+>/g,'') : pr) : ''}</div>
+      </div>
+    `;
+  };
+
+  const kpiStrip = `
+    <section>
+      <h2>This week</h2>
+      <p class="small">All values are last 7 days. Trend reads against prior 7 days.</p>
+      <div class="kpi-strip" style="margin-top: 24px;">
+        ${k('Revenue 7d', live.revenue_7d, prior.revenue, 'higher_is_better', fmtINR)}
+        ${k('Orders 7d', live.orders_7d, prior.orders, 'higher_is_better', fmtNum)}
+        ${k('AOV', live.aov_7d, prior.aov, 'higher_is_better', fmtINR)}
+        ${k('Blended CAC', live.cac_live, prior.cac, 'lower_is_better', fmtINR)}
+        ${k('Repeat rate', live.repeat_purchase_rate_7d, prior.repeat_purchase_rate, 'higher_is_better', (n)=>fmtPct(n,0))}
+        ${k('ROAS blended', live.roas_blended, prior.roas, 'higher_is_better', (n)=>fmtX(n,1))}
+      </div>
+    </section>
+  `;
+
+  // Charts.
+  const chartsSection = `
+    <section>
+      <div class="chart-grid">
+        <div class="card chart-card">
+          <h3>4-week trend</h3>
+          <p class="small">Revenue and complaint rate. The line is revenue, the bars are the alarm metric.</p>
+          <div class="chart-holder"><canvas id="trendChart"></canvas></div>
+        </div>
+        <div class="card chart-card">
+          <h3>ROAS by channel</h3>
+          <p class="small">Paid channels only. D2C, franchise and corporate gifting have no spend line and are excluded.</p>
+          <div class="chart-holder"><canvas id="roasChart"></canvas></div>
+        </div>
+      </div>
+    </section>
+  `;
+
+  // Per-channel table.
+  // Channel order per the brief: D2C site, Zomato, Swiggy, Franchise outlets, Corporate gifting, Meta ads, Google ads.
+  // We add a WhatsApp note since WhatsApp orders are rolled into the D2C site line per the founder.
+  const channels = (live.per_channel || []);
+  const channelOrder = ['D2C site', 'WhatsApp', 'Zomato', 'Swiggy', 'Franchise outlets', 'Corporate gifting', 'Meta ads', 'Google ads'];
+  const channelsSorted = [...channels].sort((x, y) => {
+    const ix = channelOrder.indexOf(x.channel); const iy = channelOrder.indexOf(y.channel);
+    return (ix === -1 ? 99 : ix) - (iy === -1 ? 99 : iy);
+  });
+  const missingIds = (data.missing || []).map(m => m.id || m);
+  const showNotConnectedBadge = (row) => {
+    if (row.spend === null && row.roas === null) return '<span class="badge not-connected">no paid spend</span>';
+    return '';
+  };
+  const tableRows = channelsSorted.map((row, idx) => `
+    <tr data-idx="${idx}">
+      <td>${row.channel} ${showNotConnectedBadge(row)}</td>
+      <td class="num">${fmtINR(row.revenue)}</td>
+      <td class="num">${fmtNum(row.orders)}</td>
+      <td class="num">${row.spend === null ? '<span class="muted">not applicable</span>' : fmtINR(row.spend)}</td>
+      <td class="num">${row.roas === null ? '<span class="muted">not applicable</span>' : fmtX(row.roas, 1)}</td>
+    </tr>
+  `).join('');
+
+  const channelTable = `
+    <section>
+      <h2>Per channel</h2>
+      <p class="small">Click a column header to sort. Channels without paid spend show a muted badge.</p>
+      <div class="card" style="margin-top: 20px; overflow: hidden;">
+        <table class="channel" id="channelTable">
+          <thead>
+            <tr>
+              <th data-sort="channel">Channel <span class="arrow">▾</span></th>
+              <th class="num" data-sort="revenue">Revenue <span class="arrow">▾</span></th>
+              <th class="num" data-sort="orders">Orders <span class="arrow">▾</span></th>
+              <th class="num" data-sort="spend">Spend <span class="arrow">▾</span></th>
+              <th class="num" data-sort="roas">ROAS <span class="arrow">▾</span></th>
+            </tr>
+          </thead>
+          <tbody>${tableRows}</tbody>
+        </table>
+      </div>
+    </section>
+  `;
+
+  // Citations.
+  const cites = (data.cross_teammate_inputs || []).map(c => `
+    <div class="card citation">
+      <div class="role">${c.teammate}</div>
+      <div class="insight">${c.key_insight}</div>
+      <div style="margin-top: 12px;"><a href="${absolutise(c.file_path)}">${c.file_path}</a></div>
+    </div>
+  `).join('');
+  const citationsBlock = cites ? `
+    <section>
+      <h2>Cross-teammate inputs that shaped this brief</h2>
+      <div class="citations" style="margin-top: 24px;">${cites}</div>
+    </section>
+  ` : '';
+
+  // Gaps.
+  const gapRows = (data.gaps || []).map(g => `
+    <div class="gap-row">
+      <div class="metric">${g.metric}</div>
+      <div class="num">founder: ${typeof g.founder_value === 'number' ? (g.founder_value < 1 && g.founder_value > -1 ? fmtPct(g.founder_value) : fmtINR(g.founder_value)) : (g.founder_value ?? '<span class="muted">not on file</span>')}</div>
+      <div class="num">live: ${typeof g.live_value === 'number' ? (g.live_value < 1 && g.live_value > -1 ? fmtPct(g.live_value) : fmtINR(g.live_value)) : '<span class="muted">not tracked</span>'}</div>
+      <div class="flag">${g.above_20pct_threshold ? '<span class="badge" style="background:#FEE2E2;color:#B91C1C;">over 20%</span>' : (g.delta_pct !== null && g.delta_pct !== undefined ? `<span class="badge note">${(g.delta_pct*100).toFixed(1)}%</span>` : '')}</div>
+    </div>
+    <div class="gap-row" style="grid-template-columns: 1fr; padding-top: 0;"><div class="small">${g.note || ''}</div></div>
+  `).join('');
+  const gapsBlock = gapRows ? `
+    <section>
+      <h2>Gaps</h2>
+      <p class="small">Founder estimate compared against live computation. Threshold from SKILL.md is 20%.</p>
+      <div class="card" style="margin-top: 20px; padding: 8px 16px;">${gapRows}</div>
+    </section>
+  ` : '';
+
+  // Missing data sources.
+  const missingChips = (data.missing || []).map(m => `<span class="chip-mcp" title="${m.note || ''}">${m.label || m.id || m}</span>`).join('');
+  const missingBlock = missingChips ? `
+    <section>
+      <h2>Data sources missing</h2>
+      <p class="small">Live MCPs not connected for this run. The brief filled the gap from CSVs and partner exports.</p>
+      <div class="missing-row">${missingChips}</div>
+    </section>
+  ` : '';
+
+  $('#app').innerHTML = hero + alarmBlock + kpiStrip + chartsSection + channelTable + citationsBlock + gapsBlock + missingBlock;
+
+  // Charts. Chart.js axis tokens use design.md type and color.
+  Chart.defaults.font.family = "DM Sans, system-ui, sans-serif";
+  Chart.defaults.font.size = 12;
+  Chart.defaults.color = '#6B6B6B';
+  Chart.defaults.borderColor = '#E8E8EC';
+
+  const trend = (live.trend_4w || []);
+  if (trend.length) {
+    const ctx = document.getElementById('trendChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: trend.map(t => fmtDate(t.week_start)),
+        datasets: [
+          {
+            type: 'line',
+            label: 'Revenue',
+            data: trend.map(t => t.revenue),
+            borderColor: '#6366F1',
+            backgroundColor: 'rgba(99,102,241,0.08)',
+            tension: 0.3,
+            yAxisID: 'y',
+            pointRadius: 4,
+            pointBackgroundColor: '#6366F1',
+          },
+          {
+            type: 'bar',
+            label: 'Summer complaint rate',
+            data: trend.map(t => (t.complaint_rate_summer_pin || 0) * 100),
+            backgroundColor: '#F59E0B',
+            borderRadius: 4,
+            yAxisID: 'y1',
+            barThickness: 32,
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 8, boxHeight: 8 } },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                if (ctx.dataset.label === 'Revenue') return 'Revenue: ' + fmtINR(ctx.parsed.y);
+                return 'Complaint rate: ' + ctx.parsed.y.toFixed(1) + '%';
+              }
+            }
+          }
+        },
+        scales: {
+          y: { position: 'left', ticks: { callback: (v) => fmtINR(v) }, grid: { color: '#E8E8EC' } },
+          y1: { position: 'right', ticks: { callback: (v) => v.toFixed(1) + '%' }, grid: { display: false } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  // ROAS by channel.
+  const paid = channelsSorted.filter(c => c.roas !== null && c.spend !== null && c.spend > 0);
+  if (paid.length) {
+    const ctx = document.getElementById('roasChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: paid.map(c => c.channel),
+        datasets: [{
+          label: 'ROAS',
+          data: paid.map(c => c.roas),
+          backgroundColor: paid.map(c => c.roas >= 3 ? '#10B981' : (c.roas >= 2 ? '#6366F1' : '#EF4444')),
+          borderRadius: 4,
+          barThickness: 28,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        indexAxis: 'y',
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: (ctx) => 'ROAS: ' + ctx.parsed.x.toFixed(1) + 'x' } }
+        },
+        scales: {
+          x: { ticks: { callback: (v) => v + 'x' }, grid: { color: '#E8E8EC' } },
+          y: { grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  // Sortable table.
+  const table = document.getElementById('channelTable');
+  if (table) {
+    const ths = table.querySelectorAll('th');
+    let state = { key: null, dir: 1 };
+    ths.forEach(th => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.sort;
+        if (!key) return;
+        state.dir = state.key === key ? -state.dir : 1;
+        state.key = key;
+        ths.forEach(t => t.classList.remove('sorted'));
+        th.classList.add('sorted');
+        const sorted = [...channelsSorted].sort((a, b) => {
+          let va = a[key], vb = b[key];
+          if (va === null || va === undefined) va = -Infinity;
+          if (vb === null || vb === undefined) vb = -Infinity;
+          if (typeof va === 'string') return state.dir * va.localeCompare(vb);
+          return state.dir * (va - vb);
+        });
+        const tbody = table.querySelector('tbody');
+        tbody.innerHTML = sorted.map(row => `
+          <tr>
+            <td>${row.channel} ${showNotConnectedBadge(row)}</td>
+            <td class="num">${fmtINR(row.revenue)}</td>
+            <td class="num">${fmtNum(row.orders)}</td>
+            <td class="num">${row.spend === null ? '<span class="muted">not applicable</span>' : fmtINR(row.spend)}</td>
+            <td class="num">${row.roas === null ? '<span class="muted">not applicable</span>' : fmtX(row.roas, 1)}</td>
+          </tr>
+        `).join('');
+      });
+    });
+  }
+}
+
+fetch('./data/numbers.json', { cache: 'no-store' })
+  .then(r => { if (!r.ok) throw new Error('fetch failed'); return r.json(); })
+  .then(render)
+  .catch(() => renderEmpty('No data yet. Run /growth-analyst to generate this week\\'s brief.'));
+</script>
+</body>
+</html>

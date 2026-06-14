@@ -1,0 +1,99 @@
+date,campaign_id,campaign_name,angle,spend_inr,impressions,clicks,conversions
+2026-04-15,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,6720,48000,888,23
+2026-04-15,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4200,25455,369,13
+2026-04-15,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3500,20000,270,10
+2026-04-16,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,6960,49714,920,23
+2026-04-16,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4350,26364,382,12
+2026-04-16,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3625,20714,280,10
+2026-04-17,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7200,51429,951,24
+2026-04-17,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4500,27273,395,13
+2026-04-17,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3750,21429,289,11
+2026-04-18,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7200,51429,951,24
+2026-04-18,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4500,27273,395,13
+2026-04-18,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3750,21429,289,11
+2026-04-19,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,6960,49714,920,23
+2026-04-19,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4350,26364,382,12
+2026-04-19,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3625,20714,280,10
+2026-04-20,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,6480,46286,856,23
+2026-04-20,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4050,24545,356,11
+2026-04-20,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3375,19286,260,10
+2026-04-21,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,6480,46286,856,22
+2026-04-21,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4050,24545,356,11
+2026-04-21,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3375,19286,260,10
+2026-04-22,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7000,50000,925,23
+2026-04-22,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4340,26303,381,12
+2026-04-22,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3780,21600,292,10
+2026-04-23,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7250,51786,958,24
+2026-04-23,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4495,27242,395,12
+2026-04-23,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3915,22371,302,11
+2026-04-24,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7500,53571,991,25
+2026-04-24,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4650,28182,409,13
+2026-04-24,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,4050,23143,312,11
+2026-04-25,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7500,53571,991,25
+2026-04-25,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4650,28182,409,13
+2026-04-25,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,4050,23143,312,11
+2026-04-26,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7250,51786,958,24
+2026-04-26,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4495,27242,395,12
+2026-04-26,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3915,22371,302,11
+2026-04-27,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,6750,48214,892,22
+2026-04-27,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4185,25364,368,12
+2026-04-27,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3645,20829,281,10
+2026-04-28,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,6750,48214,892,22
+2026-04-28,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4185,25364,368,12
+2026-04-28,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3645,20829,281,10
+2026-04-29,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7140,51000,944,24
+2026-04-29,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4340,26303,381,12
+2026-04-29,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3920,22400,302,11
+2026-04-29,META-004,"Summer Gifting: Almond Delight Hot Cities",summer-gifting-hot-cities,2520,11455,97,4
+2026-04-30,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7395,52821,977,24
+2026-04-30,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4495,27242,395,13
+2026-04-30,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,4060,23200,313,11
+2026-04-30,META-004,"Summer Gifting: Almond Delight Hot Cities",summer-gifting-hot-cities,2610,11864,101,4
+2026-05-01,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7650,54643,1011,25
+2026-05-01,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4650,28182,409,13
+2026-05-01,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,4200,24000,324,11
+2026-05-01,META-004,"Summer Gifting: Almond Delight Hot Cities",summer-gifting-hot-cities,2700,12273,104,5
+2026-05-02,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7650,54643,1011,25
+2026-05-02,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4650,28182,409,13
+2026-05-02,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,4200,24000,324,11
+2026-05-02,META-004,"Summer Gifting: Almond Delight Hot Cities",summer-gifting-hot-cities,2700,12273,104,5
+2026-05-03,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7395,52821,977,24
+2026-05-03,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4495,27242,395,13
+2026-05-03,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,4060,23200,313,11
+2026-05-03,META-004,"Summer Gifting: Almond Delight Hot Cities",summer-gifting-hot-cities,2610,11864,101,4
+2026-05-04,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,6885,49179,910,23
+2026-05-04,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4185,25364,368,12
+2026-05-04,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3780,21600,292,10
+2026-05-04,META-004,"Summer Gifting: Almond Delight Hot Cities",summer-gifting-hot-cities,2430,11045,94,4
+2026-05-05,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,6885,49179,910,23
+2026-05-05,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4185,25364,368,12
+2026-05-05,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3780,21600,292,10
+2026-05-05,META-004,"Summer Gifting: Almond Delight Hot Cities",summer-gifting-hot-cities,2430,11045,94,4
+2026-05-06,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7280,52000,962,24
+2026-05-06,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4480,27152,394,12
+2026-05-06,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3920,22400,302,12
+2026-05-06,META-004,"Summer Gifting: Almond Delight Hot Cities",summer-gifting-hot-cities,6020,27364,233,7
+2026-05-07,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7540,53857,996,24
+2026-05-07,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4640,28121,408,13
+2026-05-07,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,4060,23200,313,11
+2026-05-07,META-004,"Summer Gifting: Almond Delight Hot Cities",summer-gifting-hot-cities,6235,28341,241,8
+2026-05-08,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7800,55714,1031,25
+2026-05-08,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4800,29091,422,13
+2026-05-08,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,4200,24000,324,11
+2026-05-08,META-004,"Summer Gifting: Almond Delight Hot Cities",summer-gifting-hot-cities,6450,29318,249,7
+2026-05-09,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7800,55714,1031,25
+2026-05-09,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4800,29091,422,13
+2026-05-09,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,4200,24000,324,11
+2026-05-09,META-004,"Summer Gifting: Almond Delight Hot Cities",summer-gifting-hot-cities,6450,29318,249,8
+2026-05-10,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7540,53857,996,24
+2026-05-10,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4640,28121,408,13
+2026-05-10,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,4060,23200,313,11
+2026-05-10,META-004,"Summer Gifting: Almond Delight Hot Cities",summer-gifting-hot-cities,6235,28341,241,8
+2026-05-11,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7020,50143,928,23
+2026-05-11,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4320,26182,380,12
+2026-05-11,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3780,21600,292,10
+2026-05-11,META-004,"Summer Gifting: Almond Delight Hot Cities",summer-gifting-hot-cities,5805,26386,224,7
+2026-05-12,META-001,"Heritage Ritual: Meetha Paan",heritage-ritual,7020,50143,928,23
+2026-05-12,META-002,"Modern Paan: Masala Cranberry",modern-cranberry,4320,26182,380,12
+2026-05-12,META-003,"Festival Gifting: Dry Fruit Box",festival-gifting,3780,21600,292,10
+2026-05-12,META-004,"Summer Gifting: Almond Delight Hot Cities",summer-gifting-hot-cities,5805,26386,224,7

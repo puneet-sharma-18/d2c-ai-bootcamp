@@ -1,0 +1,45 @@
+{
+  "_endpoint": "POST /sellers/v2/returns/search",
+  "returns": [
+    {
+      "returnId": "RET19283746501",
+      "orderItemId": "16384729103847295",
+      "orderId": "OD192837465019283750",
+      "sku": "AUR-HO-100",
+      "fsn": "FSN8473829AURHO100",
+      "title": "Auruh Cold-Pressed Hair Oil 100ml",
+      "returnType": "CUSTOMER_RETURN",
+      "returnReason": "WRONG_PRODUCT_DESCRIPTION",
+      "subReason": "Product not as described",
+      "customerComments": "Was expecting ayurvedic oil based on the description. This is just plain coconut and almond. Not what I wanted.",
+      "returnInitiatedDate": "2026-04-12T09:48:33+05:30",
+      "returnDeliveredDate": "2026-04-16T14:22:18+05:30",
+      "refundAmount": 349.00,
+      "_signal": "Listing description ambiguity confused buyer. Connects to ads-search-terms.json: ad bid on 'ayurvedic hair oil' attracts the wrong customer."
+    },
+    {
+      "returnId": "RET19283746502",
+      "orderItemId": "16384729103847298",
+      "orderId": "OD192837465019283753",
+      "sku": "AUR-BL-200",
+      "fsn": "FSN8473829AURBL200",
+      "title": "Auruh Body Lotion 200ml",
+      "returnType": "CUSTOMER_RETURN",
+      "returnReason": "DEFECTIVE",
+      "subReason": "Damaged on arrival",
+      "customerComments": "Bottle was leaking inside the package.",
+      "returnInitiatedDate": "2026-04-19T11:33:08+05:30",
+      "returnDeliveredDate": "2026-04-23T08:42:55+05:30",
+      "refundAmount": 499.00,
+      "_signal": "Same packaging problem as Amazon AUR-BL-200 returns. Confirms it's not a fulfillment center issue, it's the bottle/box."
+    }
+  ],
+  "_summary_by_sku": {
+    "AUR-FW-100": { "delivered": 6, "returned": 0, "return_rate": 0.0 },
+    "AUR-SS-50": { "delivered": 1, "returned": 0, "return_rate": 0.0 },
+    "AUR-LB-15": { "delivered": 3, "returned": 0, "return_rate": 0.0 },
+    "AUR-BL-200": { "delivered": 3, "returned": 1, "return_rate": 0.333 },
+    "AUR-HO-100": { "delivered": 1, "returned": 1, "return_rate": 1.0 }
+  },
+  "_cross_platform_signal": "AUR-BL-200 returns on both Amazon (3/4) and Flipkart (1/3) with same root cause: leakage. Confirms a packaging problem, not a marketplace problem. Fix the bottle/box, returns will fall on both platforms."
+}

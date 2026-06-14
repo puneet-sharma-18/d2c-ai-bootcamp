@@ -1,0 +1,109 @@
+{
+  "as_of": "2026-05-12T08:42:00+05:30",
+  "brand": "Little Lab",
+  "stage": "1-50Cr",
+  "founder_truth": {
+    "cac": 440,
+    "ltv": 2150,
+    "aov": 785,
+    "gross_margin": 0.62,
+    "channel_mix": {
+      "d2c": 0.55,
+      "amazon": 0.30,
+      "flipkart": 0.08,
+      "quick_commerce": 0.07
+    },
+    "repeat_purchase_rate": 0.26,
+    "source": "brand-brain/unit-economics.md",
+    "as_of": "2026-04-28"
+  },
+  "live": {
+    "revenue_7d": 1482000,
+    "orders_7d": 1840,
+    "new_customers_7d": 612,
+    "repeat_customers_7d": 1228,
+    "aov": 805,
+    "cac_live": 495,
+    "roas_blended": 2.1,
+    "repeat_purchase_rate": 0.28,
+    "total_ad_spend_7d": 302500,
+    "per_channel": [
+      { "channel": "D2C site", "revenue": 815000, "orders": 1012, "spend": null, "roas": null },
+      { "channel": "Amazon", "revenue": 444600, "orders": 552, "spend": 14800, "roas": 30.0 },
+      { "channel": "Flipkart", "revenue": 118560, "orders": 147, "spend": 6200, "roas": 19.0 },
+      { "channel": "Quick commerce", "revenue": 103840, "orders": 129, "spend": null, "roas": null },
+      { "channel": "Meta ads", "revenue": 402000, "orders": 498, "spend": 215000, "roas": 1.9 },
+      { "channel": "Google ads", "revenue": 98500, "orders": 122, "spend": 38500, "roas": 2.6 }
+    ],
+    "trend_4w": [
+      { "week_start": "2026-04-21", "revenue": 1355000, "orders": 1700, "cac": 440, "roas": 2.4 },
+      { "week_start": "2026-04-28", "revenue": 1383000, "orders": 1740, "cac": 469, "roas": 2.5 },
+      { "week_start": "2026-05-05", "revenue": 1440000, "orders": 1820, "cac": 420, "roas": 2.6 },
+      { "week_start": "2026-05-12", "revenue": 1482000, "orders": 1840, "cac": 495, "roas": 2.1 }
+    ]
+  },
+  "alarm": {
+    "metric": "blended_cac",
+    "this_week": 495,
+    "prior_week": 420,
+    "delta_pct": 17.86,
+    "driver": "Meta CAC moved from ₹485 to ₹612. The Hero SKU lifestyle angle that launched May 5 spent ₹84,000 of the week's ₹2,15,000 Meta budget at 1.4x ROAS. The two older angles (problem-solver, social-proof) held at 2.6x.",
+    "recommended_action": "Pause the Hero SKU lifestyle angle by EOD Monday. Reallocate ₹12,000/day to the problem-solver angle (Cradle Cap Balm creative). Retest the lifestyle angle only after the new creative brief from Module 6 ships. Owner: Performance Marketer with founder approval."
+  },
+  "gaps": [
+    {
+      "metric": "blended_cac_vs_target",
+      "founder_value": 440,
+      "live_value": 495,
+      "delta_pct": 12.5,
+      "above_20pct_threshold": false
+    },
+    {
+      "metric": "roas_blended_vs_4w_avg",
+      "founder_value": 2.4,
+      "live_value": 2.1,
+      "delta_pct": -12.5,
+      "above_20pct_threshold": false
+    }
+  ],
+  "missing": ["live_shopify_mcp", "live_meta_ads_mcp", "live_google_ads_mcp"],
+  "running_on_sample_data": true,
+  "sample_data_reasons": [
+    "Live Shopify MCP not connected for this brand. Filled in from examples/little-lab/sample-inputs/shopify-orders-28d.csv.",
+    "Live Meta Ads MCP not connected. Filled in from examples/little-lab/sample-inputs/meta-ads-spend.csv.",
+    "Live Google Ads MCP not connected. Filled in from examples/little-lab/sample-inputs/google-ads-spend.csv."
+  ],
+  "sample_data_fixes": [
+    "Connect Shopify via claude.ai/Desktop connectors.",
+    "Connect Meta Ads via claude.ai/Desktop connectors.",
+    "Connect Google Ads via claude.ai/Desktop connectors.",
+    "Keep brand-brain/unit-economics.md fresh. It is the source of CAC, LTV, AOV, gross margin and channel mix."
+  ],
+  "cross_teammate_inputs": [
+    {
+      "teammate": "voice-of-customer",
+      "file_path": "my-work/voice-of-customer/2026-05-12-voc-report.md",
+      "key_insight": "Cradle cap theme rose to 21% of tickets, up from 18% the prior month. Problem-solver demand is rising."
+    },
+    {
+      "teammate": "market-analyst",
+      "file_path": "my-work/market-analyst/2026-05-12-intel-report.md",
+      "key_insight": "Mother Sparsh launched a Newborn Calendula Lotion at ₹529. It will pressure Tier-2 acquisition this week."
+    },
+    {
+      "teammate": "content-lead",
+      "file_path": "my-work/content-lead/2026-05-12-index.md",
+      "key_insight": "30-day content calendar shipped. May 13 cradle cap carousel goes live Monday."
+    },
+    {
+      "teammate": "performance-marketer",
+      "file_path": "my-work/performance-marketer/2026-05-13-index.md",
+      "key_insight": "Two replacement ad angles drafted (problem-solver, social-proof). Ready to swap in for the lifestyle angle that bled CAC."
+    },
+    {
+      "teammate": "storefront-specialist",
+      "file_path": "my-work/storefront-specialist/2026-05-13-index.md",
+      "key_insight": "Bath and Hair Wash PDP rewrite drafted in response to 3 lather-related returns this week. Push live Wednesday, measure for 14 days."
+    }
+  ]
+}

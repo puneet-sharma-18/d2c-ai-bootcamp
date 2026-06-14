@@ -1,0 +1,106 @@
+{
+  "payload": {
+    "granularity": { "granularityType": "Marketplace", "granularityId": "A21TJRUUN4KGV" },
+    "inventorySummaries": [
+      {
+        "asin": "B0CH4TKZ81",
+        "fnSku": "X001H4TKZ8",
+        "sellerSku": "AUR-FW-100",
+        "condition": "NewItem",
+        "lastUpdatedTime": "2026-04-30T18:00:00Z",
+        "productName": "Auruh Vitamin C Face Wash 100ml",
+        "totalQuantity": 412,
+        "inventoryDetails": {
+          "fulfillableQuantity": 318,
+          "inboundWorkingQuantity": 0,
+          "inboundShippedQuantity": 60,
+          "inboundReceivingQuantity": 0,
+          "reservedQuantity": { "totalReservedQuantity": 34, "pendingCustomerOrderQuantity": 22, "pendingTransshipmentQuantity": 12, "fcProcessingQuantity": 0 },
+          "researchingQuantity": { "totalResearchingQuantity": 0 },
+          "unfulfillableQuantity": { "totalUnfulfillableQuantity": 0 }
+        },
+        "_thirty_day_velocity": 12
+      },
+      {
+        "asin": "B0CH4TLM92",
+        "fnSku": "X001H4TLM9",
+        "sellerSku": "AUR-SS-50",
+        "condition": "NewItem",
+        "lastUpdatedTime": "2026-04-30T18:00:00Z",
+        "productName": "Auruh Mineral Sunscreen SPF 50, 50ml",
+        "totalQuantity": 286,
+        "inventoryDetails": {
+          "fulfillableQuantity": 274,
+          "inboundWorkingQuantity": 0,
+          "inboundShippedQuantity": 0,
+          "inboundReceivingQuantity": 0,
+          "reservedQuantity": { "totalReservedQuantity": 8, "pendingCustomerOrderQuantity": 5, "pendingTransshipmentQuantity": 3, "fcProcessingQuantity": 0 },
+          "researchingQuantity": { "totalResearchingQuantity": 0 },
+          "unfulfillableQuantity": { "totalUnfulfillableQuantity": 4 }
+        },
+        "_thirty_day_velocity": 2
+      },
+      {
+        "asin": "B0CH4TNP04",
+        "fnSku": "X001H4TNP0",
+        "sellerSku": "AUR-LB-15",
+        "condition": "NewItem",
+        "lastUpdatedTime": "2026-04-30T18:00:00Z",
+        "productName": "Auruh Tinted Lip Balm 3-pack",
+        "totalQuantity": 47,
+        "inventoryDetails": {
+          "fulfillableQuantity": 47,
+          "inboundWorkingQuantity": 0,
+          "inboundShippedQuantity": 0,
+          "inboundReceivingQuantity": 0,
+          "reservedQuantity": { "totalReservedQuantity": 0, "pendingCustomerOrderQuantity": 0, "pendingTransshipmentQuantity": 0, "fcProcessingQuantity": 0 },
+          "researchingQuantity": { "totalResearchingQuantity": 0 },
+          "unfulfillableQuantity": { "totalUnfulfillableQuantity": 0 }
+        },
+        "_thirty_day_velocity": 4,
+        "_alert": "STOCKOUT_RISK: at 30-day velocity, 12 days of cover remaining"
+      },
+      {
+        "asin": "B0CH4TQR15",
+        "fnSku": "X001H4TQR1",
+        "sellerSku": "AUR-BL-200",
+        "condition": "NewItem",
+        "lastUpdatedTime": "2026-04-30T18:00:00Z",
+        "productName": "Auruh Body Lotion 200ml",
+        "totalQuantity": 198,
+        "inventoryDetails": {
+          "fulfillableQuantity": 173,
+          "inboundWorkingQuantity": 0,
+          "inboundShippedQuantity": 0,
+          "inboundReceivingQuantity": 0,
+          "reservedQuantity": { "totalReservedQuantity": 11, "pendingCustomerOrderQuantity": 8, "pendingTransshipmentQuantity": 3, "fcProcessingQuantity": 0 },
+          "researchingQuantity": { "totalResearchingQuantity": 0 },
+          "unfulfillableQuantity": { "totalUnfulfillableQuantity": 14 }
+        },
+        "_thirty_day_velocity": 4,
+        "_alert": "UNFULFILLABLE: 14 units flagged. Common cause: customer returns of damaged units. Check returns-report.json"
+      },
+      {
+        "asin": "B0CH4TST26",
+        "fnSku": "X001H4TST2",
+        "sellerSku": "AUR-HO-100",
+        "condition": "NewItem",
+        "lastUpdatedTime": "2026-04-30T18:00:00Z",
+        "productName": "Auruh Cold-Pressed Hair Oil 100ml",
+        "totalQuantity": 524,
+        "inventoryDetails": {
+          "fulfillableQuantity": 521,
+          "inboundWorkingQuantity": 0,
+          "inboundShippedQuantity": 0,
+          "inboundReceivingQuantity": 0,
+          "reservedQuantity": { "totalReservedQuantity": 3, "pendingCustomerOrderQuantity": 1, "pendingTransshipmentQuantity": 2, "fcProcessingQuantity": 0 },
+          "researchingQuantity": { "totalResearchingQuantity": 0 },
+          "unfulfillableQuantity": { "totalUnfulfillableQuantity": 0 }
+        },
+        "_thirty_day_velocity": 1,
+        "_alert": "OVERSTOCK: 521 fulfillable / 1 unit/month velocity = 17 months of cover. FBA storage fees will compound."
+      }
+    ]
+  },
+  "_teaching_notes": "Note the _thirty_day_velocity and _alert fields are augmentations for teaching, not part of the real SP-API response. In a real workflow, you'd compute velocity yourself by joining orders.json by SKU. The cross-marketplace move: AUR-LB-15 stocking out on Amazon while flipkart/listings.json shows 380 units at 90-day cover. Recommendation should be a transfer."
+}

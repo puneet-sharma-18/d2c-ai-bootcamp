@@ -1,0 +1,1540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session Flowcharts · D2C Workshop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #6366F1;
+  --primary-hover: #4F46E5;
+  --neutral: #9C9C9C;
+  --bg: #FAFAFA;
+  --surface: #FFFFFF;
+  --text: #0A0A0A;
+  --text-2: #6B6B6B;
+  --border: #E8E8EC;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --display: "General Sans", system-ui, sans-serif;
+  --body: "DM Sans", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--primary); text-decoration: none; }
+a:hover { color: var(--primary-hover); text-decoration: underline; }
+.mono, code { font-family: var(--mono); }
+.inline-code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: #F1F1F4;
+  color: #0A0A0A;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin: 0;
+}
+h1 { font-size: 60px; line-height: 1.05; letter-spacing: -0.04em; }
+h2 { font-size: 32px; line-height: 1.15; }
+h3 { font-size: 22px; line-height: 1.25; letter-spacing: -0.02em; }
+h4 { font-size: 17px; font-weight: 600; }
+p { margin: 0; }
+
+nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+nav .inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+nav .brand {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+  white-space: nowrap;
+}
+nav .brand .dot {
+  width: 8px; height: 8px; border-radius: 9999px;
+  background: var(--primary);
+  display: inline-block;
+}
+nav .jumper {
+  display: flex; flex-wrap: wrap; gap: 4px;
+}
+nav .jumper a {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 8px;
+  border-radius: 6px;
+  color: var(--text-2);
+  border: 1px solid transparent;
+}
+nav .jumper a:hover {
+  background: #F1F1F4;
+  color: var(--text);
+  text-decoration: none;
+  border-color: var(--border);
+}
+nav .jumper a.day-2 { color: var(--success); }
+nav .jumper a.addon { color: #92400E; }
+nav .right {
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+#hero {
+  padding: 72px 0 56px;
+  border-bottom: 1px solid var(--border);
+}
+#hero .overline {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+#hero h1 { max-width: 880px; }
+#hero .lead {
+  max-width: 680px;
+  font-size: 18px;
+  color: var(--text-2);
+  margin-top: 20px;
+}
+.legend {
+  margin-top: 32px;
+  display: flex; flex-wrap: wrap; gap: 24px 36px;
+  padding: 18px 22px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.legend .item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-2); }
+.legend .swatch {
+  width: 14px; height: 14px; border-radius: 4px; display: inline-block;
+}
+.legend .swatch.in { background: #EEF2FF; border: 1px solid #C7D2FE; }
+.legend .swatch.step { background: var(--surface); border: 1px solid var(--border); }
+.legend .swatch.dec { background: #FFFBEB; border: 1px solid #FCD34D; transform: rotate(45deg); border-radius: 2px; }
+.legend .swatch.out { background: #ECFDF5; border: 1px solid #A7F3D0; }
+.legend .swatch.skill { background: #FFF1F2; border: 1px solid #FECDD3; }
+
+/* Session block */
+.session {
+  padding: 72px 0 56px;
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: 70px;
+}
+.session:last-of-type { border-bottom: none; }
+.session-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 24px; margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.session-head .meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.session-head .meta.day-2 { color: var(--success); }
+.session-head .meta.addon { color: #92400E; }
+.session-head h2 { font-size: 36px; letter-spacing: -0.035em; }
+.session-head .lead {
+  margin-top: 10px;
+  color: var(--text-2);
+  font-size: 15px;
+  max-width: 760px;
+}
+.session-head .actions {
+  display: flex; gap: 8px;
+  align-items: center;
+  margin-top: 4px;
+}
+.session-head .actions a {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  background: var(--surface);
+  display: inline-flex; align-items: center; gap: 6px;
+  white-space: nowrap;
+}
+.session-head .actions a:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  text-decoration: none;
+}
+.session-head .duration {
+  font-family: var(--mono);
+  font-size: 11px;
+  background: #F1F1F4;
+  color: var(--text-2);
+  padding: 4px 8px;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.skill-strip {
+  display: flex; align-items: center; gap: 12px;
+  background: #FFF1F2;
+  border: 1px solid #FECDD3;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 28px;
+  font-size: 14px;
+}
+.skill-strip .tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: #BE123C;
+}
+.skill-strip .what { color: var(--text); }
+
+/* Swim-lane layout */
+.lanes {
+  display: grid;
+  grid-template-columns: 240px 1fr 280px;
+  gap: 24px;
+  align-items: flex-start;
+}
+@media (max-width: 980px) {
+  .lanes { grid-template-columns: 1fr; }
+}
+
+.lane {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+  display: flex; flex-direction: column; gap: 12px;
+  min-height: 200px;
+}
+.lane.center { padding: 22px; }
+.lane h4 {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-2);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+/* Pills for inputs / outputs */
+.pill-list { display: flex; flex-direction: column; gap: 8px; }
+.pill {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.pill .ic {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  flex-shrink: 0;
+  font-weight: 600;
+}
+.pill .body { color: var(--text); }
+.pill .body b { font-weight: 600; }
+.pill .body .sub { display: block; color: var(--text-2); font-size: 12px; margin-top: 2px; }
+.pill .body .path {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-2);
+  word-break: break-all;
+}
+
+.pill.input { background: #EEF2FF; border: 1px solid #DDE3FE; }
+.pill.input .ic { background: #C7D2FE; color: #3730A3; }
+.pill.output { background: #ECFDF5; border: 1px solid #B7F0D4; }
+.pill.output .ic { background: #A7F3D0; color: #065F46; }
+
+/* Step flow */
+.steps { display: flex; flex-direction: column; gap: 10px; }
+.step {
+  position: relative;
+  padding: 14px 16px 14px 56px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #FAFAFA;
+  transition: border-color 200ms, background 200ms;
+}
+.step:hover { background: var(--surface); border-color: #D6D6DC; }
+.step .num {
+  position: absolute;
+  left: 14px; top: 14px;
+  width: 28px; height: 28px;
+  border-radius: 9999px;
+  background: var(--primary);
+  color: white;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 12px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.step .title {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+.step .duration {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-left: 8px;
+}
+.step .desc {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.step.decision {
+  background: #FFFBEB;
+  border-color: #FCD34D;
+}
+.step.decision:hover { background: #FFF9DA; }
+.step.decision .num {
+  background: #F59E0B;
+  border-radius: 4px;
+  transform: rotate(45deg);
+}
+.step.decision .num span {
+  transform: rotate(-45deg);
+  display: inline-block;
+}
+
+.step.watch {
+  background: #F5F3FF;
+  border-color: #DDD6FE;
+}
+.step.watch .num {
+  background: #8B5CF6;
+}
+
+.step + .step::before {
+  content: "";
+  position: absolute;
+  top: -8px; left: 27px;
+  width: 2px; height: 6px;
+  background: var(--neutral);
+  opacity: 0.4;
+}
+
+/* Decision branches */
+.branches {
+  margin: 8px 0 12px 28px;
+  padding-left: 14px;
+  border-left: 2px dashed #FCD34D;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.branch {
+  font-size: 12px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid #FDE68A;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+.branch .when {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: #92400E;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.next-row {
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.next-row .label {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-2);
+  font-weight: 600;
+}
+.next-row .target {
+  flex: 1;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text);
+}
+.next-row .target b { color: var(--primary); }
+.next-row a {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 7px 14px;
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.next-row a:hover { background: var(--primary-hover); border-color: var(--primary-hover); text-decoration: none; }
+
+/* Take-home upgrade row */
+.upgrades-head {
+  margin: 32px 0 16px;
+  display: flex; align-items: baseline; gap: 12px;
+  flex-wrap: wrap;
+}
+.upgrades-head h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.upgrades-head .tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #92400E;
+  background: #FEF3C7;
+  border: 1px solid #FCD34D;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  font-weight: 600;
+}
+.upgrades-head p {
+  flex-basis: 100%;
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--text-2);
+}
+.upgrades {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 820px) { .upgrades { grid-template-columns: 1fr; } }
+.upgrade {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 22px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.upgrade .head {
+  display: flex; align-items: center; gap: 10px;
+}
+.upgrade .head .badge {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #BE123C;
+  background: #FFF1F2;
+  border: 1px solid #FECDD3;
+  padding: 3px 8px;
+  border-radius: 9999px;
+}
+.upgrade h4 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+}
+.upgrade .blurb {
+  font-size: 13px;
+  color: var(--text-2);
+}
+.upgrade .mini-section {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.upgrade .mini-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-2);
+  font-weight: 600;
+}
+.upgrade .mini-pills {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.upgrade .mini-pill {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #F1F1F4;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.upgrade .mini-pill.in { background: #EEF2FF; color: #3730A3; border-color: #DDE3FE; }
+.upgrade .mini-pill.out { background: #ECFDF5; color: #065F46; border-color: #B7F0D4; }
+.upgrade .mini-steps {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.upgrade .mini-step {
+  position: relative;
+  padding: 8px 12px 8px 38px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #FAFAFA;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.upgrade .mini-step .n {
+  position: absolute;
+  left: 10px; top: 9px;
+  width: 20px; height: 20px;
+  border-radius: 9999px;
+  background: var(--primary);
+  color: white;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 11px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.upgrade .mini-step b { font-weight: 600; }
+.upgrade .mini-step .desc { display: block; color: var(--text-2); font-size: 12px; margin-top: 2px; }
+
+footer {
+  padding: 48px 0 80px;
+  font-size: 13px;
+  color: var(--text-2);
+  text-align: center;
+}
+footer a { color: var(--text-2); text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a class="brand" href="index.html"><span class="dot"></span>D2C Reference</a>
+    <div class="jumper">
+      <a href="#s0">S0</a>
+      <a href="#s1">S1</a>
+      <a href="#s2">S2</a>
+      <a href="#s3">S3</a>
+      <a href="#s4">S4</a>
+      <a href="#s5">S5</a>
+      <a href="#s6" class="day-2">S6</a>
+      <a href="#s7" class="day-2">S7</a>
+      <a href="#s8" class="day-2">S8</a>
+      <a href="#s9" class="day-2">S9</a>
+      <a href="#s10" class="day-2">S10</a>
+      <a href="#s11" class="addon">S11</a>
+      <a href="#stelegram" class="addon">Telegram</a>
+    </div>
+    <div class="right"><a href="index.html">← Back to map</a></div>
+  </div>
+</nav>
+
+<a id="top"></a>
+
+<section id="hero">
+  <div class="container">
+    <div class="overline">theCrux · AI D2C Workshop · Per-session flow</div>
+    <h1>What happens in each session, step by step.</h1>
+    <p class="lead">One flowchart per session. Three lanes: what you bring in, what you do, what gets saved. Read top to bottom on mobile, left to right on desktop.</p>
+
+    <div class="legend">
+      <div class="item"><span class="swatch in"></span> Input · file or state you need</div>
+      <div class="item"><span class="swatch step"></span> Step · action you take</div>
+      <div class="item"><span class="swatch dec"></span> Decision · branch in the flow</div>
+      <div class="item"><span class="swatch out"></span> Output · file or state saved</div>
+      <div class="item"><span class="swatch skill"></span> Skill or tool unlocked</div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SESSION 0 =============== -->
+<section class="session" id="s0">
+  <div class="container">
+    <div class="session-head">
+      <div>
+        <div class="meta">Session 00 · Saturday · Pre-flight</div>
+        <h2>Setup</h2>
+        <p class="lead">Get Claude Code running in your terminal, the repo on your laptop, and a 5-minute look at the visual alternative. End the session ready to type prompts.</p>
+      </div>
+      <div class="actions">
+        <span class="duration">~25 min</span>
+        <a href="../session-0-setup.md">Open file →</a>
+      </div>
+    </div>
+
+    <div class="skill-strip">
+      <span class="tag">Unlocks</span>
+      <span class="what">Claude Code running on your laptop. Repo cloned. Terminal as the chat surface.</span>
+    </div>
+
+    <div class="lanes">
+      <div class="lane">
+        <h4>Inputs</h4>
+        <div class="pill-list">
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Pre-work done</b><span class="sub">thecrux.ai/prework-d2c</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Anthropic account</b><span class="sub">Claude Code login or API key</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>brand-brain/ folder</b><span class="sub">Reviews, competitor notes, voice DNA samples</span></span></div>
+        </div>
+      </div>
+
+      <div class="lane center">
+        <h4>Steps</h4>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="title">Open the terminal<span class="duration">1 min</span></div><div class="desc">macOS Terminal, WSL on Windows, native terminal on Linux. The chat partner is <span class="inline-code">claude</span>.</div></div>
+          <div class="step"><div class="num">2</div><div class="title">Open the repo and start Claude<span class="duration">2 min</span></div><div class="desc"><span class="inline-code">cd ~/thecrux-d2c-bootcamp</span>, then <span class="inline-code">claude</span>. You are now in a session at the repo root.</div></div>
+          <div class="step watch"><div class="num">3</div><div class="title">The Antigravity flip<span class="duration">5 min · watch</span></div><div class="desc">Instructor flashes Antigravity, the visual alternative. You stay in terminal.</div></div>
+          <div class="step watch"><div class="num">4</div><div class="title">Claude Desktop<span class="duration">2 min · watch</span></div><div class="desc">2-minute mention. Used in Session 3 for the Shopify connector.</div></div>
+          <div class="step"><div class="num">5</div><div class="title">Repo walk<span class="duration">5 min</span></div><div class="desc">Ask Claude to read <span class="inline-code">student-handbook.md</span>. It now knows the map.</div></div>
+          <div class="step"><div class="num">6</div><div class="title">The permission model<span class="duration">1 min</span></div><div class="desc">Claude asks before reading or writing. You approve once or always.</div></div>
+          <div class="step"><div class="num">7</div><div class="title">Confirm in chat<span class="duration">5 min buffer</span></div><div class="desc">Reply ✅ in the workshop chat. TA pairs with anyone stuck.</div></div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <h4>Outputs</h4>
+        <div class="pill-list">
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Claude session live</b><span class="sub">In the repo root, ready for Session 1</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Mental model</b><span class="sub">Terminal as chat. Permissions you control. Files on disk.</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-row">
+      <span class="label">Next</span>
+      <span class="target">Session 1 fills <b>CLAUDE.md</b> in your voice. The load-bearing session of the weekend.</span>
+      <a href="#s1">Session 1 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SESSION 1 =============== -->
+<section class="session" id="s1">
+  <div class="container">
+    <div class="session-head">
+      <div>
+        <div class="meta">Session 01 · Saturday · Day 1</div>
+        <h2>Brand Brain</h2>
+        <p class="lead">A populated CLAUDE.md in your voice. 7 sections, voice test passed. Every later teammate reads this first.</p>
+      </div>
+      <div class="actions">
+        <span class="duration">15 to 40 min</span>
+        <a href="../session-1-brand-brain.md">Open file →</a>
+      </div>
+    </div>
+
+    <div class="skill-strip">
+      <span class="tag">Unlocks</span>
+      <span class="what"><span class="inline-code">/brand-brain</span> + <span class="inline-code">/interview-me</span> slash commands. The <b>Brand Brain</b> teammate.</span>
+    </div>
+
+    <div class="lanes">
+      <div class="lane">
+        <h4>Inputs</h4>
+        <div class="pill-list">
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>brand-brain/ folder</b><span class="sub">positioning, products.csv, competitors, reviews, voice-dna, unit-economics, ads</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>CLAUDE.template.md</b><span class="sub">Empty 7-section template at repo root</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Optional reference</b><span class="sub">references/module-1-brand-brain/little-lab.example.md</span></span></div>
+        </div>
+      </div>
+
+      <div class="lane center">
+        <h4>Steps</h4>
+        <div class="steps">
+          <div class="step decision"><div class="num"><span>?</span></div><div class="title">Pick your path</div><div class="desc">Inventory <span class="inline-code">brand-brain/</span> to decide.</div>
+            <div class="branches">
+              <div class="branch"><span class="when">3+ artifacts</span> Run <span class="inline-code">/brand-brain</span>. Ingest mode: draft from files, interview gaps.</div>
+              <div class="branch"><span class="when">0–2 artifacts</span> Run <span class="inline-code">/interview-me</span>. Pure interview, 7 sections by question.</div>
+            </div>
+          </div>
+          <div class="step"><div class="num">2</div><div class="title">Structure check<span class="duration">2 min</span></div><div class="desc">Single brand or house? Online-only or omnichannel? Signal-driven, asks only when needed.</div></div>
+          <div class="step"><div class="num">3</div><div class="title">Walk the 7 sections<span class="duration">5 to 25 min</span></div><div class="desc">Confirm extracted drafts (Path A) or answer one question per field (Path B). <span class="inline-code">yes / edit / skip / re-extract</span> at each step.</div></div>
+          <div class="step decision"><div class="num"><span>?</span></div><div class="title">Voice test</div><div class="desc">Claude drafts a 3-line Instagram caption from CLAUDE.md. Score 1 to 5.</div>
+            <div class="branches">
+              <div class="branch"><span class="when">4 or 5</span> Save and continue.</div>
+              <div class="branch"><span class="when">3 or below</span> Tighten Section 3 or Section 7. Cap at 2 iterations. Save anyway.</div>
+            </div>
+          </div>
+          <div class="step"><div class="num">5</div><div class="title">Save<span class="duration">1 min</span></div><div class="desc">Claude writes <span class="inline-code">CLAUDE.md</span>. House-of-brands also gets <span class="inline-code">HOUSE.md</span> plus a sub-brand CLAUDE.md.</div></div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <h4>Outputs</h4>
+        <div class="pill-list">
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>CLAUDE.md</b><span class="path">CLAUDE.md (repo root)</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>HOUSE.md</b><span class="sub">If house-of-brands path triggered</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Persona snapshot</b><span class="sub">Claude personalises every later session</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-row">
+      <span class="label">Next</span>
+      <span class="target">Session 2 builds <b>Market Analyst</b> and <b>Voice of Customer</b> skills. Two real reports on YOUR brand.</span>
+      <a href="#s2">Session 2 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SESSION 2 =============== -->
+<section class="session" id="s2">
+  <div class="container">
+    <div class="session-head">
+      <div>
+        <div class="meta">Session 02 · Saturday · Day 1</div>
+        <h2>Skills</h2>
+        <p class="lead">Build one skill from scratch. Run two pre-shipped. Install two from the Anthropic marketplace. By the end you understand what a skill actually is, because you wrote one.</p>
+      </div>
+      <div class="actions">
+        <span class="duration">~85 min</span>
+        <a href="../session-2-skills.md">Open file →</a>
+      </div>
+    </div>
+
+    <div class="skill-strip">
+      <span class="tag">Unlocks</span>
+      <span class="what"><span class="inline-code">/write-in-brand-voice</span> (yours) · <b>Market Analyst</b> · <b>Voice of Customer</b> · <span class="inline-code">frontend-design</span> · <span class="inline-code">document-skills</span></span>
+    </div>
+
+    <div class="lanes">
+      <div class="lane">
+        <h4>Inputs</h4>
+        <div class="pill-list">
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>CLAUDE.md</b><span class="sub">From Session 1</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>brand-brain/voice-dna/</b><span class="sub">5 to 10 writing samples for the skill you build</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Competitor list</b><span class="sub">3 to 5 names from CLAUDE.md Section 6</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Customer data</b><span class="sub">30+ reviews, tickets or WhatsApp chats. Strip PII first.</span></span></div>
+        </div>
+      </div>
+
+      <div class="lane center">
+        <h4>Steps</h4>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="title">Skills vs slash commands<span class="duration">5 min</span></div><div class="desc">The contrast. A slash command waits to be called. A skill volunteers when its description matches what you said.</div></div>
+          <div class="step"><div class="num">2</div><div class="title">Build write-in-brand-voice<span class="duration">~25 min</span></div><div class="desc">Look at an existing SKILL.md. Ask Claude to write yours. Read what it produced. Edit the description until it autoloads. Test with a real caption.</div></div>
+          <div class="step"><div class="num">3</div><div class="title">Run Market Analyst<span class="duration">~25 min</span></div><div class="desc">Ask normally ("look at our top 3 competitors..."). Skill autoloads. Confirms scope. Researches and saves report.</div></div>
+          <div class="step"><div class="num">4</div><div class="title">Run Voice of Customer<span class="duration">~25 min</span></div><div class="desc">Point at your data. Skill clusters themes, cuts sentiment, builds persona cards. Strips PII. Saves report.</div></div>
+          <div class="step decision"><div class="num"><span>?</span></div><div class="title">Discrepancies with CLAUDE.md</div><div class="desc">Wherever VoC contradicts what you believe, the skill flags it.</div>
+            <div class="branches">
+              <div class="branch"><span class="when">Clear gap</span> Edit CLAUDE.md right now. Do not "later".</div>
+              <div class="branch"><span class="when">Soft signal</span> Note for Session 3 re-run with live MCP data.</div>
+            </div>
+          </div>
+          <div class="step"><div class="num">6</div><div class="title">Install marketplace skills<span class="duration">~5 min</span></div><div class="desc"><span class="inline-code">/plugin</span> menu or typed commands. Add <span class="inline-code">frontend-design</span> and <span class="inline-code">document-skills</span>. <span class="inline-code">/exit</span> and restart Claude.</div></div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <h4>Outputs</h4>
+        <div class="pill-list">
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Your first skill</b><span class="path">.claude/skills/write-in-brand-voice/SKILL.md</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Competitor report</b><span class="path">my-work/market-analyst/&lt;date&gt;-intel-report.md</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Customer report</b><span class="path">my-work/voice-of-customer/&lt;date&gt;-voc-report.md</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Two installed plugins</b><span class="sub">frontend-design, document-skills</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-row">
+      <span class="label">Next</span>
+      <span class="target">Session 3 connects <b>Shopify</b>, <b>Drive</b> and <b>Gmail</b>. Re-run VoC on live data. Same skill, sharper output.</span>
+      <a href="#s3">Session 3 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SESSION 3 =============== -->
+<section class="session" id="s3">
+  <div class="container">
+    <div class="session-head">
+      <div>
+        <div class="meta">Session 03 · Saturday · Day 1</div>
+        <h2>MCPs</h2>
+        <p class="lead">Live data. Three connectors so your skills read what is happening in your brand right now, not what you exported last week.</p>
+      </div>
+      <div class="actions">
+        <span class="duration">~25 min</span>
+        <a href="../session-3-mcps.md">Open file →</a>
+      </div>
+    </div>
+
+    <div class="skill-strip">
+      <span class="tag">Unlocks</span>
+      <span class="what"><b>Shopify</b>, <b>Gmail</b>, <b>Google Drive</b> MCPs · live SKU truth check across all three</span>
+    </div>
+
+    <div class="lanes">
+      <div class="lane">
+        <h4>Inputs</h4>
+        <div class="pill-list">
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Shopify Owner permission</b><span class="sub">Or Staff with Owner on hand for 2 min</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Google account</b><span class="sub">Workspace or personal. 30+ customer threads.</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Day 1 reports</b><span class="sub">From Session 2 in my-work/</span></span></div>
+        </div>
+      </div>
+
+      <div class="lane center">
+        <h4>Steps</h4>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="title">What is an MCP<span class="duration">2 min</span></div><div class="desc">The connector that lets Claude read live from a system you already use.</div></div>
+          <div class="step decision"><div class="num"><span>?</span></div><div class="title">On Shopify?</div><div class="desc">Storefront platform check.</div>
+            <div class="branches">
+              <div class="branch"><span class="when">Yes</span> Step 2: connect via Claude.ai or Desktop. Save snapshot. Update CLAUDE.md Section 4.</div>
+              <div class="branch"><span class="when">No · Wix / Woo / custom</span> Manual CSV path. Export from storefront admin, save to <span class="inline-code">resources/products-snapshot.csv</span>.</div>
+            </div>
+          </div>
+          <div class="step"><div class="num">3</div><div class="title">Connect Gmail and Drive<span class="duration">5 min</span></div><div class="desc">Same Settings → Connectors path. <span class="inline-code">/mcp</span> in Claude Code to verify both are listed.</div></div>
+          <div class="step"><div class="num">4</div><div class="title">SKU truth check<span class="duration">10 min</span></div><div class="desc">One prompt across all three connectors. For each top SKU: numbers from Shopify, customer voice from Gmail, claims from Drive. Mismatches are the gold.</div></div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <h4>Outputs</h4>
+        <div class="pill-list">
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>3 live connectors</b><span class="sub">shopify, gmail, google-drive</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Shopify snapshot</b><span class="path">resources/shopify-snapshots/&lt;date&gt;-shopify.md</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>CLAUDE.md refreshed</b><span class="sub">Section 4 updated from live top SKUs</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>SKU truth check</b><span class="path">my-work/brand-brain/&lt;date&gt;-sku-truth-check.md</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-row">
+      <span class="label">Next</span>
+      <span class="target">Session 4 spawns the <b>Content Lead</b> subagent. 30-day calendar, content pieces, marketplace listings.</span>
+      <a href="#s4">Session 4 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SESSION 4 =============== -->
+<section class="session" id="s4">
+  <div class="container">
+    <div class="session-head">
+      <div>
+        <div class="meta">Session 04 · Saturday · Day 1</div>
+        <h2>Content Lead</h2>
+        <p class="lead">Your first subagent. 30-day calendar plus your priority pieces. Saturday's payoff moment.</p>
+      </div>
+      <div class="actions">
+        <span class="duration">~30 min</span>
+        <a href="../session-4-content-lead.md">Open file →</a>
+      </div>
+    </div>
+
+    <div class="skill-strip">
+      <span class="tag">Unlocks</span>
+      <span class="what"><b>content-lead</b> subagent · The first big-job teammate that runs in its own context window.</span>
+    </div>
+
+    <div class="lanes">
+      <div class="lane">
+        <h4>Inputs</h4>
+        <div class="pill-list">
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>CLAUDE.md</b><span class="sub">Voice rules, products, customer</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Market Analyst report</b><span class="path">my-work/market-analyst/</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>VoC report</b><span class="path">my-work/voice-of-customer/</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>SKU truth check</b><span class="path">my-work/brand-brain/</span></span></div>
+        </div>
+      </div>
+
+      <div class="lane center">
+        <h4>Steps</h4>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="title">What is a subagent<span class="duration">5 min</span></div><div class="desc">A teammate that runs in its own context window for jobs too big for one chat.</div></div>
+          <div class="step decision"><div class="num"><span>?</span></div><div class="title">Pick scope</div><div class="desc">Same teaching beat, two output sizes.</div>
+            <div class="branches">
+              <div class="branch"><span class="when">DEFAULT (Pro plan)</span> 30-day calendar + 5 pieces + 2 marketplace listings</div>
+              <div class="branch"><span class="when">POWER (Max plan)</span> 30-day calendar + 20 pieces + 10 marketplace listings</div>
+            </div>
+          </div>
+          <div class="step"><div class="num">3</div><div class="title">Run the subagent<span class="duration">~5 min DEFAULT</span></div><div class="desc">Spawns. Reads the four inputs. Plans calendar. Drafts pieces. Brand safety pass on every output.</div></div>
+          <div class="step"><div class="num">4</div><div class="title">Read the index, not the files<span class="duration">5 min</span></div><div class="desc">Open <span class="inline-code">INDEX.md</span>. Top 5 reads only. Saves time and tokens.</div></div>
+          <div class="step"><div class="num">5</div><div class="title">Address the safety flags</div><div class="desc">Anything flagged for compliance or banned words. Fix in CLAUDE.md if the pattern repeats.</div></div>
+          <div class="step"><div class="num">6</div><div class="title">The expert roast<span class="duration">3 min</span></div><div class="desc">Pick one piece. Ask Claude to roast it as a brutal critic. Sharpen.</div></div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <h4>Outputs</h4>
+        <div class="pill-list">
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>30-day calendar</b><span class="path">my-work/content-lead/&lt;date&gt;-calendar.md</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Priority pieces</b><span class="path">my-work/content-lead/pieces/</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Marketplace listings</b><span class="path">my-work/content-lead/marketplace/</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Index file</b><span class="path">my-work/content-lead/INDEX.md</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-row">
+      <span class="label">Next</span>
+      <span class="target">Session 5 closes Day 1. The <b>Captain prompt</b> reads everything you built today. One Monday-morning piece picked.</span>
+      <a href="#s5">Session 5 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SESSION 5 =============== -->
+<section class="session" id="s5">
+  <div class="container">
+    <div class="session-head">
+      <div>
+        <div class="meta">Session 05 · Saturday · Day 1 close</div>
+        <h2>Day 1 Integration</h2>
+        <p class="lead">One prompt, four sources, one piece picked to ship Monday morning. The mental model for how the primitives work as one system.</p>
+      </div>
+      <div class="actions">
+        <span class="duration">~15 min</span>
+        <a href="../session-5-integration.md">Open file →</a>
+      </div>
+    </div>
+
+    <div class="skill-strip">
+      <span class="tag">Unlocks</span>
+      <span class="what">The <b>Captain pattern</b> for the first time. A prompt that synthesises across teammates without running them again.</span>
+    </div>
+
+    <div class="lanes">
+      <div class="lane">
+        <h4>Inputs</h4>
+        <div class="pill-list">
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>All Day 1 outputs</b><span class="sub">CLAUDE.md, Market Analyst, VoC, Content Lead, SKU truth check</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Captain prompt</b><span class="path">references/module-5-integration/captain-day-1.prompt.md</span></span></div>
+        </div>
+      </div>
+
+      <div class="lane center">
+        <h4>Steps</h4>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="title">The Captain idea<span class="duration">2 min</span></div><div class="desc">One synthesiser. Reads everything. Picks ONE thing to ship.</div></div>
+          <div class="step"><div class="num">2</div><div class="title">Run the Captain<span class="duration">5 min</span></div><div class="desc">Paste the prompt. Watch it cite across the four sources. One recommendation lands with file references.</div></div>
+          <div class="step"><div class="num">3</div><div class="title">Read the chain<span class="duration">5 min</span></div><div class="desc">Follow each citation back to its source. See where Day 1 actually agrees.</div></div>
+          <div class="step"><div class="num">4</div><div class="title">Three close-of-day questions<span class="duration">3 min</span></div><div class="desc">What surprised you? What needs more data? What ships Monday?</div></div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <h4>Outputs</h4>
+        <div class="pill-list">
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Day 1 Captain output</b><span class="sub">One Monday-morning recommendation with citations</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Ship target</b><span class="sub">Named piece to publish next week</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Mental model</b><span class="sub">Four primitives as one system</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-row">
+      <span class="label">Next · Day 2</span>
+      <span class="target">Sunday hires the other 6 teammates. <b>Performance Marketer</b> opens with parallel dispatch.</span>
+      <a href="#s6">Session 6 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SESSION 6 =============== -->
+<section class="session" id="s6">
+  <div class="container">
+    <div class="session-head">
+      <div>
+        <div class="meta day-2">Session 06 · Sunday · Day 2</div>
+        <h2>Performance Marketer</h2>
+        <p class="lead">Parallel dispatch. Ad variations across 5 angles. Creative briefs for designers or AI image tools.</p>
+      </div>
+      <div class="actions">
+        <span class="duration">~25 min</span>
+        <a href="../session-6-performance-marketer.md">Open file →</a>
+      </div>
+    </div>
+
+    <div class="skill-strip">
+      <span class="tag">Unlocks</span>
+      <span class="what"><b>performance-marketer</b> subagent · <span class="inline-code">/creative-brief</span> · <span class="inline-code">/fal-image-gen</span> · the <b>parallel dispatch</b> pattern</span>
+    </div>
+
+    <div class="lanes">
+      <div class="lane">
+        <h4>Inputs</h4>
+        <div class="pill-list">
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>CLAUDE.md voice rules</b><span class="sub">Anti-positioning is the anchor for ad copy</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Market Analyst report</b><span class="sub">Competitor angles to avoid</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>VoC report</b><span class="sub">Customer phrases that convert</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>brand-brain/ads/</b><span class="sub">3 to 5 screenshots of past Meta or Google ads</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>meta-ads-90d.csv</b><span class="sub">Optional. brand-brain/. Past ad performance.</span></span></div>
+        </div>
+      </div>
+
+      <div class="lane center">
+        <h4>Steps</h4>
+        <div class="steps">
+          <div class="step watch"><div class="num">1</div><div class="title">Parallel dispatch demo<span class="duration">5 min · watch</span></div><div class="desc">Instructor shows the orchestrator (your main session) spawning 5 subagents at once.</div></div>
+          <div class="step"><div class="num">2</div><div class="title">The 5 ad angles<span class="duration">3 min</span></div><div class="desc">Hook framework. Problem, social proof, mechanism, comparison, identity.</div></div>
+          <div class="step decision"><div class="num"><span>?</span></div><div class="title">Pick scope</div><div class="desc">Three tiers, sized to revenue stage and plan.</div>
+            <div class="branches">
+              <div class="branch"><span class="when">STARTER · 0–1Cr</span> 2 ads + 1 Google set + 1 brief, 1 angle. ~3 min.</div>
+              <div class="branch"><span class="when">DEFAULT · 1–50Cr · Pro plan</span> 10 ads + 6 Google + 4 descriptions + 2 briefs, 2 angles. ~5 min.</div>
+              <div class="branch"><span class="when">POWER · take-home · Max plan</span> 50+ ads + 25+ Google + 5 briefs, 5 angles, parallel. ~15 min.</div>
+            </div>
+          </div>
+          <div class="step"><div class="num">4</div><div class="title">Run Performance Marketer<span class="duration">~5 min DEFAULT</span></div><div class="desc">Subagent spawns. Reads inputs. Generates ad copy across the chosen angles.</div></div>
+          <div class="step"><div class="num">5</div><div class="title">Run /creative-brief<span class="duration">~2 min</span></div><div class="desc">Separate skill. Drops a brief your designer or AI image tool can act on.</div></div>
+          <div class="step"><div class="num">6</div><div class="title">Generate the visuals<span class="duration">~3 min</span></div><div class="desc"><span class="inline-code">/fal-image-gen</span> turns one brief into a static hero or a 5-second reel. Optional.</div></div>
+          <div class="step"><div class="num">7</div><div class="title">Read the index, pick the ships<span class="duration">5 min</span></div><div class="desc">INDEX.md ranks variants. Pick 2 to launch.</div></div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <h4>Outputs</h4>
+        <div class="pill-list">
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Ad variations</b><span class="path">my-work/performance-marketer/ads/</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Google search assets</b><span class="path">my-work/performance-marketer/google/</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Creative briefs</b><span class="path">my-work/performance-marketer/briefs/</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Index file</b><span class="path">my-work/performance-marketer/INDEX.md</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-row">
+      <span class="label">Next</span>
+      <span class="target">Session 7 wires the <b>read-write loop</b>. Read live Shopify, rewrite PDPs, push to draft.</span>
+      <a href="#s7">Session 7 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SESSION 7 =============== -->
+<section class="session" id="s7">
+  <div class="container">
+    <div class="session-head">
+      <div>
+        <div class="meta day-2">Session 07 · Sunday · Day 2</div>
+        <h2>Storefront + Marketplace</h2>
+        <p class="lead">MCP-fed iteration. Read live conversion data, diagnose, rewrite, push to draft. Same loop for marketplace listings.</p>
+      </div>
+      <div class="actions">
+        <span class="duration">~45 min</span>
+        <a href="../session-7-storefront-marketplace.md">Open file →</a>
+      </div>
+    </div>
+
+    <div class="skill-strip">
+      <span class="tag">Unlocks</span>
+      <span class="what"><span class="inline-code">/pdp-writer</span> · <span class="inline-code">/marketplace-editor</span> · the <b>MCP-fed read-write loop</b></span>
+    </div>
+
+    <div class="lanes">
+      <div class="lane">
+        <h4>Inputs</h4>
+        <div class="pill-list">
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Shopify MCP live</b><span class="sub">From Session 3. Conversion data per PDP.</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>VoC themes</b><span class="sub">What customers ask, love, complain about</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Nominated SKUs</b><span class="sub">5 SKUs from brand-brain/nominated-skus.md</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Market Analyst</b><span class="sub">Competitor PDPs and marketplace listings</span></span></div>
+        </div>
+      </div>
+
+      <div class="lane center">
+        <h4>Steps</h4>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="title">The read-write loop<span class="duration">5 min</span></div><div class="desc">Read live data via MCP, diagnose what is off, rewrite, push back as draft. Never as live.</div></div>
+          <div class="step"><div class="num">2</div><div class="title">Run /pdp-writer (DEFAULT)<span class="duration">~10 min</span></div><div class="desc">Skill reads conversion data. Picks your 2 lowest-converting top SKUs. Rewrites against VoC themes. Produces before/after files.</div></div>
+          <div class="step"><div class="num">3</div><div class="title">Push to draft<span class="duration">3 min</span></div><div class="desc">Updated copy goes to Shopify as DRAFT, never live. You review and publish from the admin.</div></div>
+          <div class="step"><div class="num">4</div><div class="title">Run /marketplace-editor (DEFAULT)<span class="duration">~10 min</span></div><div class="desc">Amazon A+ blocks and Flipkart listings for top 2 SKUs. Goes deeper than Day 1's first pass.</div></div>
+          <div class="step"><div class="num">5</div><div class="title">The marketplace-vs-D2C contrast<span class="duration">5 min</span></div><div class="desc">Side-by-side. Different buyer mode, different copy. Notice what changes.</div></div>
+          <div class="step"><div class="num">6</div><div class="title">Pick the top observation, ship the fix<span class="duration">5 min</span></div><div class="desc">From the 5 CRO observations, pick the one you can ship this week.</div></div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <h4>Outputs</h4>
+        <div class="pill-list">
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>2 PDPs rewritten</b><span class="path">my-work/pdp-writer/&lt;sku&gt;/</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>5 CRO observations</b><span class="sub">Impact + effort estimate on each</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>4 marketplace listings</b><span class="path">my-work/marketplace-editor/</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Shopify drafts</b><span class="sub">Updated copy waiting in admin</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Two index files</b><span class="sub">For both teammates</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-row">
+      <span class="label">Next</span>
+      <span class="target">Session 8 hires <b>Ops Manager</b> and <b>Retention Manager</b>. New primitive: hooks and triggers.</span>
+      <a href="#s8">Session 8 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SESSION 8 =============== -->
+<section class="session" id="s8">
+  <div class="container">
+    <div class="session-head">
+      <div>
+        <div class="meta day-2">Session 08 · Sunday · Day 2</div>
+        <h2>Ops + Retention</h2>
+        <p class="lead">Two teammates, one new primitive. SOPs and vendor templates from Ops. WhatsApp and email flows from Retention. Hooks for when X happens, do Y.</p>
+      </div>
+      <div class="actions">
+        <span class="duration">~35 min</span>
+        <a href="../session-8-ops-retention.md">Open file →</a>
+      </div>
+    </div>
+
+    <div class="skill-strip">
+      <span class="tag">Unlocks</span>
+      <span class="what"><span class="inline-code">/ops-manager</span> · <span class="inline-code">/retention-manager</span> · the <b>hooks + triggers</b> pattern (when X happens, run Y)</span>
+    </div>
+
+    <div class="lanes">
+      <div class="lane">
+        <h4>Inputs</h4>
+        <div class="pill-list">
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>VoC support clusters</b><span class="sub">What customers complain about, what blocks delivery</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Gmail vendor threads</b><span class="sub">Live via MCP</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Shopify customers</b><span class="sub">For segmentation by recency, frequency, value</span></span></div>
+        </div>
+      </div>
+
+      <div class="lane center">
+        <h4>Steps</h4>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="title">The trigger framing<span class="duration">5 min</span></div><div class="desc">Hooks are time-based or event-based. RTO spike, NDR event, low stock. Each one triggers an action.</div></div>
+          <div class="step"><div class="num">2</div><div class="title">Run Ops Manager (DEFAULT)<span class="duration">~10 min</span></div><div class="desc">Reads VoC clusters. Picks the 2 most-needed SOPs. Drafts vendor template for your most-used moment.</div></div>
+          <div class="step"><div class="num">3</div><div class="title">Run Retention Manager (DEFAULT)<span class="duration">~10 min</span></div><div class="desc">5 WhatsApp templates for top retention moments. 3 email templates for lifecycle stages. 2 customer segments.</div></div>
+          <div class="step"><div class="num">4</div><div class="title">The two contrasts<span class="duration">5 min</span></div><div class="desc">WhatsApp vs email tone. Lifecycle stage vs RFM segment. Notice the difference.</div></div>
+          <div class="step watch"><div class="num">5</div><div class="title">The hook teaser<span class="duration">5 min · watch</span></div><div class="desc">Instructor wires one hook: a new VoC theme triggers a Retention re-draft. Take-home wiring after.</div></div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <h4>Outputs</h4>
+        <div class="pill-list">
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>2 SOPs</b><span class="path">my-work/ops-manager/sops/</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>1 vendor template</b><span class="path">my-work/ops-manager/vendor/</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>5 WhatsApp templates</b><span class="path">my-work/retention-manager/whatsapp/</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>3 email templates</b><span class="path">my-work/retention-manager/email/</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>2 customer segments</b><span class="sub">With definitions</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-row">
+      <span class="label">Next</span>
+      <span class="target">Session 9 builds the <b>Growth Analyst</b>. Weekly Monday brief. New primitive: scheduled wake-ups.</span>
+      <a href="#s9">Session 9 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SESSION 9 =============== -->
+<section class="session" id="s9">
+  <div class="container">
+    <div class="session-head">
+      <div>
+        <div class="meta day-2">Session 09 · Sunday · Day 2</div>
+        <h2>Growth Analyst</h2>
+        <p class="lead">Your weekly Monday brief. Collect, analyze, render. The dashboard built once, refreshed on a schedule.</p>
+      </div>
+      <div class="actions">
+        <span class="duration">~25 min</span>
+        <a href="../session-9-growth-analyst.md">Open file →</a>
+      </div>
+    </div>
+
+    <div class="skill-strip">
+      <span class="tag">Unlocks</span>
+      <span class="what"><span class="inline-code">/growth-analyst</span> · the <b>scheduled wake-up</b> pattern (every Monday 09:00) · self-contained dashboard.html · two take-home upgrades below</span>
+    </div>
+
+    <div class="lanes">
+      <div class="lane">
+        <h4>Inputs</h4>
+        <div class="pill-list">
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>CLAUDE.md</b><span class="sub">Channel mix, revenue stage, offline %</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>unit-economics.md</b><span class="sub">brand-brain/. 90-day numbers by channel.</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Live MCPs</b><span class="sub">Shopify, plus Meta and Google if connected</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Other teammate indexes</b><span class="sub">my-work/*/INDEX.md</span></span></div>
+        </div>
+      </div>
+
+      <div class="lane center">
+        <h4>Steps</h4>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="title">The "one alarm" demo<span class="duration">8 min</span></div><div class="desc">The brief's headline plus the one number that needs your attention this week.</div></div>
+          <div class="step"><div class="num">2</div><div class="title">Run /growth-analyst (DEFAULT)<span class="duration">~3 min</span></div><div class="desc">Three stages: Collect, Analyze, Render. First run builds dashboard.html.</div></div>
+          <div class="step"><div class="num">3</div><div class="title">Open your dashboard<span class="duration">5 min</span></div><div class="desc">dashboard.html reads numbers.json on load. Refresh the tab, new numbers paint in.</div></div>
+          <div class="step"><div class="num">4</div><div class="title">The cross-teammate read<span class="duration">3 min</span></div><div class="desc">Brief cites Content Lead, Performance Marketer, Retention. The chain alive.</div></div>
+          <div class="step watch"><div class="num">5</div><div class="title">Scheduled wake-up demo<span class="duration">5 min · watch</span></div><div class="desc">Instructor wires the cron. Every Monday 09:00, brief and numbers.json refresh.</div></div>
+          <div class="step"><div class="num">6</div><div class="title">Capstone hand-off<span class="duration">2 min</span></div><div class="desc">INDEX.md is what the Captain in Session 10 will read.</div></div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <h4>Outputs</h4>
+        <div class="pill-list">
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Weekly brief</b><span class="path">my-work/growth-analyst/&lt;date&gt;-brief.md</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Numbers sidecar</b><span class="path">my-work/growth-analyst/data/numbers.json</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Dashboard</b><span class="path">my-work/growth-analyst/dashboard.html</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Index file</b><span class="path">my-work/growth-analyst/&lt;date&gt;-index.md</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Wake-up (POWER)</b><span class="sub">Cron fires Monday 09:00 IST</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="upgrades-head">
+      <h3>Appendix · Take-home upgrades</h3>
+      <span class="tag">Optional · post-workshop</span>
+      <p>Two add-ons you can layer on the same dashboard. Restyle it with a different design system. Add a chatbot that answers questions about your data with inline charts. Run in either order or both. See <a href="../session-9-growth-analyst.md#appendix-restyle-the-dashboard-and-add-a-chatbot">the appendix</a> for the full prompts.</p>
+    </div>
+
+    <div class="upgrades">
+
+      <div class="upgrade">
+        <div class="head">
+          <span class="badge">Upgrade A</span>
+          <h4>Restyle the dashboard</h4>
+        </div>
+        <p class="blurb">Swap <span class="inline-code">design.md</span> for a different system. The dashboard rebuilds against the new tokens. Data is untouched.</p>
+
+        <div class="mini-section">
+          <span class="mini-label">Inputs</span>
+          <div class="mini-pills">
+            <span class="mini-pill in">design.md (root)</span>
+            <span class="mini-pill in">existing dashboard.html</span>
+            <span class="mini-pill in">getdesign.md catalog</span>
+          </div>
+        </div>
+
+        <div class="mini-section">
+          <span class="mini-label">Steps</span>
+          <div class="mini-steps">
+            <div class="mini-step"><span class="n">1</span><b>Pick a system.</b><span class="desc">Genesis, Cohere, Linear, Stripe or bring your own.</span></div>
+            <div class="mini-step"><span class="n">2</span><b>Download and replace.</b><span class="desc"><span class="inline-code">npx getdesign@latest add cohere</span> then copy its DESIGN.md over <span class="inline-code">./design.md</span>.</span></div>
+            <div class="mini-step"><span class="n">3</span><b>Delete the old dashboard.</b><span class="desc"><span class="inline-code">rm my-work/growth-analyst/dashboard.html</span>. Skill rebuilds only when the file is gone.</span></div>
+            <div class="mini-step"><span class="n">4</span><b>Rerun /growth-analyst.</b><span class="desc">Reads the new design.md in full. Rebuilds dashboard.html.</span></div>
+            <div class="mini-step"><span class="n">5</span><b>Verify.</b><span class="desc">Serve via <span class="inline-code">python3 -m http.server 8000</span>. Same data, new visual language.</span></div>
+          </div>
+        </div>
+
+        <div class="mini-section">
+          <span class="mini-label">Outputs</span>
+          <div class="mini-pills">
+            <span class="mini-pill out">design.md replaced</span>
+            <span class="mini-pill out">dashboard.html re-painted</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="upgrade">
+        <div class="head">
+          <span class="badge">Upgrade B</span>
+          <h4>Add a chatbot</h4>
+        </div>
+        <p class="blurb">A chat panel on the dashboard that answers natural-language questions. Proxies to OpenRouter with numbers.json plus the brief plus raw CSVs as context. Renders charts inline.</p>
+
+        <div class="mini-section">
+          <span class="mini-label">Inputs</span>
+          <div class="mini-pills">
+            <span class="mini-pill in">OpenRouter API key</span>
+            <span class="mini-pill in">python3 + requests + dotenv</span>
+            <span class="mini-pill in">numbers.json + brief + CSVs</span>
+          </div>
+        </div>
+
+        <div class="mini-section">
+          <span class="mini-label">Steps</span>
+          <div class="mini-steps">
+            <div class="mini-step"><span class="n">1</span><b>Ask Claude to add the chatbox.</b><span class="desc">Generates server.py with <span class="inline-code">/api/chat</span> proxy, .env scaffold and a chat panel styled to design.md.</span></div>
+            <div class="mini-step"><span class="n">2</span><b>Add your API key.</b><span class="desc">Paste into <span class="inline-code">.env</span>. Workshop key from instructor or your own at openrouter.ai/keys.</span></div>
+            <div class="mini-step"><span class="n">3</span><b>Start the server.</b><span class="desc"><span class="inline-code">python3 server.py</span>. Confirms model and API key on boot.</span></div>
+            <div class="mini-step"><span class="n">4</span><b>Open and ask.</b><span class="desc">Click the <span class="inline-code">?</span> bubble. Four starter prompts plus your own. History preserved for follow-ups.</span></div>
+          </div>
+        </div>
+
+        <div class="mini-section">
+          <span class="mini-label">Outputs</span>
+          <div class="mini-pills">
+            <span class="mini-pill out">server.py</span>
+            <span class="mini-pill out">.env (gitignored)</span>
+            <span class="mini-pill out">dashboard.html with chat panel</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="next-row">
+      <span class="label">Next</span>
+      <span class="target">Session 10 is the <b>Capstone</b>. The Captain reads every index. 90-day operating roadmap. Standing schedule.</span>
+      <a href="#s10">Session 10 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SESSION 10 =============== -->
+<section class="session" id="s10">
+  <div class="container">
+    <div class="session-head">
+      <div>
+        <div class="meta day-2">Session 10 · Sunday · Capstone</div>
+        <h2>The Captain</h2>
+        <p class="lead">All 10 teammates wired. The Captain reads only index files. 90-day operating roadmap personalised to your brand. The standing schedule recommended or wired live.</p>
+      </div>
+      <div class="actions">
+        <span class="duration">~30 min</span>
+        <a href="../session-10-capstone.md">Open file →</a>
+      </div>
+    </div>
+
+    <div class="skill-strip">
+      <span class="tag">Unlocks</span>
+      <span class="what"><b>captain</b> subagent · 4-wake-up <b>standing schedule</b> (Mon brief, Wed Brand Brain refresh, Fri VoC sweep, Sun synthesis)</span>
+    </div>
+
+    <div class="lanes">
+      <div class="lane">
+        <h4>Inputs</h4>
+        <div class="pill-list">
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Every teammate INDEX.md</b><span class="sub">10 files, ~10K tokens total. Never raw outputs.</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>CLAUDE.md</b><span class="sub">Brand DNA for personalisation</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Captain prompt</b><span class="path">references/module-10-capstone/captain-prompt.md</span></span></div>
+        </div>
+      </div>
+
+      <div class="lane center">
+        <h4>Steps</h4>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="title">State of the chain<span class="duration">5 min</span></div><div class="desc">List every index file you have. Confirm 10 of 10 (or note gaps).</div></div>
+          <div class="step decision"><div class="num"><span>?</span></div><div class="title">Pick scope</div><div class="desc">Default for Pro plan, Power if Max and you want it wired live.</div>
+            <div class="branches">
+              <div class="branch"><span class="when">DEFAULT</span> Roadmap + schedule recommended. Cron commands as a checklist you wire take-home.</div>
+              <div class="branch"><span class="when">POWER · Max plan</span> 4 wake-ups wired live via cron. Delivery configured. Test fire one before walking away.</div>
+            </div>
+          </div>
+          <div class="step"><div class="num">3</div><div class="title">Run the Captain<span class="duration">~5 min DEFAULT</span></div><div class="desc">Subagent spawns. Reads only INDEX.md files. Produces roadmap with citations.</div></div>
+          <div class="step"><div class="num">4</div><div class="title">Read the roadmap<span class="duration">10 min</span></div><div class="desc">90 days broken into Week 1, Month 1, Quarter. Each item cites which teammate flagged it.</div></div>
+          <div class="step"><div class="num">5</div><div class="title">The standing schedule</div><div class="desc">4 canonical wake-ups. Monday brief, Wednesday Brand Brain refresh, Friday VoC sweep, Sunday synthesis.</div></div>
+          <div class="step"><div class="num">6</div><div class="title">Three hand-counts<span class="duration">3 min</span></div><div class="desc">Who has wired schedule? Who is take-home? Who has questions?</div></div>
+          <div class="step"><div class="num">7</div><div class="title">Close<span class="duration">1 min</span></div><div class="desc">One Week 1 action picked. Office hours in week 2 and week 4.</div></div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <h4>Outputs</h4>
+        <div class="pill-list">
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>90-day roadmap</b><span class="path">my-work/captain/&lt;date&gt;-90-day-roadmap.md</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>One-page summary</b><span class="path">my-work/captain/&lt;date&gt;-summary.md</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Standing schedule</b><span class="sub">4 wake-ups. Checklist (DEFAULT) or live cron (POWER).</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Monday action</b><span class="sub">One thing to ship Week 1</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-row">
+      <span class="label">After the workshop</span>
+      <span class="target">Week 1: ship the Monday action. Week 2 + 4: office hours with your three biggest blockers.</span>
+      <a href="../resources.md">Open resources.md →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SESSION 11 =============== -->
+<section class="session" id="s11">
+  <div class="container">
+    <div class="session-head">
+      <div>
+        <div class="meta addon">Session 11 · Add-on</div>
+        <h2>Influencer Scout</h2>
+        <p class="lead">Shortlist of creators from a Modash-shape pool. Red-flag check on each. First outreach and a counter-offer script ready.</p>
+      </div>
+      <div class="actions">
+        <span class="duration">~30 min</span>
+        <a href="../session-11-influencer-scout.md">Open file →</a>
+      </div>
+    </div>
+
+    <div class="skill-strip">
+      <span class="tag">Unlocks</span>
+      <span class="what"><span class="inline-code">/influencer-scout</span> · the <b>red-flag check</b> framework · negotiation playbook</span>
+    </div>
+
+    <div class="lanes">
+      <div class="lane">
+        <h4>Inputs</h4>
+        <div class="pill-list">
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>CLAUDE.md</b><span class="sub">Brand bucket, audience persona</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Modash-shape pool</b><span class="path">references/module-11-influencer-scout/sample-pool.md</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>VoC report</b><span class="sub">For audience overlap signal</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Rate card reference</b><span class="path">references/module-11-influencer-scout/rate-card.md</span></span></div>
+        </div>
+      </div>
+
+      <div class="lane center">
+        <h4>Steps</h4>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="title">The two-question frame<span class="duration">3 min</span></div><div class="desc">Does the creator match the buyer? Does the creator match the brand?</div></div>
+          <div class="step"><div class="num">2</div><div class="title">The five red-flag checks<span class="duration">5 min</span></div><div class="desc">Engagement quality, audience geography, recent off-brand sponsorships, fake-follower signal, off-platform reputation.</div></div>
+          <div class="step decision"><div class="num"><span>?</span></div><div class="title">Pick scope</div><div class="desc">Default for first run, Power for the campaign plan.</div>
+            <div class="branches">
+              <div class="branch"><span class="when">DEFAULT</span> 5 creators + red-flag check + outreach + counter-offer scripts</div>
+              <div class="branch"><span class="when">POWER · Max plan</span> 10 creators + 4-week ladder + 3-outcome budget</div>
+            </div>
+          </div>
+          <div class="step"><div class="num">4</div><div class="title">Run the scout<span class="duration">~10 min</span></div><div class="desc">Reads pool. Filters by bucket. Runs red-flag pass. Drafts outreach email per creator.</div></div>
+          <div class="step"><div class="num">5</div><div class="title">Read the shortlist<span class="duration">5 min</span></div><div class="desc">Each creator gets SHORTLIST / TEST POST / WALK verdict with reasons.</div></div>
+          <div class="step"><div class="num">6</div><div class="title">Pick one to act on this week<span class="duration">5 min</span></div><div class="desc">One creator. Send the outreach. Have the counter-offer script ready.</div></div>
+          <div class="step"><div class="num">7</div><div class="title">Plan the 4-week ladder<span class="duration">POWER only · ~10 min</span></div><div class="desc">Seeding → amplification → measurement → renewal. Budget at anchor, mid, walk.</div></div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <h4>Outputs</h4>
+        <div class="pill-list">
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Creator shortlist</b><span class="path">my-work/influencer-scout/shortlist.md</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Red-flag verdicts</b><span class="sub">SHORTLIST / TEST POST / WALK per creator</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Outreach emails</b><span class="path">my-work/influencer-scout/outreach/</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Counter-offer scripts</b><span class="path">my-work/influencer-scout/negotiation/</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Index for Captain</b><span class="path">my-work/influencer-scout/&lt;date&gt;-index.md</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-row">
+      <span class="label">After</span>
+      <span class="target">If the Captain (S10) is already done, your index gets read in the next weekly synthesis automatically.</span>
+      <a href="#s10">Session 10 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== TELEGRAM =============== -->
+<section class="session" id="stelegram">
+  <div class="container">
+    <div class="session-head">
+      <div>
+        <div class="meta addon">Add-on · Telegram</div>
+        <h2>Telegram Bot</h2>
+        <p class="lead">Your skills on your phone. DM the bot, it forwards to Claude with full CLAUDE.md context. ~40-line Node.js script. Every new skill drops in instantly.</p>
+      </div>
+      <div class="actions">
+        <span class="duration">~25 min</span>
+        <a href="../session-telegram.md">Open file →</a>
+      </div>
+    </div>
+
+    <div class="skill-strip">
+      <span class="tag">Prerequisite</span>
+      <span class="what">Session 2 done. <span class="inline-code">/write-in-brand-voice</span> installed and working.</span>
+    </div>
+
+    <div class="lanes">
+      <div class="lane">
+        <h4>Inputs</h4>
+        <div class="pill-list">
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Telegram bot token</b><span class="sub">From @BotFather on your phone</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Your numeric user ID</b><span class="sub">From @userinfobot. NOT a username.</span></span></div>
+          <div class="pill input"><span class="ic">i</span><span class="body"><b>Node.js installed</b><span class="sub">For running the bot script</span></span></div>
+        </div>
+      </div>
+
+      <div class="lane center">
+        <h4>Steps</h4>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="title">Create your Telegram bot</div><div class="desc">@BotFather · <span class="inline-code">/newbot</span> · copy token. @userinfobot · copy numeric ID.</div></div>
+          <div class="step"><div class="num">2</div><div class="title">Create .env</div><div class="desc">Ask Claude to create <span class="inline-code">.env</span> with TELEGRAM_BOT_TOKEN and TELEGRAM_USER_ID. Add to .gitignore.</div></div>
+          <div class="step"><div class="num">3</div><div class="title">Generate the bot<span class="duration">~5 min</span></div><div class="desc">~40-line Node script. Validates .env. Forwards every message to <span class="inline-code">claude -p</span>. No per-command branching.</div></div>
+          <div class="step"><div class="num">4</div><div class="title">Install and run</div><div class="desc"><span class="inline-code">npm install telegraf dotenv</span>. <span class="inline-code">node ai_team_bot.js</span>. Bot is live.</div></div>
+          <div class="step"><div class="num">5</div><div class="title">Test from your phone</div><div class="desc">DM the bot. Try <span class="inline-code">/write-in-brand-voice rewrite this as us...</span> Plain English also works.</div></div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <h4>Outputs</h4>
+        <div class="pill-list">
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>ai_team_bot.js</b><span class="sub">Reads .env, runs Telegraf, calls claude -p</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>.env (gitignored)</b><span class="sub">Token + user ID</span></span></div>
+          <div class="pill output"><span class="ic">✓</span><span class="body"><b>Your skills on your phone</b><span class="sub">Every skill works via DM</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-row">
+      <span class="label">After</span>
+      <span class="target">Every new skill you add to <span class="inline-code">.claude/skills/</span> drops into your phone immediately. No bot code to update.</span>
+      <a href="index.html">Back to map →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    Per-session flowcharts for theCrux AI D2C workshop. Built from the per-session files at the repo root. If a fact here drifts from the source, the markdown wins. <a href="index.html">← Back to reference map</a>
+  </div>
+</footer>
+
+</body>
+</html>

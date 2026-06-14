@@ -1,0 +1,183 @@
+{
+  "as_of": "2026-05-12T08:42:00+05:30",
+  "brand": "The Paan Legacy",
+  "stage": "1-50Cr",
+  "running_on_sample_data": true,
+  "sample_data_reasons": [
+    "Shopify MCP not connected for this workshop run, daily orders read from examples/the-paan-legacy/sample-inputs/shopify-orders-28d.csv",
+    "Meta Ads MCP not connected, campaign spend read from examples/the-paan-legacy/sample-inputs/meta-ads-spend.csv",
+    "Google Ads MCP not connected, campaign spend read from examples/the-paan-legacy/sample-inputs/google-ads-spend.csv",
+    "Zomato and Swiggy sponsored-listing spend (approximately Rs 8,400 for the week) lives only in partner dashboards and is added back to total ad spend from the founder's manual export"
+  ],
+  "sample_data_replace_with": [
+    "Connect Shopify MCP via claude.ai or Claude Desktop connectors so live orders, AOV and new-customer counts replace the CSV",
+    "Connect Meta Ads MCP so campaign-level spend and conversions replace the CSV",
+    "Connect Google Ads MCP so campaign-level spend and conversions replace the CSV",
+    "Capture Zomato and Swiggy sponsored-listing spend in a weekly partner-dashboard export and feed it to the brief"
+  ],
+  "founder_truth": {
+    "cac_target": 400,
+    "cac_current_blended": 475,
+    "ltv_blended_12mo_estimate": 1180,
+    "ltv_gross_profit": 700,
+    "ltv_to_cac_target": 2.9,
+    "ltv_to_cac_current": 2.5,
+    "aov_blended_90d": 734,
+    "aov_blended_7d": 756,
+    "aov_by_channel": {
+      "d2c_site_plus_whatsapp": 767,
+      "zomato": 807,
+      "swiggy": 760
+    },
+    "gross_margin_blended": 0.59,
+    "gross_margin_by_sku": {
+      "meetha_paan": 0.54,
+      "almond_delight": 0.64,
+      "masala_cranberry": 0.61,
+      "dry_fruit_meetha_paan": 0.60,
+      "granola_goodness": 0.56,
+      "herbal_mukhwas": 0.62
+    },
+    "channel_mix_rolling": {
+      "d2c": 0.60,
+      "quick_commerce_zomato_swiggy": 0.25,
+      "franchise": 0.10,
+      "corporate_gifting": 0.05
+    },
+    "repeat_purchase_rate_7d": 0.31,
+    "repeat_purchase_rate_4w_avg": 0.30,
+    "repeat_purchase_rate_90d": 0.29,
+    "ltv_hedge_note": "1.6 orders/year assumption from a 200-customer Nov-2025 cohort tracked through Apr-2026 and annualised. Needs a real 12-month cohort pull to harden.",
+    "source": "brand-brain/unit-economics.md",
+    "as_of": "2026-05-12"
+  },
+  "live": {
+    "revenue_7d": 782000,
+    "orders_7d": 1034,
+    "orders_7d_digital": 1008,
+    "orders_7d_franchise": 26,
+    "aov_7d": 756,
+    "new_customers_7d": 384,
+    "repeat_customers_7d": 650,
+    "repeat_purchase_rate_7d": 0.31,
+    "total_ad_spend_7d": 182500,
+    "cac_live": 475,
+    "roas_blended": 2.4,
+    "per_channel": [
+      { "channel": "D2C site", "revenue": 400200, "orders": 520, "spend": null, "roas": null, "note": "Shopify D2C only. WhatsApp is broken out separately even though both share one fulfilment line." },
+      { "channel": "WhatsApp", "revenue": 69000, "orders": 92, "spend": null, "roas": null, "note": "WhatsApp Business orders, treated as a sub-channel of own-channel by the founder." },
+      { "channel": "Zomato", "revenue": 203320, "orders": 252, "spend": 4800, "roas": 42.4, "note": "Spend is sponsored-listing only, captured from partner dashboard." },
+      { "channel": "Swiggy", "revenue": 109480, "orders": 144, "spend": 3600, "roas": 30.4, "note": "Spend is sponsored-listing only, captured from partner dashboard." },
+      { "channel": "Meta ads", "revenue": 302000, "orders": 384, "spend": 155000, "roas": 1.95, "note": "Attributable revenue and orders, last-click. Mirrors the brief." },
+      { "channel": "Google ads", "revenue": 61000, "orders": 78, "spend": 19100, "roas": 3.2, "note": "Attributable revenue and orders, last-click. Mirrors the brief." },
+      { "channel": "Franchise outlets", "revenue": 35000, "orders": 26, "spend": null, "roas": null, "note": "Self-reported by 3 stores, no live POS integration. Estimated, not measured." },
+      { "channel": "Corporate gifting", "revenue": 0, "orders": 0, "spend": null, "roas": null, "note": "Seasonal, spikes 8x in October-November." }
+    ],
+    "trend_4w": [
+      { "week_start": "2026-04-15", "revenue": 675000, "orders": 905, "cac": 410, "roas": 2.6, "complaint_rate_summer_pin": 0.015 },
+      { "week_start": "2026-04-22", "revenue": 688000, "orders": 925, "cac": 425, "roas": 2.5, "complaint_rate_summer_pin": 0.018 },
+      { "week_start": "2026-04-29", "revenue": 740000, "orders": 1012, "cac": 447, "roas": 2.5, "complaint_rate_summer_pin": 0.021 },
+      { "week_start": "2026-05-06", "revenue": 782000, "orders": 1034, "cac": 475, "roas": 2.4, "complaint_rate_summer_pin": 0.053 }
+    ],
+    "trend_4w_average": {
+      "revenue": 721000,
+      "orders": 982,
+      "cac": 472,
+      "roas": 2.4
+    },
+    "prior_week": {
+      "revenue": 740000,
+      "orders": 1012,
+      "aov": 731,
+      "new_customers": 376,
+      "repeat_purchase_rate": 0.30,
+      "total_ad_spend": 168200,
+      "cac": 447,
+      "roas": 2.5
+    },
+    "reconciliation_notes": [
+      "Headline orders 1,034 = 1,008 digital (Shopify D2C 520 + WhatsApp 92 + Zomato 252 + Swiggy 144) + 26 franchise. Franchise is self-reported, not in any digital source.",
+      "Total ad spend Rs 1,82,500 = Rs 1,55,000 Meta + Rs 19,100 Google + Rs 8,400 Zomato and Swiggy sponsored listings. The Rs 8,400 sits in partner dashboards only, not in the Meta or Google CSVs.",
+      "Blended CAC Rs 475 = Rs 1,82,500 total ad spend / 384 new customers. Matches the brief."
+    ]
+  },
+  "alarm": {
+    "metric": "summer_pin_code_complaint_rate",
+    "metric_label": "Summer pin-code complaint rate",
+    "this_week": 0.053,
+    "prior_week": 0.021,
+    "delta_pp": 0.032,
+    "delta_pct": 1.524,
+    "direction": "up",
+    "driver": "Almond Delight (saffron and gulkand melt risk) and Dry Fruit Meetha Paan (chocolate-coated fruit) on shipments to Delhi, Hyderabad and Lucknow. 7 complaints in 7 days vs 3 prior. Two are public (one Instagram comment, one Google review at 2 stars). Meta campaign Summer Gifting Almond Delight Hot Cities (META-004) scaled from Rs 2,610/day to Rs 6,235/day in the same week.",
+    "recommended_action": "Activate Ops SOP-01 (Summer Shipping) by EOD Tuesday. Insulated boxes plus gel pack plus courier switch on the Delhi, Hyderabad and Lucknow lanes. Cost approximately Rs 4,800/month. Founder personally calls the 7 complaint customers Monday and Tuesday. Owner: Ops Manager plus founder. Pause META-004 hot-cities targeting until SOP-01 is live."
+  },
+  "gaps": [
+    {
+      "metric": "blended_cac_vs_target",
+      "founder_value": 400,
+      "live_value": 475,
+      "delta_pct": 0.188,
+      "above_20pct_threshold": false,
+      "note": "Founder target Rs 400, live Rs 475. Over target by 18.8%, close to the 20% threshold. Meta cost per result climbed in late April, creative rotation pending."
+    },
+    {
+      "metric": "ltv_12mo_cohort",
+      "founder_value": 1180,
+      "live_value": null,
+      "delta_pct": null,
+      "above_20pct_threshold": false,
+      "note": "Founder estimate is from a 200-customer Nov-2025 cohort annualised to 1.6 orders/year. A true 12-month cohort pull is on the Q3 task list."
+    },
+    {
+      "metric": "gross_margin_almond_delight",
+      "founder_value": 0.64,
+      "live_value": null,
+      "delta_pct": null,
+      "above_20pct_threshold": false,
+      "note": "Operations sheet last updated March 2026. Saffron prices moved up in April, so 64% may be 1 to 2 points lower this quarter."
+    },
+    {
+      "metric": "franchise_revenue",
+      "founder_value": 35000,
+      "live_value": null,
+      "delta_pct": null,
+      "above_20pct_threshold": false,
+      "note": "Three franchise outlets self-report weekly. No live POS integration, treated as estimate not measurement."
+    }
+  ],
+  "missing": [
+    { "id": "live_shopify_mcp", "label": "Shopify MCP", "note": "Daily orders, revenue and new-customer counts read from CSV. Connect via claude.ai or Claude Desktop connectors to replace." },
+    { "id": "live_meta_ads_mcp", "label": "Meta Ads MCP", "note": "Campaign spend and conversions read from CSV. Connect via claude.ai or Claude Desktop connectors to replace." },
+    { "id": "live_google_ads_mcp", "label": "Google Ads MCP", "note": "Campaign spend and conversions read from CSV. Connect via claude.ai or Claude Desktop connectors to replace." },
+    { "id": "zomato_swiggy_partner_dashboards", "label": "Zomato and Swiggy partner dashboards", "note": "Sponsored-listing spend of approximately Rs 8,400 for the week sits only in partner dashboards. Captured by manual weekly export." },
+    { "id": "franchise_pos", "label": "Franchise POS integration", "note": "Three franchise outlets self-report weekly. Estimated, not measured." }
+  ],
+  "cross_teammate_inputs": [
+    {
+      "teammate": "voice-of-customer",
+      "file_path": "examples/the-paan-legacy/my-work/voice-of-customer/2026-05-12-voc-report.md",
+      "key_insight": "Summer-freshness theme rose to roughly 9% of tickets this week from 6% prior, all complaints land on Almond Delight and Dry Fruit Meetha Paan in Delhi, Hyderabad and Lucknow. Heritage theme remains the strongest organic driver at 20% of all messages."
+    },
+    {
+      "teammate": "market-analyst",
+      "file_path": "examples/the-paan-legacy/my-work/market-analyst/2026-05-12-intel-report.md",
+      "key_insight": "Bombay Sweet Shop launched 2 paan SKUs at Rs 350 to 420 on May 5 (premium-gifting band, above our Rs 179 to 299 range). Karachi Bakery opened its Diwali corporate-gifting page on May 5, five weeks ahead of our /corporate page going live."
+    },
+    {
+      "teammate": "content-lead",
+      "file_path": "examples/the-paan-legacy/my-work/content-lead/2026-05-12-calendar.md",
+      "key_insight": "May 13 Instagram Reel on the grandmother-recipe heritage angle ships tomorrow. Drafted in pieces/instagram-01-naanis-paan-reel.md. Performance Marketer Angle 1 reuses the creative for paid, lead time of 5 days on conversion attribution."
+    },
+    {
+      "teammate": "performance-marketer",
+      "file_path": "examples/the-paan-legacy/my-work/performance-marketer/2026-05-13-index.md",
+      "key_insight": "Two creative angles ready for upload. Angle 1 Tradition Meets Modernity replaces the Summer Gifting Hot Cities creative on Meta. Angle 2 Kid-Friendly is blocked on the /corporate landing page going live."
+    },
+    {
+      "teammate": "storefront-specialist",
+      "file_path": "examples/the-paan-legacy/my-work/storefront-specialist/2026-05-13-index.md",
+      "key_insight": "Masala Cranberry PDP rewrite is live in draft. Current conversion 1.9% with 38% cart abandonment, expected lift to 2.5% or better once the cranberry rationale lands above the fold. /corporate landing page still pending and blocks Performance Marketer Angle 2."
+    }
+  ]
+}

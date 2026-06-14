@@ -1,0 +1,65 @@
+{
+  "reportType": "GET_BRAND_ANALYTICS_SEARCH_TERMS_REPORT",
+  "reportPeriod": "WEEKLY",
+  "reportingRange": { "startDate": "2026-04-21", "endDate": "2026-04-27" },
+  "marketplaceId": "A21TJRUUN4KGV",
+  "department": "Beauty",
+  "rows": [
+    {
+      "searchTerm": "vitamin c face wash",
+      "searchFrequencyRank": 47,
+      "top1": { "asin": "B0BX8CL7Y4", "productTitle": "Minimalist Vitamin C 10% Face Wash", "clickShare": 0.184, "conversionShare": 0.221 },
+      "top2": { "asin": "B0CH4TKZ81", "productTitle": "Auruh Vitamin C Face Wash 100ml", "clickShare": 0.142, "conversionShare": 0.158 },
+      "top3": { "asin": "B09K1L8M3R", "productTitle": "Plum Bright Years Face Wash", "clickShare": 0.097, "conversionShare": 0.084 },
+      "_signal": "Auruh holds #2 click and conversion share on a high-frequency term. Defend with branded ads + maintain stock."
+    },
+    {
+      "searchTerm": "natural sunscreen india",
+      "searchFrequencyRank": 312,
+      "top1": { "asin": "B0CK5L8M3R", "productTitle": "Earth Rhythm Mineral Sunscreen", "clickShare": 0.224, "conversionShare": 0.281 },
+      "top2": { "asin": "B0BG3X4Y7Z", "productTitle": "The Derma Co Hyaluronic Sunscreen", "clickShare": 0.156, "conversionShare": 0.194 },
+      "top3": { "asin": "B09P2Q3R5T", "productTitle": "Plum Mineral Sunscreen", "clickShare": 0.118, "conversionShare": 0.142 },
+      "_signal": "Auruh AUR-SS-50 not in top 3. Currently ranks #14 organically. Combined with the listing problem in sales-and-traffic, this is fix-listing-first then attack SEO."
+    },
+    {
+      "searchTerm": "mineral sunscreen spf 50",
+      "searchFrequencyRank": 894,
+      "top1": { "asin": "B0CK5L8M3R", "productTitle": "Earth Rhythm Mineral Sunscreen", "clickShare": 0.298, "conversionShare": 0.347 },
+      "top2": { "asin": "B0CH4TLM92", "productTitle": "Auruh Mineral Sunscreen SPF 50, 50ml", "clickShare": 0.082, "conversionShare": 0.041 },
+      "top3": { "asin": "B0BG3X4Y7Z", "productTitle": "The Derma Co Hyaluronic Sunscreen", "clickShare": 0.071, "conversionShare": 0.098 },
+      "_signal": "Auruh is #2 in click share but only #5 in conversion. Means listing attracts but does not close. Reinforces the listing-fix priority."
+    },
+    {
+      "searchTerm": "tinted lip balm",
+      "searchFrequencyRank": 638,
+      "top1": { "asin": "B0CH4TNP04", "productTitle": "Auruh Tinted Lip Balm 3-pack", "clickShare": 0.241, "conversionShare": 0.293 },
+      "top2": { "asin": "B0BR9X4Y7Z", "productTitle": "Plum Color Caress Tinted Lip Balm", "clickShare": 0.187, "conversionShare": 0.214 },
+      "top3": { "asin": "B0BL3M5N7Q", "productTitle": "Sugar Tipsy Lips Lip Balm", "clickShare": 0.148, "conversionShare": 0.156 },
+      "_signal": "Auruh is #1 organic on this term. Stockout on AUR-LB-15 will collapse this position. Reorder is urgent."
+    },
+    {
+      "searchTerm": "body lotion for dry skin",
+      "searchFrequencyRank": 218,
+      "top1": { "asin": "B07X9C3L8M", "productTitle": "Cetaphil Moisturizing Lotion", "clickShare": 0.312, "conversionShare": 0.402 },
+      "top2": { "asin": "B0BR8L9M2N", "productTitle": "Aveeno Daily Moisturizing Lotion", "clickShare": 0.184, "conversionShare": 0.221 },
+      "top3": { "asin": "B0CK7L8M9R", "productTitle": "Bioderma Atoderm Body Lotion", "clickShare": 0.097, "conversionShare": 0.118 },
+      "_signal": "AUR-BL-200 not in top 3 on this high-frequency term. Premium incumbents own the space."
+    },
+    {
+      "searchTerm": "hair oil for hair growth",
+      "searchFrequencyRank": 89,
+      "top1": { "asin": "B07L8M3R5T", "productTitle": "Mamaearth Onion Hair Oil", "clickShare": 0.398, "conversionShare": 0.471 },
+      "top2": { "asin": "B0BX8CL7Y4", "productTitle": "WOW Onion Black Seed Hair Oil", "clickShare": 0.156, "conversionShare": 0.184 },
+      "top3": { "asin": "B09K1L8M3R", "productTitle": "Indulekha Bringha Hair Oil", "clickShare": 0.118, "conversionShare": 0.142 },
+      "_signal": "AUR-HO-100 absent from top 3 on highest-frequency hair oil term. The cold-pressed positioning is a niche, not a mass-market play. Either reposition or accept a smaller TAM."
+    },
+    {
+      "searchTerm": "cold pressed hair oil",
+      "searchFrequencyRank": 4827,
+      "top1": { "asin": "B0CH4TST26", "productTitle": "Auruh Cold-Pressed Hair Oil 100ml", "clickShare": 0.347, "conversionShare": 0.421 },
+      "top2": { "asin": "B09L7M3N5Q", "productTitle": "Forest Essentials Bhringraj Hair Oil", "clickShare": 0.184, "conversionShare": 0.156 },
+      "top3": { "asin": "B0CR8L9M2N", "productTitle": "Kama Ayurveda Bringadi Hair Oil", "clickShare": 0.118, "conversionShare": 0.097 },
+      "_signal": "Auruh dominates this niche term but search frequency is rank 4827 - very low volume. Growth move: educate market on cold-pressed via content, not ads."
+    }
+  ]
+}

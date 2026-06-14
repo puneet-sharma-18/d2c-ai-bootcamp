@@ -1,0 +1,70 @@
+{
+  "_endpoint": "GET /sellers/listings/v3/locations/LOC198273/skus",
+  "locationId": "LOC198273",
+  "locationName": "Auruh-Bengaluru-WH",
+  "listings": [
+    {
+      "sku": "AUR-FW-100",
+      "fsn": "FSN8473829AURFW100",
+      "productId": "VTRGCQGZNYHGYZJK",
+      "title": "Auruh Vitamin C Face Wash 100ml",
+      "listingState": "ACTIVE",
+      "stockCount": 215,
+      "fulfilmentBy": "FLIPKART",
+      "mrp": 599.00,
+      "sellingPrice": 549.00,
+      "fulfilment": { "procurementSlaTime": 1, "shippingFee": 0 },
+      "_thirty_day_velocity": 8
+    },
+    {
+      "sku": "AUR-SS-50",
+      "fsn": "FSN8473829AURSS50",
+      "productId": "VTRGCQGZNYHHYZJL",
+      "title": "Auruh Mineral Sunscreen SPF 50, 50ml",
+      "listingState": "ACTIVE",
+      "stockCount": 142,
+      "fulfilmentBy": "FLIPKART",
+      "mrp": 749.00,
+      "sellingPrice": 699.00,
+      "_thirty_day_velocity": 1
+    },
+    {
+      "sku": "AUR-LB-15",
+      "fsn": "FSN8473829AURLB15",
+      "productId": "VTRGCQGZNYHIYZJM",
+      "title": "Auruh Tinted Lip Balm 3-pack",
+      "listingState": "ACTIVE",
+      "stockCount": 380,
+      "fulfilmentBy": "FLIPKART",
+      "mrp": 449.00,
+      "sellingPrice": 399.00,
+      "_thirty_day_velocity": 3,
+      "_alert": "OVERSTOCK at this location while Amazon FBA is at 12-day cover (47 units). Cross-marketplace transfer recommended: pull 100 units from Flipkart WH back to Amazon FBA inbound."
+    },
+    {
+      "sku": "AUR-BL-200",
+      "fsn": "FSN8473829AURBL200",
+      "productId": "VTRGCQGZNYHJYZJN",
+      "title": "Auruh Body Lotion 200ml",
+      "listingState": "ACTIVE",
+      "stockCount": 167,
+      "fulfilmentBy": "FLIPKART",
+      "mrp": 549.00,
+      "sellingPrice": 499.00,
+      "_thirty_day_velocity": 3
+    },
+    {
+      "sku": "AUR-HO-100",
+      "fsn": "FSN8473829AURHO100",
+      "productId": "VTRGCQGZNYHKYZJO",
+      "title": "Auruh Cold-Pressed Hair Oil 100ml",
+      "listingState": "ACTIVE",
+      "stockCount": 412,
+      "fulfilmentBy": "FLIPKART",
+      "mrp": 399.00,
+      "sellingPrice": 349.00,
+      "_thirty_day_velocity": 1,
+      "_alert": "OVERSTOCK on both marketplaces. AUR-HO-100 has demand-product fit issue, not distribution issue."
+    }
+  ]
+}

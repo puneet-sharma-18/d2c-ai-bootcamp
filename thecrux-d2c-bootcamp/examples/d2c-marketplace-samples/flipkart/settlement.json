@@ -1,0 +1,108 @@
+{
+  "_source": "Seller Hub Settlement Report (CSV-equivalent JSON)",
+  "settlementCycle": "2026-04-15 to 2026-04-29",
+  "depositDate": "2026-05-02",
+  "currency": "INR",
+  "transactions": [
+    {
+      "orderItemId": "16384729103847291",
+      "orderDate": "2026-04-02",
+      "sku": "AUR-FW-100",
+      "sellingPrice": 549.00,
+      "commission": -82.35,
+      "commissionRate": 0.150,
+      "collectionFee": -10.98,
+      "fixedFee": -10.00,
+      "shippingFee": -38.00,
+      "reverseShippingFee": 0.00,
+      "tcsTds": -5.49,
+      "settlementValue": 402.18,
+      "_take_rate": 0.267
+    },
+    {
+      "orderItemId": "16384729103847292",
+      "orderDate": "2026-04-04",
+      "sku": "AUR-LB-15",
+      "sellingPrice": 399.00,
+      "commission": -111.72,
+      "commissionRate": 0.280,
+      "collectionFee": -7.98,
+      "fixedFee": -10.00,
+      "shippingFee": -32.00,
+      "tcsTds": -3.99,
+      "settlementValue": 233.31,
+      "_take_rate": 0.415,
+      "_alert": "Flipkart commission on lip balm category is 28% vs Amazon 15%. Margin gap is 13 percentage points before any other fee."
+    },
+    {
+      "orderItemId": "16384729103847294",
+      "orderDate": "2026-04-07",
+      "sku": "AUR-BL-200",
+      "sellingPrice": 499.00,
+      "commission": -89.82,
+      "commissionRate": 0.180,
+      "collectionFee": -9.98,
+      "fixedFee": -10.00,
+      "shippingFee": -52.00,
+      "tcsTds": -4.99,
+      "settlementValue": 332.21,
+      "_take_rate": 0.334
+    },
+    {
+      "orderItemId": "16384729103847295",
+      "orderDate": "2026-04-09",
+      "sku": "AUR-HO-100",
+      "sellingPrice": 349.00,
+      "commission": -55.84,
+      "commissionRate": 0.160,
+      "collectionFee": -6.98,
+      "fixedFee": -10.00,
+      "shippingFee": -28.00,
+      "reverseShippingFee": -28.00,
+      "tcsTds": -3.49,
+      "settlementValue": 216.69,
+      "_status": "RETURNED",
+      "_note": "Reverse shipping doubles the fee on a return. Settlement actually negative after refund-of-principal not shown here."
+    },
+    {
+      "orderItemId": "16384729103847296",
+      "orderDate": "2026-04-11",
+      "sku": "AUR-FW-100",
+      "sellingPrice": 1098.00,
+      "commission": -164.70,
+      "commissionRate": 0.150,
+      "collectionFee": -21.96,
+      "fixedFee": -10.00,
+      "shippingFee": -38.00,
+      "tcsTds": -10.98,
+      "settlementValue": 852.36,
+      "_take_rate": 0.224
+    },
+    {
+      "orderItemId": "16384729103847297",
+      "orderDate": "2026-04-13",
+      "sku": "AUR-LB-15",
+      "sellingPrice": 399.00,
+      "commission": -111.72,
+      "collectionFee": -7.98,
+      "fixedFee": -10.00,
+      "shippingFee": -82.00,
+      "_note": "Higher seller-fulfilled shipping. Customer in Kolkata, seller WH in Bengaluru.",
+      "tcsTds": -3.99,
+      "settlementValue": 183.31,
+      "_take_rate": 0.541
+    }
+  ],
+  "_per_sku_summary": {
+    "AUR-FW-100": { "units": 5, "gross_revenue": 2745.00, "marketplace_take_rate": 0.247 },
+    "AUR-SS-50": { "units": 1, "gross_revenue": 699.00, "marketplace_take_rate": 0.220 },
+    "AUR-LB-15": { "units": 3, "gross_revenue": 1197.00, "marketplace_take_rate": 0.485, "_alert": "Worst margin SKU on Flipkart due to 28% commission. Either renegotiate commission slab, raise price, or consider delisting." },
+    "AUR-BL-200": { "units": 2, "gross_revenue": 998.00, "marketplace_take_rate": 0.334 },
+    "AUR-HO-100": { "units": 1, "gross_revenue": 349.00, "_status_note": "Item returned. Net settlement -69 INR after refund." }
+  },
+  "_cross_platform_comparison": {
+    "AUR-FW-100": { "amazon_take_rate": 0.245, "flipkart_take_rate": 0.247, "verdict": "neutral" },
+    "AUR-LB-15": { "amazon_take_rate": 0.268, "flipkart_take_rate": 0.485, "verdict": "Amazon is 21pp cheaper. Push volume there." },
+    "AUR-BL-200": { "amazon_take_rate": 0.540, "flipkart_take_rate": 0.334, "verdict": "Flipkart cheaper for this SKU but only because Amazon is being inflated by 25% return rate. Fix packaging first." }
+  }
+}

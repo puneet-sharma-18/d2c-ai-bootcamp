@@ -1,0 +1,10 @@
+handle,title,sku,price,inventory_qty,product_type,vendor,tags,units_sold_l28,units_sold_l90,conversion_rate_l28,avg_rating,review_count
+newborn-daily-lotion-200ml,Newborn Daily Lotion 200ml,LL-NDL-200,549,184,Daily care,Little Lab,"newborn,lotion,fragrance-free,hero",612,1840,2.4%,4.6,142
+cradle-cap-balm-50ml,Cradle Cap Balm 50ml,LL-CCB-050,449,96,Problem solver,Little Lab,"problem-solver,cradle-cap,active-named,hero",284,894,3.1%,4.8,98
+bath-and-hair-wash-250ml,2-in-1 Bath and Hair Wash 250ml,LL-BHW-250,599,142,Bath time,Little Lab,"bath,no-sls,sensitive",218,651,1.6%,3.9,67
+diaper-rash-cream-30ml,Diaper Rash Cream 30ml,LL-DRC-030,329,212,Problem solver,Little Lab,"problem-solver,diaper-rash",156,468,2.7%,4.5,54
+massage-oil-200ml,Cold-pressed Massage Oil 200ml,LL-COM-200,599,88,Daily care,Little Lab,"massage,daily-care",142,418,2.1%,4.4,41
+nappy-cleanser-150ml,Nappy Cleanser 150ml,LL-NPC-150,289,168,Daily care,Little Lab,"daily-care,nappy",98,294,1.8%,4.3,28
+toddler-body-wash-300ml,Toddler Body Wash 300ml,LL-TBW-300,499,124,Bath time,Little Lab,"toddler,bath",112,336,1.9%,4.2,32
+night-time-balm-50ml,Night-time Balm 50ml,LL-NTB-050,499,76,Daily care,Little Lab,"daily-care,sleep,balm",84,238,1.7%,4.5,22
+sunscreen-spf30-50ml,Sun Mineral Sunscreen SPF30 50ml,LL-SUN-050,649,108,Sun care,Little Lab,"sunscreen,mineral",62,186,1.4%,4.1,18
